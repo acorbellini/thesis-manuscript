@@ -1,0 +1,199 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\newcommand{\thesistitle}{A graph-processing platform for low-end clusters}
+\newcommand{\thesisauthor}{Alejandro Corbellini}
+\newcommand{\thesisyear}{2015}
+
+\usepackage{lastpage}
+%\usepackage{tocbibind}
+\usepackage[numbers,sort]{natbib}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{lettrine}
+\usepackage{titlesec,  color}
+\usepackage[
+   hidelinks,
+   pdftitle={\thesistitle},
+   pdfauthor={\thesisauthor},
+   pdfpagemode={UseOutlines},
+   bookmarks,
+   bookmarksopen=true,
+   pdfstartview={FitH},
+   bookmarksnumbered=true]{hyperref}
+
+\paperwidth=8.5in
+\paperheight=11in
+\setlength{\hoffset}{0.0in}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\textwidth}{6in}
+\setlength{\evensidemargin}{0mm}
+\setlength{\voffset}{0.0in}
+\setlength{\topmargin}{.0in}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{22pt}
+\setlength{\textheight}{8.5in}
+\setlength{\footskip}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand\contentsname{Table of Contents} 
+
+\fancypagestyle{IHA-fancy-style}{%
+  \fancyhf{}% Clear header and footer
+  \fancyhead[LE,RO]{\slshape \leftmark}
+  \fancyhead[LO,RE]{}
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \fancyfoot[LO,RE]{\slshape \rightmark}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{chapter}{%
+  \fancyhf{}% Clear header and footer
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \renewcommand{\headrulewidth}{0pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{firstpages}{%
+  \fancyhf{}
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\fancypagestyle{cover}{%
+  \fancyhf{}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\newcommand{\markedsection}[2]{\section[#2]{#2%
+\sectionmark{#1}}
+\sectionmark{#1}}
+
+\newcommand{\markedsubsection}[2]{\subsection[#2]{#2%
+\subsectionmark{#1}}
+\subsectionmark{#1}}
+
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\raisebox{-4ex}{\includegraphics{images/vbar.pdf}}\hsp}{0pt}{\Huge\bfseries}
+\end_preamble
+\options 11pt,openright,twoside,letterpaper,onecolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+Acknowledges
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Acknowledges}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{firstpages}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+kjalsdkjlas
+\end_layout
+
+\begin_layout Standard
+jkajsdklsa
+\end_layout
+
+\end_body
+\end_document

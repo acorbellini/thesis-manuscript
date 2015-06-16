@@ -1,0 +1,3815 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage[numbers,sort]{natbib}
+\end_preamble
+\options 11pt,openright,twoside,letterpaper,onecolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch section-bib
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Distributed Databases
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Relational databases or RDBMSs (Relational Database Management Systems)
+ have been used since the 70s and, as such, they can certainly be considered
+ a mature technology to store data and their relationships.
+ However, storage problems in Web-oriented systems pushed the limits of
+ relational databases, forcing researchers and companies to investigate
+ non-traditional forms of storing user data
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stonebraker2011rules"
+
+\end_inset
+
+.
+ Today's user data can scale to terabytes per day and they should be available
+ to millions of users worldwide under low latency requirements.
+\end_layout
+
+\begin_layout Standard
+Increasing the storage capacity of any computational node means adding more
+ RAM or more disk space under the constraints of the underlying hardware.
+ Upon reaching a node storage limit, there is no alternative but to distribute
+ the data among different nodes.
+ Usually, RDBMSs systems are not designed to be easily distributed, and
+ thus the complexity of adding new nodes to balance data is high
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "leavitt2010nosql"
+
+\end_inset
+
+.
+ In addition, database performance often decreases significantly since joins
+ and transactions are costly in distributed environments
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cattell2011nosql,orend2010nosql"
+
+\end_inset
+
+.
+ All in all, this does not mean RDBMSs have became obsolete, but rather
+ they have been designed with other requirements in mind and work well when
+ extreme scalability is not required.
+\end_layout
+
+\begin_layout Standard
+Precisely, NoSQL databases have arisen as storage alternatives, not based
+ on relational models, to address the mentioned problems.
+ The term 
+\begin_inset Quotes eld
+\end_inset
+
+NoSQL
+\begin_inset Quotes erd
+\end_inset
+
+ was coined by Carlo Strozzi in 1998 to refer to the open-source database
+ called NoSQL not having an SQL interface
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "strozzi1998nosql"
+
+\end_inset
+
+.
+ In 2009, the term resurfaced thanks to Eric Evans in the context of an
+ event about distributed databases
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+NoSQL Meetup 2009, http://nosql.eventbrite.com/
+\end_layout
+
+\end_inset
+
+.
+ Since then, some researchers
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "keith2009iot,anne2009iot"
+
+\end_inset
+
+ have pointed out that new information management paradigms such as the
+ Internet of Things would need radical changes in the way data is stored.
+ In this context, traditional databases cannot cope with the generation
+ of massive amounts of information by different devices, including GPS informati
+on, RFIDs, IP addresses, Unique Identifiers, data and metadata about the
+ devices, sensor data and historical data.
+\end_layout
+
+\begin_layout Standard
+In general, NoSQL databases are unstructured, i.e., they do not have a fixed
+ schema and their usage interface is usually simple, allowing developers
+ to start using them quickly.
+ In addition, these databases generally avoid joins at the data storage
+ level, as they are often expensive, leaving this task to each application.
+ The developer must decide whether to perform joins at the application level
+ or, alternatively, denormalize data.
+ In the first case, the decision may involve gathering data from several
+ physical nodes based on some criteria and then join the collected data.
+ This approach requires more development effort, but there are frameworks
+ and languages that alleviate this task
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dean2008mapreduce,malewicz2010pregel"
+
+\end_inset
+
+.
+ Instead, if denormalization is chosen, multiple data attributes can be
+ replicated in different storage structures.
+ For example, suppose a system to store user photos.
+ To optimize those queries for photos belonging to users of a certain nationalit
+y, the Nationality field may be replicated in the User and Photo data structures.
+ Naturally, this approach rises special considerations regarding updates
+ of the Nationality field, since inconsistencies between the User and Photo
+ data structures might occur.
+\end_layout
+
+\begin_layout Standard
+Many NoSQL databases are designed to be distributed, which in turn allows
+ increasing their capacity by means of adding nodes to the infrastructure,
+ a property also known as 
+\emph on
+horizontal scaling
+\emph default
+.
+ In most implementations, the hardware requirements of individual nodes
+ should not exceed those of a traditional personal computer, in order to
+ reduce the costs of building such systems and also to ease the replacement
+ of faulty nodes.
+\end_layout
+
+\begin_layout Standard
+NoSQL databases can be divided into several categories according to the
+ classification proposed in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tudorica2011nosql,cattell2011nosql,leavitt2010nosql,hecht2011nosql"
+
+\end_inset
+
+, each prescribing a certain 
+\emph on
+data layout
+\emph default
+ for the stored data: 
+\end_layout
+
+\begin_layout Itemize
+Key-Value: these databases allow storing arbitrary data under a key.
+ They work similarly to a conventional hash table, but by distributing keys
+ (and values) among a set of physical nodes.
+\end_layout
+
+\begin_layout Itemize
+Wide Column or Column Families: instead of saving data by row (as in relational
+ databases), this type of databases store data by column.
+ Thus, some rows may not contain part of the columns, offering flexibility
+ in data definition and allowing to apply data compression algorithms per
+ column.
+ Furthermore, columns that are not often queried together can be distributed
+ across different nodes.
+\end_layout
+
+\begin_layout Itemize
+Document-oriented: a document is a series of fields with attributes, for
+ example: name = "John", lastname = "Smith" is a document with 2 fields.
+ Most databases of this type store documents in semi-structured formats
+ such as XML
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bray1997xml"
+
+\end_inset
+
+ (eXtensible Markup Language), JSON
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "crockford2006json"
+
+\end_inset
+
+ (JavaScript Object Notation) or BSON
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "membrey2010mongodb"
+
+\end_inset
+
+ (Binary JSON).
+ They work similarly to Key-Value databases, but in this case, the key is
+ always a document's ID and the value is a document with a known structure
+ allowing queries on the fields.
+\end_layout
+
+\begin_layout Standard
+Moreover, some authors also conceive Graph-oriented databases as a fourth
+ category of NoSQL databases
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hecht2011nosql,tudorica2011nosql"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+Graph-oriented: these databases aim to store data in a graph-like structure.
+ Data is represented by arcs and vertexes, each with its particular attributes.
+ Most Graph-oriented databases enable efficient graph traversal, even when
+ the vertexes are on separate physical nodes.
+ Moreover, this type of database has received a lot of attention lately
+ because of its applicability to social data.
+ This attention has brought accompanied new implementations to accommodate
+ with the current market.
+ However, some authors exclude Graph-oriented databases from NoSQL because
+ they do not fully align with the relaxed model constraints normally found
+ in NoSQL implementations
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cattell2011,Leavitt2010"
+
+\end_inset
+
+.
+ In this work, we decided to include Graph-oriented databases because they
+ are essentially non-relational databases and have many applications nowadays
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Angles2012"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the following sections we introduce and discuss, broadly speaking, the
+ most prominent databases in each of the categories described before.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Databases-analyzed-grouped"
+
+\end_inset
+
+ lists the databases analyzed, grouped by category.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="4cm">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Category
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NoSQL Databases Analyzed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Key-Value 
+\begin_inset Newline newline
+\end_inset
+
+(Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Key-Value"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hazelcast
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hazelcast2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Redis
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Redis2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Membase/Couchbase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Membase2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Riak
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Riak2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Voldemort
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Voldemort2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Infinispan
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Marchioni2012"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wide-Column 
+\begin_inset Newline newline
+\end_inset
+
+(Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wide-Column"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+HBase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "George2011"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hypertable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hypertable2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cassandra
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Lakshman2010"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Document-Oriented 
+\begin_inset Newline newline
+\end_inset
+
+(Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basadas-en-documentos"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CouchDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Lennon2009"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MongoDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Chodorow2010"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Terrastore
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Terrastore2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RavenDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "RavenDB2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Graph-Oriented 
+\begin_inset Newline newline
+\end_inset
+
+(Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basadas-en-grafos"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Neo4J
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Neo4J2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ InfiniteGraph
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "InfiniteGraph2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+InfoGrid
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "InfoGrid2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+HypergraphDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Iordanov2010"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AllegroGraph
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Aasman2006"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BigData
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BigData2013"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Databases-analyzed-grouped"
+
+\end_inset
+
+Databases analyzed grouped by category.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is worth noting that there is a minority of hybrid databases that store
+ more than one data layout.
+ Examples of multi-layout databases are OpenLink Virtuoso
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Erling2010"
+
+\end_inset
+
+, OrientDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "OrientDB2013"
+
+\end_inset
+
+ and AlchemyDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AlchemyDB2013"
+
+\end_inset
+
+.
+ However, we will not discuss these efforts in a separate section as the
+ mechanisms for supporting the different layouts do not conceptually differ
+ from those offered by single-layout databases.
+\end_layout
+
+\begin_layout Standard
+It is worth mentioning that although this work aims at assisting in the
+ selection of a NoSQL database for a given situation, the analysis cannot
+ be reduced to benchmark each database in a use case context.
+ This is due to the diversity of techniques, implementations and querying
+ methods that NoSQL databases exhibit, which makes it hard to establish
+ a common ground of comparison.
+\end_layout
+
+\begin_layout Standard
+The rest of the paper is organized as follows.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Conceptos"
+
+\end_inset
+
+ describes some preliminary concepts that need to be explained before starting
+ with the description and analysis of the different implementations of databases
+ available on the market.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Key-Value"
+
+\end_inset
+
+ introduces Key-Value databases.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wide-Column"
+
+\end_inset
+
+ presents Wide Column or Column Families databases.
+ Document-oriented and Graph-oriented databases are described in Sections
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basadas-en-documentos"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basadas-en-grafos"
+
+\end_inset
+
+, respectively.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Discussion"
+
+\end_inset
+
+ offers a discussion about the application of NoSQL databases and when they
+ should be considered in the selection of a data storage support.
+ Finally, Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Conclusions"
+
+\end_inset
+
+ presents conclusions, perspectives on the findings and tools described,
+ as well as future trends in the area.
+\end_layout
+
+\begin_layout Section
+Related Works
+\end_layout
+
+\begin_layout Standard
+There are some works listing and comparing NoSQL databases, exposing their
+ virtues and weaknesses.
+ Catell
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cattell2011"
+
+\end_inset
+
+ analyzed and compared several databases with respect to their concurrency
+ control methods, where they store data (i.e., in main memory or disk), the
+ replication mechanism used (synchronous or asynchronous), and their transaction
+ support.
+ This comparison includes both commercial and non-commercial databases but
+ does not include Graph-oriented databases which are generally considered
+ part of NoSQL.
+ As indicated previously, graphs are the essential data layout of Web applicatio
+ns such as social networks
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Krepska2011"
+
+\end_inset
+
+.
+ Similarly, Padhy et.
+ al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Padhy2011"
+
+\end_inset
+
+ present a comparison of six relevant NoSQL databases, including databases
+ of different type or schema model.
+ They also exclude from their analysis Graph-oriented databases and other
+ relevant implementations of NoSQL databases.
+ Hecht and Jablonski
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hecht2011"
+
+\end_inset
+
+ present another comparison between NoSQL databases, including graph databases.
+ The authors analyze data partitioning and replication aspects over 14 NoSQL
+ databases, whereas in this paper we perform a more in-depth analysis over
+ 19 databases.
+\end_layout
+
+\begin_layout Standard
+Other studies
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tauro2011,Strauch2011,Varley2009"
+
+\end_inset
+
+ list the most influential NoSQL databases along with their characteristics
+ and basic concepts.
+ However, they do not include a full comparison between databases, since
+ they only expose some of their advantages and disadvantages.
+\end_layout
+
+\begin_layout Standard
+There are other studies that analyze NoSQL databases using a given dataset
+ or application.
+ For example, Sakr et.
+ al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sakr2011"
+
+\end_inset
+
+ carried out a thorough analysis of data stores suited for Cloud Computing
+ environments
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buyya2009"
+
+\end_inset
+
+, which includes NoSQL databases.
+ The authors present a set of goals that a data-intensive application should
+ accomplish in the Cloud.
+ They also describe essential structures and algorithms of well-known databases
+ such as BigTable and Dynamo.
+ In addition, they compare several APIs related to massive data query and
+ manipulation.
+ 
+\end_layout
+
+\begin_layout Standard
+Another comparison of NoSQL databases in this line is presented by Orend
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Orend2010"
+
+\end_inset
+
+.
+ The study aimed to select a NoSQL solution for a Web Collaboration and
+ Knowledge Management Software.
+ MongoDB, a Document-oriented database, was selected from the available
+ databases because of its support for queries on multiple fields\SpecialChar \@.
+ Then, the
+ study makes a performance comparison of MongoDB against MySQL and HyperSQL.
+\end_layout
+
+\begin_layout Standard
+Todurica and Bucur 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tudorica2011"
+
+\end_inset
+
+ provide an extensive list of available NoSQL databases, and benchmark two
+ of them --Cassandra and HBase-- against MySQL and Sherpa, a variation of
+ MySQL.
+ Their results indicate that, at high load, Cassandra and HBase keep their
+ response latency relatively constant, whereas MySQL and Sherpa increase
+ their response latency.
+ On the other hand, Lith and Mattson 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lith2010"
+
+\end_inset
+
+ present a study based on an application of their own where a MySQL-based
+ approach gives better performance than using a NoSQL solution.
+ In the study, five NoSQL databases were considered.
+ The authors claim the difference in performance is due to the application
+ data structure and the way it is accessed.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Conceptos"
+
+\end_inset
+
+Background Concepts
+\end_layout
+
+\begin_layout Standard
+This section covers background concepts related to NoSQL databases required
+ to fully understand the domain.
+\end_layout
+
+\begin_layout Subsection
+The CAP Theorem
+\end_layout
+
+\begin_layout Standard
+The CAP theorem, or Brewer's theorem
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gilbert2002"
+
+\end_inset
+
+, states that it is impossible to simultaneously guarantee the following
+ properties in a distributed system:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Consistency
+\emph default
+: if this attribute is met, it is guaranteed that once data are written
+ they are available and up to date for every user using the system.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Availability
+\emph default
+: this property refers to offering the service uninterruptedly and without
+ degradation within a certain percentage of time.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Partition Tolerance
+\emph default
+: if the system meets this property, an operation can be completed even
+ when some part of the network fails.
+\end_layout
+
+\begin_layout Standard
+In 2000, Eric Brewer conjectured that at any given moment in time only two
+ out of the three mentioned characteristics can be guaranteed.
+ This means that only systems accomplishing the following combinations can
+ be created: AP (
+\emph on
+Availability-Partition
+\emph default
+ 
+\emph on
+Tolerance
+\emph default
+), CP (
+\emph on
+Consistency-Partition
+\emph default
+ 
+\emph on
+Tolerance
+\emph default
+) or AC (
+\emph on
+Availability-Consistency
+\emph default
+).
+ Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Agrupamiento-de-sistemas"
+
+\end_inset
+
+ summarizes NoSQL databases reviewed in this paper organized according to
+ the supported data layout.
+ Within each group, databases are further grouped according to the characteristi
+cs of the CAP theorem they exhibit.
+ As illustrated, most of the surveyed databases fall in the 
+\begin_inset Quotes eld
+\end_inset
+
+AP
+\begin_inset Quotes erd
+\end_inset
+
+ or the 
+\begin_inset Quotes eld
+\end_inset
+
+CP
+\begin_inset Quotes erd
+\end_inset
+
+ group.
+ This is because resigning
+\begin_inset space ~
+\end_inset
+
+P (Partition Tolerance) in a distributed system means assuming that the
+ underlying network will never drop packages nor disconnect, which is not
+ feasible.
+ There are few exceptions to this rule given by NoSQL databases (e.g., Infinispan
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Marchioni2012"
+
+\end_inset
+
+) that are able to relax 
+\begin_inset Quotes eld
+\end_inset
+
+P
+\begin_inset Quotes erd
+\end_inset
+
+ while providing 
+\begin_inset Quotes eld
+\end_inset
+
+A
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+C
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Because some databases, such as Infinispan and MongoDB, can be configured
+ to provide full consistency guarantees (sacrificing some availability)
+ or eventual consistency (providing high availability), they appear in both
+ AP and CP columns.
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="4cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="2cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Data layout
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+AP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+CP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+AC
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Key-Value (Section
+\begin_inset space ~
+\end_inset
+
+
+\size default
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Key-Value"
+
+\end_inset
+
+
+\size footnotesize
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Riak, Infinispan, Redis, Voldemort, Hazelcast 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Infinispan, 
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Membase/CouchBase, BerkeleyDB, GT.M
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Infinispan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Wide Column (Section
+\begin_inset space ~
+\end_inset
+
+
+\size default
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wide-Column"
+
+\end_inset
+
+
+\size footnotesize
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Cassandra
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HBase, Hypertable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Document-oriented (Section
+\begin_inset space ~
+\end_inset
+
+
+\size default
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basadas-en-documentos"
+
+\end_inset
+
+
+\size footnotesize
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+MongoDB, RavenDB , CouchDB, Terrastore
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+MongoDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Graph-oriented (Section
+\begin_inset space ~
+\end_inset
+
+
+\size default
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basadas-en-grafos"
+
+\end_inset
+
+
+\size footnotesize
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Neo4J, HypergraphDB, BigData, AllegroGraph, InfoGrid, InfiniteGraph
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+InfiniteGraph
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Agrupamiento-de-sistemas"
+
+\end_inset
+
+Grouping of NoSQL systems according to data layout and CAP properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+ACID and BASE Properties
+\end_layout
+
+\begin_layout Standard
+In 1970, Jim Gray proposed the concept of transaction
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gray1992"
+
+\end_inset
+
+, a work unit in a database system that contains a set of operations.
+ For a transaction to behave in a safe manner it should exhibit four main
+ properties: atomicity, consistency, isolation and durability.
+ These properties, known as ACID, increase the complexity of database systems
+ design and even more on distributed databases, which spread out data in
+ multiple partitions throughout a computer network.
+ This feature, however, simplifies the work of the developer by guaranteeing
+ that every operation will leave the database in a consistent state.
+ In this context, operations are susceptible to failures and delays of the
+ network itself.
+ Extra precautions should be taken to guarantee the success of a transaction.
+\end_layout
+
+\begin_layout Standard
+Distributed RDBMSs allow, for some time now, to perform transactions using
+ specific protocols to maintain the consistency of data across the partitions.
+ One of the most commonly used protocols for this purpose is 2PC (
+\emph on
+Two-phase commit
+\emph default
+), which has been instrumental in the execution of transactions in distributed
+ environments.
+ The application of this protocol has spread even to the field of Web Services
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Crasso2011"
+
+\end_inset
+
+, allowing transactions in REST (REpresentational State Transfer) architectures
+ otherwise not possible
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SilvaMaciel2010"
+
+\end_inset
+
+.
+ The 2PC protocol consists of two main parts: 
+\end_layout
+
+\begin_layout Enumerate
+A stage in which a coordinator component asks to the databases implicated
+ by the transaction to do a 
+\emph on
+pre-commit
+\emph default
+ operation
+\emph on
+.
+
+\emph default
+ If all of the databases can fulfill the operation, stage
+\begin_inset space ~
+\end_inset
+
+2 takes place.
+\end_layout
+
+\begin_layout Enumerate
+The coordinator asks the databases to perform a 
+\emph on
+commit
+\emph default
+ operation.
+ If any of the databases rejects the 
+\emph on
+commit
+\emph default
+, a 
+\emph on
+rollback
+\emph default
+ of the databases is carried out.
+\end_layout
+
+\begin_layout Standard
+According to the CAP theorem the use of a protocol such as 2PC impacts negativel
+y on system availability.
+ In order to measure the extent of this impact, an operation availability
+ can be calculated as the product of the individual availability of the
+ components involved in such operation.
+ For example, if each database partition has a 99.9%
+\begin_inset space ~
+\end_inset
+
+of availability, i.e., 43
+\begin_inset space ~
+\end_inset
+
+minutes out of service are allowed per month, a 
+\emph on
+commit
+\emph default
+ using 2PC over 2
+\begin_inset space ~
+\end_inset
+
+partitions reduces the availability to
+\begin_inset space ~
+\end_inset
+
+99.8%, which is translated to 86 minutes per month out of service
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pritchett2008"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Additionally, 2PC is a blocking protocol, which means that the databases
+ involved in a transaction cannot be used in parallel while a 
+\emph on
+commit
+\emph default
+ is in progress.
+ This increases system latency as the number of transactions occurring simultane
+ously grows.
+ Because of this, many NoSQL databases approaches decided to relax the consisten
+cy restrictions.
+ These approaches are known as BASE 
+\emph on
+(Basically Available, Soft State, Eventually Consistent
+\emph default
+)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pritchett2008"
+
+\end_inset
+
+.
+ The idea behind the systems implementing this concept is to allow partial
+ failures instead of a full system failure, which leads to a perception
+ of a greater system availability.
+ 
+\end_layout
+
+\begin_layout Standard
+The design of BASE systems, and in particular BASE NoSQL databases, allows
+ certain operations to be performed leaving the replicas (i.e., copies of
+ the data) in an inconsistent state.
+ Precisely, this is known as 
+\emph on
+Soft-State
+\emph default
+, in contrast to 
+\emph on
+Hard-State
+\emph default
+ systems, such as transactional databases in which inconsistencies are not
+ allowed.
+ An inconsistency in a system needs to be solved based on some criteria
+ that assures to return to a consistent state.
+ For example, the Cassandra NoSQL database
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lakshman2010"
+
+\end_inset
+
+ implements the following high-level update policies:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Read-repair
+\emph default
+: inconsistencies are corrected during data reading.
+ This means that writing might leave some inconsistencies behind, which
+ will only be solved after a reading operation.
+ Thus, the coordinator component that queries the replicas is responsible
+ for updating those replicas having stale data, slowing the reading operation.
+ It is worth noticing that conflicts are only resolved for the data involved
+ in the reading operation.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Write-repair
+\emph default
+: the correction of an inconsistency occurs during writing, slowing down
+ the operation.
+ Like Read-repair, when an inconsistency is found as new data is written,
+ the system decides which correct data the replicas must have and outdated
+ replicas are synchronized.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Asynchronous-repair
+\emph default
+: the correction is neither part of the reading nor of the writing.
+ Synchronization can be triggered by the elapsed time since the last synchroniza
+tion, the amount of writes or other event that may indicate that the database
+ is outdated.
+\end_layout
+
+\begin_layout Standard
+In addition to consistency of reads and writes, in distributed storage systems
+ the concept of durability arises, which is the ability of a given system
+ of persisting data even in the presence of failures.
+ This causes data to be written in a number of nonvolatile memory devices
+ before informing the success of an operation to a client.
+ In eventually consistent systems there are mechanisms to calibrate the
+ system durability and consistency
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vogels2009"
+
+\end_inset
+
+.
+ Next, we will clarify these concepts through an example.
+ Let
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $N$
+\end_inset
+
+ be the number of nodes a key is replicated on, 
+\begin_inset Formula $W$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+the number of nodes needed to consider a writing as successful and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $R$
+\end_inset
+
+ the number of nodes where a reading is performed on.
+ Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Diferentes-configuraciones-de"
+
+\end_inset
+
+ shows different configurations of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $W$
+\end_inset
+
+ and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $R$
+\end_inset
+
+ as well as the result of applying such configurations.
+ Each value refers to the number of replicas needed to confirm an operation
+ success.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Strong Consistency
+\emph default
+ is reached by fulfilling 
+\begin_inset Formula $W+R>N$
+\end_inset
+
+, i.e., the set of writings and readings overlaps such that one of the readings
+ always obtain the latest version of a piece of data.
+ Usually, RDBMs have 
+\begin_inset Formula $W=N$
+\end_inset
+
+, i.e., all replicas are persisted and 
+\begin_inset Formula $R=1$
+\end_inset
+
+ since any reading will return up-to-date data.
+ 
+\emph on
+Weak Consistency
+\emph default
+ takes place when 
+\begin_inset Formula $W+R\leq N$
+\end_inset
+
+, in which readings can obtain outdated data.
+ 
+\emph on
+Eventual Consistency 
+\emph default
+is a special case of weak consistency in which there are guarantees that
+ if a piece of data is written on the system, it will eventually reach all
+ replicas.
+ This will depend on the network latency, the amount of replicas and the
+ system load, among other factors.
+\end_layout
+
+\begin_layout Standard
+If writing operations need to be faster, they can be performed over a single
+ or a set of nodes with the disadvantage of less durability.
+ If 
+\begin_inset Formula $W=0$
+\end_inset
+
+, the client perceives a faster writing, but the lowest possible durability
+ since there is no confirmation that the writing was successful.
+ In the case of 
+\begin_inset Formula $W=1$
+\end_inset
+
+, it is enough that a single node persists the writing for returning to
+ the client, thereby enhancing durability compared to 
+\begin_inset Formula $W=0$
+\end_inset
+
+.
+ In the same way it is possible to optimize data reading.
+ Setting 
+\begin_inset Formula $R=0$
+\end_inset
+
+ is not an option, since the same reading confirms the operation.
+ For reading to reach the optimum, 
+\begin_inset Formula $R=1$
+\end_inset
+
+ can be used.
+ In some situations (e.g., if using Read-repair), it might be necessary to
+ read from all the nodes, this is 
+\begin_inset Formula $R=N$
+\end_inset
+
+, and then merge the different versions of the data, slowing down such operation.
+ An intermediate scheme for writing or reading is quorum, in which the operation
+ (reading or writing) is done over a subset of nodes.
+ Frequently, the value used for quorum is 
+\begin_inset Formula $N/2+1$
+\end_inset
+
+, such that 2
+\begin_inset space ~
+\end_inset
+
+subsequent writings or readings share at leastone node.
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="4cm">
+<column alignment="center" valignment="top" width="4cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Writing (W)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none" width="5cm">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Reading (R)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+No confirmation is awaited from any node (it can fail)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+N/A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+A single node confirmation is enough (optimized for writings)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Reading is performed from a single replica (optimized for readings)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+M, with M < N (Quorum)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Confirmations of several replicas are awaited
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Reading is performed from a given set of replicas (conflicts on the client
+ side might need to be solved)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+N (all nodes)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Confirmations of all replicas are awaited (reduces availability, but increases
+ durability)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Reading is performed from all replicas increasing the reading latency
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Diferentes-configuraciones-de"
+
+\end_inset
+
+Configurations of eventual consistency
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Comparison dimensions
+\end_layout
+
+\begin_layout Standard
+In this paper, available NoSQL databases are analyzed and compared across
+ a number of dimensions.
+ The dimensions included in the analysis are expected to help in the decision
+ of which NoSQL database is the most appropriate for a given set of requirements
+ of the user's choice.
+ The dimensions considered are the following: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Name
+\emph default
+: it indicates the database name.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Persistence
+\emph default
+: it refers to the method of storing data in non-volatile or persistent
+ devices.
+ Several alternatives are possible, for example, indexes, files, databases
+ and distributed file systems.
+ Another alternative used in some cases is to keep data in RAM and periodically
+ make snapshots of them in persistent media.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Replication
+\emph default
+: it refers to the replication technique provided by the database to ensure
+ high availability.
+ Data is replicated in different computational nodes as backups in case
+ the original node fails when performing writing operations on the NoSQL
+ database.
+ Replication can also mean an increase in performance when reading or writing
+ from the replicas is permitted and, thus, relieving the load on the original
+ node.
+ Depending on the consistency level desired, the clients may be allowed
+ to read stalled versions of the data from the replicas.
+ A classical example of replication is the Master-Slave replication mechanism,
+ in which a 
+\begin_inset Quotes eld
+\end_inset
+
+master
+\begin_inset Quotes erd
+\end_inset
+
+ node receives all the write operations from the client and replicates them
+ on the 
+\begin_inset Quotes eld
+\end_inset
+
+slave
+\begin_inset Quotes erd
+\end_inset
+
+ node.
+ When a client is allowed to write on any replica the mechanism is called
+ Master-Master.
+ Using such scheme may lead to inconsistencies among the different replicas.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Sharding
+\emph default
+: data partitioning or 
+\emph on
+sharding
+\begin_inset space ~
+\end_inset
+
+
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Malarvannan2010"
+
+\end_inset
+
+ is a technique for dividing a dataset into different subsets.
+ Each subset is usually assigned to a computing node, so as to distribute
+ the load of operations.
+ There are different ways of sharding.
+ An example would be hashing data to be stored and divide the hashing space
+ into multiple ranges, each assigned to a 
+\emph on
+shard
+\emph default
+.
+ Other example is to use a particular field from the data schema for driving
+ partitioning.
+ A database that supports sharding allows to decouple the developer from
+ the network topology details, automatically managing node addition or remotion.
+ Thus, sharding creates the illusion of a single super node, while in fact
+ there is a large set of nodes.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+In this paper, the Sharding dimension indicates whether the database supports
+ sharding and how it can be configured.
+ If sharding is not integrated into the database functionality, the client
+ has to deal with the partitioning of data among nodes.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Consistency
+\emph default
+: a large number of NoSQL databases are designed to allow concurrent readings
+ and/or writings and, therefore, control mechanisms are used to maintain
+ data integrity without losing performance.
+ This dimension indicates the type of consistency provided by a database
+ (ACID transactions or eventual consistency) and the methods used to access
+ data concurrently.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+API
+\emph default
+: it refers to the type of programming interface used to access the database.
+ In general, NoSQL databases in the Web era allow access through the HTTP
+ protocol.
+ However, accessing a database using an HTTP client is cumbersome for the
+ developer and, then, it is common to find native clients in certain programming
+ languages.
+ This dimension lists the programming languages that have native clients
+ for the current database.
+ In addition, the message format that is used to add or modify items in
+ the database is indicated.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Query Method
+\emph default
+: it describes the methods to access the database and lists the different
+ ways of accessing these methods through the database API.
+ This dimension indicates the strategies or query languages supported by
+ each database.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Implementation Language
+\emph default
+: it describes the programming language the database is implemented with.
+ In some cases, it may indicate a preference of the database developer for
+ a particular required technology.
+\end_layout
+
+\begin_layout Standard
+Only databases that persist data on disk, providing a considerable degree
+ of durability, are analyzed in this paper.
+ That is, when a user performs a writing operation on the database, data
+ is eventually stored in a non-volatile device such as a hard disk.
+ Moreover, we considered only databases that aim at increasing performance
+ or storage capacity by adding new nodes to the network.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Discussion"
+
+\end_inset
+
+Discussion
+\end_layout
+
+\begin_layout Standard
+As can be observed in this review, the spectrum of NoSQL databases is very
+ broad and each of them is used for different applications today.
+ Examples of systems that require non-relational solutions are research
+ tools that generate and analyze millions of data.
+ For instance, in the Large Hadron Collider at CERN, particularly in the
+ Compact Muon Solenoid experiment, data are generated in the order of petabytes.
+ In such experiment, the Data Aggregation System module is responsible for
+ querying and aggregating experimental data.
+ This goal is achieved using MongoDB as backend storage
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kuznetsov2010"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+However, NoSQL solutions cannot be seen as the law of the instrument or
+ Maslow's Hammer
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Abraham Maslow: "I suppose it is tempting, if the only tool you have is
+ a hammer, to treat everything as if it were a nail."
+\end_layout
+
+\end_inset
+
+ and should not be used for every application.
+ In fact, many alternatives could be in general considered when selecting
+ a storage solution.
+ At the other extreme of the above example are the majority of low and medium
+ scale applications, such as desktop applications and low traffic Web sites
+ where stored data is in the order of megabytes, up to gigabytes, and do
+ not have higher performance requirements.
+ The use of relational databases can easily overcome the storage requirements
+ in those situations.
+ Nevertheless, the simplicity of the API of a Document-oriented database
+ or a Key-Value database may also be a good fit.
+\end_layout
+
+\begin_layout Standard
+Furthermore, in some situations, it may be necessary to define a hybrid
+ data layer dividing the application data in multiple databases with different
+ data layouts.
+ For example, application data requiring a relational schema and high consistenc
+y, such as data from user accounts, can be stored in a RDBMS.
+ On the other hand, if there is data of instant messaging between users
+ requiring no transaction consistency but a fast access is necessary, a
+ NoSQL database can provide an adequate solution.
+\end_layout
+
+\begin_layout Standard
+Therefore, the goal of this review was to better understand the characteristics
+ of the various kind of NoSQL databases available.
+ Particularly, in this paper we have reviewed NoSQL databases that support
+ sharding and persist data storage.
+ The aim of these restrictions were to compare databases that can be used
+ as horizontally scalable data stores.
+ This excludes many other storage solutions including databases that cannot
+ be distributed, in-memory stores, which are usually used as caches, and
+ distributed processing frameworks that generate a temporal (in-memory)
+ representation of data extracted from a secondary database.
+ On one hand, the distribution or sharding of data between different computing
+ nodes allows the user to increase the storage capacity just by adding new
+ nodes.
+ Moreover, many NoSQL databases use this distribution to parallelize data
+ processing among nodes having relevant data for the execution.
+ On the other hand, data persistence is essential when the nodes of the
+ cluster may suffer electric power outages.
+\end_layout
+
+\begin_layout Standard
+Broadly speaking, for NoSQL systems like BigTable, the main design problems
+ to solve are consistency management and fast access to large amounts of
+ data.
+ In this case, the database must scale to petabytes of data running on standard
+ hardware.
+ Contrarily, relational databases scale with certain difficulty because
+ their latency is dramatically affected with each new node addition.
+\end_layout
+
+\begin_layout Standard
+Some studies have shown that relaxing consistency can benefit system performance
+ and availability.
+ An example of this situation is a case study in the context of Dynamo
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DeCandia2007"
+
+\end_inset
+
+, which models the shopping cart of an ecommerce site.
+ Dynamo premise is that an operation "Add to cart" can never be rejected
+ as this operation is critical to the business success.
+ It might happen that a user is adding products to the shopping cart and
+ the server saving the information suffers a failure and becomes no longer
+ available.
+ Then, the user can keep adding products on another server, but the shopping
+ cart version of the original server was distributed to other replicas,
+ generating different versions.
+ In scenarios where faults are normal, multiple cart versions can coexist
+ in the system.
+ Versions are differentiated in Dynamo using Vector Clocks (Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Dynamo-based-Mechanisms"
+
+\end_inset
+
+).
+ However, branching of versions can lead to several shopping carts, possibly
+ valid, but with different products.
+ To solve this conflict, Dynamo tries to unify the cart versions by merging
+ them into a new cart that contains all user products, even if the new version
+ contains previously deleted products.
+\end_layout
+
+\begin_layout Standard
+Compared to these supports, relational databases, alternatively, provide
+ much simpler mechanisms to manage data updates maintaining consistency
+ between tables.
+ Instead, NoSQL databases with eventual consistency delegate the problem
+ of solving inconsistencies to developers, which causes such functionality
+ to be error-prone.
+\end_layout
+
+\begin_layout Standard
+Document-oriented databases are useful for semi-structured data without
+ a fixed schema, but complying to certain formatting rules, such as XML,
+ JSON, and BSON documents, among others.
+ The goal of these databases is to store large amounts of text and provide
+ support for querying on their fields, which in turn are indexed in different
+ ways (keywords, exact word, numeric, etc.).
+ A typical example application of such databases is text mining, where recognize
+d elements of a textual document can vary in type and quantity.
+ For example, a document may be composed of the syntactic structure of the
+ text and also entities such as cities, names and people.
+ xTAS
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rooij2012"
+
+\end_inset
+
+ is a project that examines multilingual text and stores the internal results
+ in MongoDB.
+\end_layout
+
+\begin_layout Standard
+Moreover, there are applications that have large amounts of highly correlated
+ data, with diverse relationships.
+ Usually, this type of data is extracted from social networks or the Semantic
+ Web.
+ Graph-oriented databases are more suitable for such data as they allow
+ to efficiently explore vertex-to-vertex relationships.
+ Furthermore, there are also graph processing frameworks for executing distribut
+ed algorithms, although they are not usually designed to store data.
+ Examples of such frameworks are Pregel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Malewicz2010"
+
+\end_inset
+
+, Trinity
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Shao2012"
+
+\end_inset
+
+ and HipG
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Krepska2011"
+
+\end_inset
+
+.
+ These frameworks, which are to NoSQL-based applications what the model
+ layer represents to conventional Web applications, provide a middleware
+ layer on top of the data store layer where the logic related to data traversal
+ and parallelism resides.
+\end_layout
+
+\begin_layout Standard
+In general, it is not necessary to know SQL for using NoSQL databases.
+ However, since each NoSQL database has its own API, consistency, replication
+ and sharding mechanisms, every change of NoSQL technology involves learning
+ a new storage paradigm.
+ In some cases, such as key-value databases, this learning is fast as the
+ API can be very easy to learn (get and set), but in other cases, such as
+ Wide-Column databases, it involves learning concepts such as Column Families
+ and MapReduce.
+ Some NoSQL databases provide SQL-Like languages for querying data so this
+ transition is less drastic.
+ There are also efforts in creating a unified API to query different NoSQL
+ databases with different types of schema.
+ For example, SOS (Save Our Systems)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Atzeni2013"
+
+\end_inset
+
+, provides a unified API consisting in 3 basic operations: GET, PUT and
+ DELETE.
+ The implementation of those operations depends on the database selected
+ (SOS was tested against MongoDB, Redis and HBase).
+ By unifying the API for different databases, the application code can be
+ reused for a different type of database.
+ However, hiding the specifics of the underlying database also hides its
+ features and, therefore, possible optimization opportunities.
+\end_layout
+
+\begin_layout Standard
+As NoSQL systems are currently becoming very popular, there are many products
+ with highly variable feature sets, but most of the databases are immature
+ compared to RDBMSs, so that a very thorough analysis should be done before
+ choosing a NoSQL solution.
+ Some factors that may guide the adoption of NoSQL as data storage media
+ in a project are:
+\end_layout
+
+\begin_layout Itemize
+Data Analysis: in some situations it is necessary to extract knowledge from
+ the data stored in a database.
+ Among the approaches for running jobs over big data stands Map/Reduce.
+ Although it is much complex than a SELECT...
+ GROUP BY, it is more suitable for large data volumes.
+ Languages such as Pig and Hive simplify the application of Map/Reduce,
+ significantly reducing its difficulty.
+\end_layout
+
+\begin_layout Itemize
+Scalability: NoSQL databases are designed to store large amounts of data
+ or to support demanding processing by adding new nodes to the system.
+ Additionally, they are usually designed using a 
+\begin_inset Quotes eld
+\end_inset
+
+let it crash
+\begin_inset Quotes erd
+\end_inset
+
+ philosophy, where nodes are allowed to crash and their replicas are always
+ ready to receive requests.
+ This type of design provides a sense of robustness in terms of system failover
+ capabilities.
+ In some cases, when the crash seems to be permanent, the data is automatically
+ redistributed among the available nodes in the cluster.
+\end_layout
+
+\begin_layout Itemize
+Flexible schema: the NoSQL databases presented in this paper do not have
+ a fixed scheme.
+ Key-value databases do not make assumptions about the values of keys (except
+ for Redis and Hazelcast that allows to store lists and sets).
+ Document-oriented and wide-column databases allow discrepancies between
+ fields/rows of elements.
+ In graph-oriented databases, vertexes and arcs can have any structure.
+ Oppositely, relational databases are composed of tables with a fixed scheme
+ and all tuples have the same number of fields.
+\end_layout
+
+\begin_layout Itemize
+Fast deployment: in general, NoSQL systems can be easily deployed in a cluster.
+ In addition, replication and sharding configuration are usually automatic,
+ fastening its adoption.
+\end_layout
+
+\begin_layout Itemize
+Location awareness: In general, as NoSQL databases are designed to be distribute
+d, the location of the data in the cluster is known.
+ This is exploited by NoSQL databases to improve network usage, usually
+ by caching remote data, and making queries to those nodes located closer
+ in the network topology (e.g., nodes located in the same router or rack).
+ This mechanisms is often referred to as 
+\emph on
+data affinity
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Moreover, the choice of a NoSQL database must be based on the type of data
+ to be stored as well as the form of accessing them (read and write).
+ An extreme example would be a Web site that gets millions of hits per second
+ and whose data may drastically change to support new functionality.
+ Facebook, Google Search and Amazon are some notable examples.
+ In these systems, data may grow without estimable bounds and, therefore,
+ the system infrastructure must allow increasing storage space without losing
+ performance.
+ In these situations, the use of relational databases is scarce and several
+ non-relational technologies can accommodate these requirements.
+\end_layout
+
+\begin_layout Standard
+Finally, as an alternative to NoSQL and traditional RDMBSs, new database
+ systems have recently emerged under the name of 
+\begin_inset Quotes eld
+\end_inset
+
+NewSQL databases
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Stonebraker2012"
+
+\end_inset
+
+.
+ NewSQL databases are relational databases supporting sharding, automatic
+ replication and distributed transaction processing, i.e., providing ACID
+ guarantees even across shards.
+ Examples of this type of database are NuoDB
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+NuoDB Web Page, http://www.nuodb.com/
+\end_layout
+
+\end_inset
+
+, VoltDB
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+VoltDB Web Page, http://voltdb.com/
+\end_layout
+
+\end_inset
+
+ and Clustrix
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Clustrix Web Page, http://www.clustrix.com/
+\end_layout
+
+\end_inset
+
+.
+ As an 
+\begin_inset Quotes eld
+\end_inset
+
+extreme
+\begin_inset Quotes erd
+\end_inset
+
+ example, Google's Spanner
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Corbett2012"
+
+\end_inset
+
+ is a globally-distributed database created at Google that supports distributed
+ transactions, created as a replacement to Megastore
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Baker2011"
+
+\end_inset
+
+, a BigTable-based storage.
+ Nevertheless, like NoSQL databases, NewSQL databases must undergo a strict
+ analysis before being adopted by any organization.
+ The database community is waiting for proofs of the real contributions
+ of this brand new, overnight-\SpecialChar \-
+proposed storage paradigm.
+\end_layout
+
+\begin_layout Section
+Graph Databases
+\end_layout
+
+\begin_layout Standard
+In the literature regarding distributed graph databases, there are at least
+ two types of stores: RDF (Resource Description Framework) stores and Property
+ Graphs.
+ RDF Stores, originated with the 
+\emph on
+Semantic Web
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "morales2010semanticweb,erling2010virtuoso,systap2013bigdata,berners2001semantic"
+
+\end_inset
+
+
+\emph default
+ and most of them have been developed for years.
+ The RDF specification provides the <Subject, Predicate, Object> representation
+ of relationships in a graph of entities.
+ The 
+\emph on
+Subject
+\emph default
+ is the origin vertex, the 
+\emph on
+Predicate
+\emph default
+ is the edge label, and the 
+\emph on
+Object 
+\emph default
+is the target vertex.
+ Usually, a 
+\emph on
+Context
+\emph default
+ is added to express where a triple comes from.
+ In the context of graphs, the 
+\emph on
+Context 
+\emph default
+is the graph where a triple belongs to.
+ The 
+\emph on
+Subject, Predicate, Object, Context 
+\emph default
+(SPOC) representation is usually called a 
+\emph on
+Quad
+\emph default
+.
+ RDF Stores usually persist the SPOC tuples into a key-value store, and
+ create several indexes to support different types of query access.
+ For example, YARS2 is a distributed RDF Store that creates a SPOC index,
+ and four additional indexes to support alternate access patterns.
+ Bigdata
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "systap2013bigdata"
+
+\end_inset
+
+ is based on concepts introduced by YARS2
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harth2007"
+
+\end_inset
+
+, but adds an inference engine and an implementation of the Gather-Apply-Scatter
+ (GAS) graph processing model.
+ Virtuoso
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "erling2010virtuoso"
+
+\end_inset
+
+ is another example of a mature database that supports the RDF format and
+ provides an inference mechanism over its tuples.
+ 
+\end_layout
+
+\begin_layout Standard
+Property Graphs are a type of graph store where edges and vertices are modeled
+ with an arbitrary number of properties, usually, in a key-value format.
+ A common technique to store a property graph is to separate the different
+ elements of a graph: vertex adjacency lists (vertices or edges), vertex
+ data, edge input vertices, edge output vertices and edge data.
+ Implementations of this type of databases are fairly new and are mostly
+ related to the NoSQL movement.
+ As an example, the Titan
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Titan2014"
+
+\end_inset
+
+ graph database lets the user select the actual database storage support
+ from a number of lower-level data stores, including HBase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "apache2014hbase"
+
+\end_inset
+
+, Cassandra
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "apache2014cassandra"
+
+\end_inset
+
+, BerkeleyDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "oracle2014berkeleydb"
+
+\end_inset
+
+ and Hazelcast
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hazelcast2014"
+
+\end_inset
+
+.
+ Similarly to many new databases, Titan implements the Blueprints
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tinkerpop2014blueprints"
+
+\end_inset
+
+ interface, which connects it to a number of already implemented tools for
+ graph querying and processing.
+ Other databases provide a graph interface over a Document-oriented store
+ (i.e., a key-value store where values have a known but flexible format, such
+ as XML or JSON), which is the case of OrientDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "orientdb2014"
+
+\end_inset
+
+ and ArangoDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "arangodb2014"
+
+\end_inset
+
+.
+ As a final example, FlockDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FlockDB2013"
+
+\end_inset
+
+ is an adjacency graph store that, as its name indicates, only stores the
+ structure of the graph.
+ It was developed at Twitter to store the followee/follower relationships
+ of its users.
+ All in all, our structural graph database is based on a simple distributed
+ key-value store, where each key represents a vertex ID, and each value
+ contains the associated vertex data.
+ The vertex ID is used to distribute the values across the computing nodes
+ in a cluster.
+ Then, a Graph API is built over the key-value store to provide graph operations
+, e.g., obtaining the outcoming and incoming edges of a node.
+\end_layout
+
+\begin_layout Standard
+In this work, we propose an architecture for graph storage and processing
+ that, among other features, provides an API to implement traversal algorithms,
+ i.e., algorithms that walk through the graph and might aggregate results,
+ generating sums or counts of elements.
+ Unlike the APIs proposed by other frameworks and databases, we focus on
+ the problem of customizing the distribution of the graph algorithm on heterogen
+eous clusters.
+ This involves providing access to computing nodes and cluster information
+ such as memory usage, CPU usage and job queues size, and access to information
+ about the storage support such as data location (e.g., in which node an adjacency
+ list resides) and cached data location.
+ Thus, using this information, we provide predefined job mapping strategies
+ to increase algorithm performance.
+ Moreover, an extension mechanism is provided for further customization
+ through ad-hoc strategies.
+\end_layout
+
+\begin_layout Standard
+Indeed, 
+\emph on
+job scheduling 
+\emph default
+or 
+\emph on
+job mapping
+\emph default
+ is a well-studied problem in distributed computing
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "topcuoglu2002performance"
+
+\end_inset
+
+.
+ On heterogeneous clusters, i.e., clusters of computers with different capabilitie
+s (main memory, CPU speed, number of CPU cores, storage capacity), the allocatio
+n of jobs to computing nodes allows distributed and parallel applications
+ to maximize a given performance criterion
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kim2003scheduling"
+
+\end_inset
+
+.
+ In our case, when the recommendation algorithm queries a set of vertices,
+ a user-defined 
+\emph on
+mapping strategy 
+\emph default
+groups those vertices into tasks and maps each task to a set of computing
+ nodes.
+ As an example, a 
+\emph on
+locality-aware mapping strategy
+\emph default
+ might group vertices by their location in the storage support.
+\end_layout
+
+\begin_layout Standard
+The proposed architecture is intended to ease the development of recommendation
+ algorithms over social networks, particularly those requiring complex navigatio
+n patterns of the social graph.
+ This category includes link prediction problems, which compute which links
+ are more likely to appear in the future on the graph
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lu2011"
+
+\end_inset
+
+.
+ Depending on the type of graph, such prediction might include friends,
+ followees, products, co-workers, researchers, Web pages, and so on.
+ There are several algorithms that use the structural information of the
+ graph to make a prediction.
+ Typically, these algorithms compute the similarity between nodes based
+ on their neighbourhoods or ensembles of paths using local or global indices
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Li2014link,Li2014s2r,Lu2009complex"
+
+\end_inset
+
+.
+ More advanced algorithms involve complex graph traversal operations.
+ For example, PageRank
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Page1999"
+
+\end_inset
+
+ is a well-known algorithm that ranks Web pages on the entire Web hypergraph
+ using the 
+\begin_inset Quotes eld
+\end_inset
+
+random surfer
+\begin_inset Quotes erd
+\end_inset
+
+ notion, i.e., a Web user that clicks randomly on HTML links of arbitrary
+ Web pages.
+ Hence, PageRank ranks Web pages by the probability that a user will be
+ at a given Web page at any time.
+ Personalized PageRank is a variation of the original algorithm that computes
+ rankings based on a user's preferences.
+ Similarly, HITS
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kleinberg1999"
+
+\end_inset
+
+ assigns an 
+\begin_inset Quotes eld
+\end_inset
+
+authority
+\begin_inset Quotes erd
+\end_inset
+
+ value and a 
+\begin_inset Quotes eld
+\end_inset
+
+hub
+\begin_inset Quotes erd
+\end_inset
+
+ value to each vertex of the graph using the number of outgoing edges and
+ the number of incoming edges, respectively.
+ HITS was originally used to rank Web pages resulting from a Web search,
+ but later adapted to perform recommendations.
+ SALSA
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lempel2001"
+
+\end_inset
+
+ is an algorithm that uses the 
+\begin_inset Quotes eld
+\end_inset
+
+hub
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+authority
+\begin_inset Quotes erd
+\end_inset
+
+ notion of HITS, and the 
+\begin_inset Quotes eld
+\end_inset
+
+random surfer
+\begin_inset Quotes erd
+\end_inset
+
+ model from PageRank.
+ Both SALSA and HITS receive an initial group of results from a topic search
+ to build a ranking.
+ More recently, the Who To Follow
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gupta2013"
+
+\end_inset
+
+ user recommendation algorithm developed by Twitter uses Personalized PageRank
+ to build the initial group of results, and then uses that group as an input
+ to a SALSA-based recommendation algorithm.
+ Other examples of followee and social recommendation algorithms in the
+ same line are 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wu2012,Hannon2011,Ying2012,Chen2012,Schall2013,Li2012OnlineForums,Zhang2013SocConnect"
+
+\end_inset
+
+.
+ This type of algorithms rely on an efficient exploration of the underlying
+ graph for generating recommendations and, consequently, solutions optimized
+ for this domain become critical.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Conclusions"
+
+\end_inset
+
+Conclusions
+\end_layout
+
+\begin_layout Standard
+NoSQL databases are now part of the software designer's toolbox and are
+ relentlessly occupying a market niche once owned by RDBMSs.
+ Currently, the 
+\begin_inset Quotes eld
+\end_inset
+
+NoSQL movement
+\begin_inset Quotes erd
+\end_inset
+
+ is going through a hype where the technology is receiving substantial attention
+ and the expectations on it may be exaggerated.
+ This is, in part, due to the proliferation of NoSQL databases created by
+ many companies and open-source communities, each of which promotes its
+ own implementation.
+ This also makes using NoSQL technology in a production environment a though
+ decision.
+ However, there is plenty of community support and, in many cases, official
+ support can be acquired.
+\end_layout
+
+\begin_layout Standard
+As mentioned, NoSQL databases have been adopted by many organizations, including
+ organizations that provide storage solutions themselves.
+ There are some databases that use NoSQL databases as the underlying storage
+ support.
+ For example, Titan
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Titan Web Page, http://thinkaurelius.github.io/titan/
+\end_layout
+
+\end_inset
+
+ is a graph-oriented database that allows the user to choose from three
+ underlying storage supports: Cassandra, BerkeleyDB and HBASE.
+ This in principle suggests that in the future, different data layouts at
+ both the representation and the storage level might coexist, thus increasing
+ the available options for developers.
+\end_layout
+
+\begin_layout Standard
+There is also a growing number of Cloud storage systems that use NoSQL databases
+ as storage support.
+ As an example, Riak
+\begin_inset space ~
+\end_inset
+
+CS
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Riak CS Web Page, http://basho.com/riak-cloud-storage/
+\end_layout
+
+\end_inset
+
+ is a file storage system on the Cloud that uses Riak as a persistent storage
+ and provides an API (similar to Amazon S3
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Amazon S3 Web Page, http://aws.amazon.com/es/s3/
+\end_layout
+
+\end_inset
+
+) to store files containing terabytes of data.
+ Another kind of Cloud storage systems that is being increasingly adopted
+ is database-as-a-service (DBaaS) --a.k.a.
+ data as a service-- systems
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hamlen2013"
+
+\end_inset
+
+.
+ A DBaaS is a database, installed and maintained by a vendor, in which developer
+s can store data usually in exchange for a fee.
+ A number of DBaaS providers are based on NoSQL databases.
+ For example, OpenRedis
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+OpenRedis, https://openredis.com/
+\end_layout
+
+\end_inset
+
+ provides a hosted Redis database that can be purchased and accessed remotely.
+ Another example is MongoLab
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+MongoLab Web Page, https://mongolab.com/welcome/
+\end_layout
+
+\end_inset
+
+, a DBaaS based on MongoDB.
+ As stated in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hamlen2013"
+
+\end_inset
+
+, DBaaS presents security challenges if appropriate strategies are not implement
+ed.
+ Data encryption and third party data confidentiality are examples of security
+ concerns inherent to DBaaS.
+\end_layout
+
+\begin_layout Standard
+In many PaaS (Platform as a Service) environments the databases offered
+ range from RDBMSs to NoSQL databases.
+ For example, PaaS vendors such as Heroku
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.heroku.com/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ run applications written in a variety of languages and frameworks.
+ As a storage backend, a Heroku user can choose from a set of databases
+ including Postgres, ClearDB (a MySQL-based distributed database), Neo4J,
+ Redis and MongoDB.
+ Another example is OpenShift
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+OpenShift Web Page, https://www.openshift.com/
+\end_layout
+
+\end_inset
+
+, a PaaS vendor that provides three database supports, namely MySQL, Postgres
+ and MongoDB.
+ Therefore, data storage layers where RDBMSs and NoSQL solutions coexist
+ also seems to be in the agenda of backend providers.
+ This evidences the fact that RDBMSs and NoSQL databases are indeed complementar
+y technologies rather than competitors.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

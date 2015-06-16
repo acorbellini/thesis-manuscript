@@ -1,0 +1,2027 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\newcommand{\thesistitle}{A graph-processing platform for low-end clusters}
+\newcommand{\thesisauthor}{Alejandro Corbellini}
+\newcommand{\thesisyear}{2015}
+
+\usepackage{lastpage}
+%\usepackage{tocbibind}
+\usepackage[numbers,sort]{natbib}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{lettrine}
+\usepackage{titlesec,  color}
+\usepackage[
+   hidelinks,
+   pdftitle={\thesistitle},
+   pdfauthor={\thesisauthor},
+   pdfpagemode={UseOutlines},
+   bookmarks,
+   bookmarksopen=true,
+   pdfstartview={FitH},
+   bookmarksnumbered=true]{hyperref}
+
+\paperwidth=8.5in
+\paperheight=11in
+\setlength{\hoffset}{0.0in}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\textwidth}{6in}
+\setlength{\evensidemargin}{0mm}
+\setlength{\voffset}{0.0in}
+\setlength{\topmargin}{.0in}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{22pt}
+\setlength{\textheight}{8.5in}
+\setlength{\footskip}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand\contentsname{Table of Contents} 
+
+\fancypagestyle{IHA-fancy-style}{%
+  \fancyhf{}% Clear header and footer
+  \fancyhead[LE,RO]{\slshape \leftmark}
+  \fancyhead[LO,RE]{}
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \fancyfoot[LO,RE]{\slshape \rightmark}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{chapter}{%
+  \fancyhf{}% Clear header and footer
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \renewcommand{\headrulewidth}{0pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{firstpages}{%
+  \fancyhf{}
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\fancypagestyle{cover}{%
+  \fancyhf{}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\newcommand{\markedsection}[2]{\section[#2]{#2%
+\sectionmark{#1}}
+\sectionmark{#1}}
+
+\newcommand{\markedsubsection}[2]{\subsection[#2]{#2%
+\subsectionmark{#1}}
+\subsectionmark{#1}}
+
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\raisebox{-4ex}{\includegraphics{images/vbar.pdf}}\hsp}{0pt}{\Huge\bfseries}
+\end_preamble
+\options 11pt,openright,twoside,letterpaper,onecolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch section-bib
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{IHA-fancy-style} 
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+textheight}{8in} 
+\backslash
+setlength{
+\backslash
+footskip}{0.3in}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Proposal:-jLiME,-Graphly"
+
+\end_inset
+
+Proposal: jLiME, Graphly and GraphRec
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{chapter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In recent years, there has been considerable interest in the design and
+ development of recommendation algorithms for assisting users to cope with
+ the exponential growth of online social networks.
+ Most experimental recommendation algorithms, particularly those developed
+ in academia, are implemented as single-machine, single-threaded applications
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jing2014recommendation,rausch2014exploring,durand2013graph,wang2014group,guo2007intelligent"
+
+\end_inset
+
+.
+ Even the well-known Twitter's Who To Follow algorithm is implemented in
+ a single-machine for reducing architectural complexity
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gupta2013"
+
+\end_inset
+
+.
+ These implementations face scalability issues when the size of the underlying
+ social graph increases, as it usually happens in today's social networks,
+ populated with millions of users.
+ Likewise, in situations where computing resources are scarce, generating
+ recommendations becomes challenging.
+ An alternative is to migrate the recommendation algorithm and/or the underlying
+ graph database to a distributed and parallel platform that supports the
+ execution of the algorithm on a cluster of computers (a networked array
+ of computers).
+ In this context, the natural choice to handle social data are graph databases
+ and frameworks for processing graph-based algorithms
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "corbellini2014criwg"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Distributed graph storage and processing systems have acquired a great interest
+ from companies and academic institutions that handle big amounts of interconnec
+ted data such as social or geo-spatial data.
+ For example, Facebook's social network has 801
+\begin_inset space ~
+\end_inset
+
+million daily active users that upload more than 500
+\begin_inset space ~
+\end_inset
+
+TB to Facebook's data stores, which are analyzed in real time to harvest
+ usage statistics.
+ As of 2013, Twitter's 100
+\begin_inset space ~
+\end_inset
+
+million users daily generated 500
+\begin_inset space ~
+\end_inset
+
+million tweets per day, which are processed to show trending topics and
+ produce targeted advertising.
+ Moreover, the amount of data stored and queried by this kind of applications
+ makes traditional databases and even common NoSQL solutions unfeasible
+ to cope with the needed performance levels.
+ Even acquiring statistically significant samples from real-world graphs,
+ like those formed by Twitter and Facebook social networks, has proven to
+ be challenging
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lu2014GraphSampling"
+
+\end_inset
+
+.
+ In the literature, the 
+\emph on
+Big Data
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zikopoulos2011bigdata"
+
+\end_inset
+
+ term was coined to refer to large-scale data management, including its
+ analysis and the corresponding support platforms.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In response to this challenge, some developments in the form of graph-specific
+ databases or frameworks for processing graph algorithms have arisen.
+ From a system design point of view, graph databases operate at the data
+ storage level.
+ One example are graph NoSQL databases
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sakr2011"
+
+\end_inset
+
+, which are optimized for storing large-scale graphs.
+ Complementary, graph processing frameworks provide programming facilities
+ for developing graph-based algorithms.
+ Some examples of these frameworks include Pregel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Malewicz2010"
+
+\end_inset
+
+, HipG
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Krepska2011"
+
+\end_inset
+
+, Piccolo
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "power2010piccolo"
+
+\end_inset
+
+ and GraphLab
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Low2012"
+
+\end_inset
+
+.
+ Surprisingly, many of these frameworks (e.g., 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Krepska2011,Low2012"
+
+\end_inset
+
+) do not even cleanly support permanent graph data distributed storage,
+ which prevent them from efficiently supporting the evolving nature of graph
+ data in real-world social applications.
+ One extreme case is HipG, which requires populating the main memory of
+ the computing cluster with the graph data from a single computational node
+ prior to processing.
+ Another shortcoming lays on the definition of tuning code in order to adjust
+ algorithm execution to the underlying hardware and storage characteristics,
+ which is common on small setups of heterogeneous hardware.
+ Most frameworks (Pregel, HipG, Piccolo) do not address this problem as
+ they focus on algorithmic modeling rather than code distribution.
+ To solve this problem, the developer might decide to drop the graph framework
+ solution and use a pure distributed processing framework --e.g., MapReduce
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dean2008"
+
+\end_inset
+
+, BSP (Bulk Synchronous Parallel)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "valiant1990bsp"
+
+\end_inset
+
+, or ForkJoin
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mateos2013forkjoin"
+
+\end_inset
+
+-- manually handling the mapping of jobs to computing nodes according to
+ a fixed criteria.
+ However, this approach entangles algorithm code with distributed execution
+ concerns, which is known to cause code maintainability issues
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mateos2008jgrim"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Therefore, in our view, there is a need for a new support that takes advantage
+ of distributed data stores and provides abstractions to (optionally) allow
+ users to exploit low-level tuning execution mechanisms, while additionally
+ offering a simple graph traversal API tailored to recommendation algorithms.
+ In this work, we present an architecture for distributed graph processing
+ systems as well as its corresponding implementation, to aid the development
+ of tunable recommendation algorithms.
+ The architecture, called Lightweight-Massive Graph Processing Architecture
+ (LMGPA), divides the responsibilities of a distributed graph processing
+ system into a number of interchangeable modules.
+ Our implementation, based on LMGPA, comprises two software modules: Graphly
+ and jLiME.
+ The former provides a Graph API and implements a persistent support for
+ stored graphs.
+ The latter is responsible for distributing and processing jobs, plus providing
+ middleware-level services such as node discovery and failure tolerance.
+ Moreover, jLiME supports high-level job execution models (e.g., ForkJoin,
+ BSP, MapReduce) that the upper layers (e.g., Graphly) can use to distribute
+ jobs.
+\end_layout
+
+\begin_layout Standard
+On one hand, when creating a recommendation algorithm, the graph API that
+ hides all the mechanisms involved in querying the graph is vital for achieving
+ code portability and modifiability.
+ On the other hand, in some scenarios the developer must customize the inner
+ mechanisms of code distribution depending on the algorithm being developed.
+ For example, the developer might want to distribute jobs depending on the
+ data layout (i.e., the way data is divided and replicated through the cluster)
+ or the computational nodes capabilities.
+ In most graph distributed processing frameworks, this involves adjusting
+ the original algorithm or the data layout to the new requirements, which
+ requires some effort or might be impractical.
+ In response, we propose non-invasive 
+\emph on
+job mapping strategies
+\emph default
+ to customize the way job processing is distributed but without modifying
+ the developer's original algorithm.
+ In essence, these strategies provide a bridge between the algorithms expressed
+ using the Graphly API and the underlying computing cluster and data layout.
+\end_layout
+
+\begin_layout Standard
+This paper is organized as follows.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Related-Works"
+
+\end_inset
+
+ summarizes relevant related work on graph databases and graph processing
+ frameworks.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Lightweight-Distributed-Job"
+
+\end_inset
+
+ describes the architecture behind Graphly and jLiME.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:jLiME:-A-lightweight"
+
+\end_inset
+
+ provides a description of the underlying distributed processing support.
+ It is worth noting that the implementation is available upon request.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Graphly:-A-simple"
+
+\end_inset
+
+ introduces Graphly, its API and provides usage examples.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Experiments"
+
+\end_inset
+
+ describes the case study used to show the importance of customizing job
+ distribution and the experiments of the different strategies used.
+ This case study involves expressing an existing recommendation algorithm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2011,Armentano2012"
+
+\end_inset
+
+ using Graphly and executing it with real Twitter data.
+ Finally, Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Conclusions-1"
+
+\end_inset
+
+ draws some conclusions and list future work.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Sección RELATED copiada a sección related.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+markedsection{LMGPA}{Lightweight Massive Graph Analysis Architecture}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Lightweight-Distributed-Job"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this section we describe LMGPA (Lightweight Massive Graph Analysis Architectu
+re), a reference architecture for developing systems supporting efficient
+ graph-traversal algorithms over large-scale graphs.
+ Examples of such systems include not only social recommendation systems
+ (recommendations on large social networks), but also geolocation-based
+ systems (supporting transportation systems on large cities), bioinformatics
+ systems (processing of large DNA sequence graphs), security audit systems
+ (discovering attack patterns on networking logs), among others.
+ Moreover, the proposed architecture focuses on systems that require an
+ easy deployment and fast user adoption.
+\end_layout
+
+\begin_layout Standard
+LMGPA, depicted in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:LMGAA-Layered-View"
+
+\end_inset
+
+, follows the Layers pattern
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buschmann1996"
+
+\end_inset
+
+ in which each layer exposes a set of operations through an API and relies
+ on the API of the lower layer to implement those operations.
+ User applications communicate with the Graph Abstraction layer, the topmost
+ layer of the architecture.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/defarch.eps
+	lyxscale 50
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:LMGAA-Layered-View"
+
+\end_inset
+
+LMGPA layered view
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Graph Abstraction layer defines the API to be used by the applications.
+ This layer might be used through a declarative Graph Query Language (GQL)
+ or a set of functions implemented in a given imperative language.
+ Examples of GQL are Gremlin
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tinkerpop2014gremlim"
+
+\end_inset
+
+, Graph QL
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "He2010"
+
+\end_inset
+
+, and SPARQL
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "prud2008sparql"
+
+\end_inset
+
+.
+ On the other hand, as an example of standard graph APIs for imperative
+ languages, the Blueprints
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tinkerpop2014blueprints"
+
+\end_inset
+
+ specification for Java provides a set of conventions to access a graph,
+ similarly to a JDBC (Java Database Connectivity) for graphs.
+ Additionally, this layer can implement a set of basic graph algorithms
+ like breadth-first search, depth-first search, Floyd's algorithm and Dijkstra's
+ algorithm.
+ Moreover, this layer can implement primitives which underlie many recommendatio
+n algorithms such as random walks and circle of trust
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gupta2013"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The second layer is the Graph Storage layer, which provides temporal or
+ persistent storage support for the Graph API.
+ It may be implemented using a purely graph-oriented storage like Neo4J
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Neo4J2013"
+
+\end_inset
+
+ or it can provide a way to store the graph structure in a less direct way
+ like a relational database or a key-value store.
+ If preferred, the distributed support for this layer may be implemented
+ using the Distributed Execution layer explained below.
+\end_layout
+
+\begin_layout Standard
+The third layer corresponds to the Distributed Execution layer.
+ This layer hides concerns related to distributed programming and provides
+ an API to help the Graph layer and the Storage layer to distribute data
+ and code across a cluster of computational nodes.
+ The Distributed Execution layer provides an API to remotely execute any
+ code using the Job abstraction.
+ A Job is an object that can be serialized (represented as a plain stream
+ of bytes) and executed remotely on other node.
+ To support this abstraction, the Distributed Execution layer must implement
+ Job managing capabilities which include, for example, job synchronization,
+ data sharing, failure cleanup, and asynchronous/synchronous responses.
+ Additionally, it can provide simple execution model implementations like
+ fork-join or more advanced models like MapReduce or BSP.
+\end_layout
+
+\begin_layout Standard
+The fourth layer corresponds to the Distributed Cluster Abstraction layer,
+ which provides a view of the underlying networked LMGPA processes as a
+ set of Peers that belong to the same Cluster.
+ To this end, this layer implements a Cluster membership management protocol
+ and a communication mechanism for Peers using RPC (Remote Procedure Call)
+ which, in turn, involves handling data marshalling and unmarshalling.
+ To implement such support, there are many existing mature RPC frameworks
+ that can be employed, such as Protocol Buffers
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "varda2008protocol"
+
+\end_inset
+
+, Apache Thrift
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "apache2014thrift"
+
+\end_inset
+
+, RMI
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "downing1998remote"
+
+\end_inset
+
+ or RabbitMQ
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "videla2012rabbitmq"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, the lowest layer is Network Communication, which implements networking
+ functionality for sending data and code to remote processes.
+ It must provide packet sending through TCP, UDP and UDP Multicast as well
+ as data streaming.
+ Among other things, this layer must support interface disconnections and
+ network address changes, manage TCP connections, and identify nodes by
+ ID rather than using a hardware address.
+ Streaming capabilities are crucial for applications where the information
+ being transmitted cannot be handled as a whole in physical memory but,
+ instead, can be processed by chunks in an 
+\begin_inset Quotes eld
+\end_inset
+
+on demand
+\begin_inset Quotes erd
+\end_inset
+
+ fashion.
+ The Network Communication layer may be already implemented in the RPC framework
+ used.
+\end_layout
+
+\begin_layout Section
+jLiME: A lightweight distributed execution framework for Java
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:jLiME:-A-lightweight"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The LMGPA architecture provides the basis for our own support for graph-based
+ processing applications.
+ This support is implemented via two main modules as shown in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:jLiME-equivalent-of"
+
+\end_inset
+
+: the Graphly module and the jLiME module.
+ Graphly implements the Graph Abstraction layer and the storage support
+ for representing graphs.
+ jLiME implements the Distributed Execution layer, the Distributed Cluster
+ Abstraction layer and the Network Communication layer.
+ In this Section we will introduce jLiME from a bottom-up perspective.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/LmGAAintanciated.eps
+	lyxscale 50
+	width 40col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:jLiME-equivalent-of"
+
+\end_inset
+
+jLiME: A materialization of LMGPA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+jLiME Network Stack
+\end_layout
+
+\begin_layout Standard
+The bottom part of the framework is the jLiME Network Stack, a reusable
+ and flexible network communication framework, based upon the JGroups library
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ban2002jgroups"
+
+\end_inset
+
+.
+ JGroups lets the developer build a stack of modules that process incoming
+ and outcoming network packets (e.g., modules that detect failures, acknowledge
+ received messages, send and receive packets using UDP or TCP, and so on).
+ The JLiME Network Stack not only allows creating stacks of packet processing
+ modules, but also allows streaming data between Java processes.
+ In this context, packets are arrays of bytes that are sent over the network
+ as a whole.
+ Streams, however, do not have a fixed size, allowing a sender to send arbitrary
+ amounts of bytes and the receiver to consume the bytes as they arrive.
+ In Appendix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:JLiME-Network-Layer"
+
+\end_inset
+
+ this layer is further discussed.
+\end_layout
+
+\begin_layout Subsection
+jLiME RPC
+\end_layout
+
+\begin_layout Standard
+jLiME provides a Remote Procedure Call module to easily perform remote calls
+ to objects, greatly simplifying the design of distributed programs.
+ Firstly, it introduces the concept of Peer.
+ A Peer is a jLiME process that was detected using any discovery method
+ provided by the network layer.
+ Then, Peers are grouped in a Cluster object, that allows the developer
+ to select them and keep track of their state.
+\end_layout
+
+\begin_layout Standard
+An RPCDispatcher object allows calling a method on a given Peer and a given
+ registered object.
+ jLiME also allows creating, for a given object interface, a set of helper
+ classes to call methods from that interface as if they were local invocations.
+ One of the helper classes is a factory class for creating a proxy object
+ for a given Peer and a given RPCDispatcher.
+ The usual workflow for using jLiME RPC is shown in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:jLiME-RPC-Workflow"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/rpcworkflow.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:jLiME-RPC-Workflow"
+
+\end_inset
+
+jLiME RPC Workflow
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our Distributed Execution module
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:jLiME-Distributed-Execution"
+
+\end_inset
+
+ is based on the RPC module.
+ In this case, the RPC module simplifies sending and receiving Job objects
+ to be executed.
+ The Distributed Execution module registers a 
+\emph on
+JobExecutor
+\emph default
+ object on its RPCDispatcher, and then calls the 
+\begin_inset Quotes eld
+\end_inset
+
+execute
+\begin_inset Quotes erd
+\end_inset
+
+ method on remote JobExecutors using a proxy object, previously generated
+ using the RPC module.
+ Thus, the JobExecutor code contains a minimum amount of code related to
+ remote execution because remote method invocations look like local invocations.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:jLiME-Distributed-Execution"
+
+\end_inset
+
+jLiME Distributed Execution
+\end_layout
+
+\begin_layout Standard
+The jLiME Distributed Execution module implements the interfaces shown in
+ Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:jLiME-Distributed-Execution"
+
+\end_inset
+
+, needed to create a remote job execution environment.
+ The first abstraction introduced by this module is the Job class, which
+ allows a developer to execute arbitrary code on a remote machine.
+ In order for jLiME to run a given Job on a Peer, the developer must obtain
+ a JobPeer object, which encapsulates a Peer instance, and call the execute
+ Job method.
+ A JobCluster object encapsulates a Cluster object and provides access to
+ JobPeer objects.
+ Besides keeping track of JobPeers, the JobCluster divides peers into job
+ executors, that allow the execution of Job objects, and job clients, that
+ submit Jobs to job executors.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/def-uml.eps
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:jLiME-Distributed-Execution"
+
+\end_inset
+
+jLiME design: Main abstractions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Graphly: A simple Java API for graph structure traversal
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Graphly:-A-simple"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The graph support developed in this work provides a simple interface to
+ traverse the structure of a graph.
+ A graph 
+\emph on
+traversal
+\emph default
+ is an operation that follows the links of a graph, gathering information
+ about links or vertices.
+ We support this operation by relying on two modules: jLiME and the Graphly
+ Store.
+ jLiME helps to distribute any calculation needed by the Graphly API.
+ The latter provides a distributed persistent store for the graph structure.
+ In the following sections we will give an insight on the implementation
+ of the Graphly Store and the Graphly API.
+\end_layout
+
+\begin_layout Subsection
+Graphly Store
+\end_layout
+
+\begin_layout Standard
+The Graphly Store persists the graph data on a cluster of computing nodes.
+ The implementation proposed in this work uses a distributed key-value store
+ to save the adjacency lists of the graph, i.e., every vertex is represented
+ by an ID, which is used as a key, and has an associated value comprised
+ of a list of incoming or outcoming vertex IDs.
+ Then, a modulo-based hash function to the vertex ID is used to distribute
+ the adjacency lists among computing nodes.
+ Each computing node is responsible for storing a group of adjacency lists
+ on its local database.
+ In our implementation we used LevelDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "google2014leveldb"
+
+\end_inset
+
+ as the local database implementation.
+ We chose LevelDB because it is a key-value store, which matches our representat
+ion of the data, and provides very fast random and sequential access.
+\end_layout
+
+\begin_layout Subsection
+Graphly Traverse API
+\end_layout
+
+\begin_layout Standard
+Graphly provides a querying API for accessing the structure of a graph and
+ exploring it.
+ The class diagram representing the different graph queries is shown in
+ Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Graph-Query-hierarchy"
+
+\end_inset
+
+.
+ The GraphQuery class provides a common interface for all graph queries.
+ 
+\end_layout
+
+\begin_layout Standard
+The most important type of query in our design is the ListQuery, which represent
+s a query that gives as a result a list of vertices (e.g., integer IDs).
+ As a consequence, the most trivial query is the VertexQuery class, that
+ already contains a list of vertices and, when executed, it only returns
+ the contained list.
+ This class is used to create more powerful queries and maintain homogeneity
+ with the rest of the GraphQuery hierarchy.
+ The 
+\emph on
+UnionQuery
+\emph default
+ and 
+\emph on
+IntersectQuery
+\emph default
+ classes perform a union or an intersection of executing two 
+\emph on
+ListQuery
+\emph default
+ queries.
+ Finally, the 
+\emph on
+EdgeQuery
+\emph default
+ obtains the list of vertices that has incoming or outcoming edges to the
+ currently contained 
+\emph on
+ListQuery
+\emph default
+ from the Graphly Store.
+ As it can be seen in the Figure, the 
+\emph on
+ListQuery
+\emph default
+ abstract class provides methods to create several types of queries from
+ a given 
+\emph on
+ListQuery
+\emph default
+ object, allowing the user to chain different types of 
+\emph on
+ListQuery
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Other type of queries perform different operations on 
+\emph on
+ListQueries.
+ 
+\emph default
+The 
+\emph on
+SizeQuery
+\emph default
+ obtains the size of a result from a 
+\emph on
+ListQuery
+\emph default
+, instead of transmitting the list of elements to the client.
+
+\emph on
+ 
+\emph default
+The 
+\emph on
+CountQuery
+\emph default
+ counts the number of appearances of a given vertex in a set of results.
+ The 
+\emph on
+TopQuery
+\emph default
+ obtains the Top
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $N$
+\end_inset
+
+ elements from the result of a 
+\emph on
+CountQuery
+\emph default
+.
+ The 
+\emph on
+ForEachQuery
+\emph default
+ provides an extension point for a user to create custom queries to be executed
+ on the result of a 
+\emph on
+ListQuery
+\emph default
+.
+ Similarly, the 
+\emph on
+MapQuery
+\emph default
+ provides a ForkJoin-like mechanism to distribute a given query along the
+ cluster, thus balancing the processing load of the query.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/QueryUML.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Graph Query hierarchy
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Graph-Query-hierarchy"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A developer may define different graph traversals algorithms using the interface
+s described above.
+ As an example, the Common Neighbours metric
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lu2011"
+
+\end_inset
+
+ was implemented using Graphly's API.
+ Common Neighbours is one of the simplest metrics to measure the similarity
+ of two vertices on a graph and it is a common strategy for link prediction
+ in recommendation systems.
+ For two vertices
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $x$
+\end_inset
+
+ and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $y$
+\end_inset
+
+, let 
+\begin_inset Formula $\Gamma\left(x\right)$
+\end_inset
+
+ denote the set of neighbours of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $x$
+\end_inset
+
+, their common neighbourhood is defined as 
+\begin_inset Formula $\left|\Gamma\left(x\right)\cap\Gamma\left(y\right)\right|$
+\end_inset
+
+.
+ Graphly's version of Common Neighbours is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+\align left
+
+int common_neighbours = graph.vertex(x).neighbours().intersect(graph.vertex(y).neighb
+ours()).size();
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+graph 
+\emph default
+variable is an instance of Graphly.
+ Using the 
+\emph on
+getVertex
+\emph default
+ method, the user obtains a VertexQuery instance for the vertex
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $x$
+\end_inset
+
+.
+ The 
+\emph on
+neighbours 
+\emph default
+method creates an 
+\emph on
+EdgeQuery 
+\emph default
+that obtains the vertices having incoming or outcoming edges to
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $x$
+\end_inset
+
+ from the Graphly Store.
+ Finally, the result is intersected with the neighbours of vertex
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $y$
+\end_inset
+
+, and its size is returned.
+ 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Graphly-Job-Scheduling"
+
+\end_inset
+
+Graphly Job Mapping Strategies
+\end_layout
+
+\begin_layout Standard
+Before each traversal step, it is possible to decide where to perform the
+ merge of sub-results of such traversal.
+ This decision depends on the user and the nature of the algorithm being
+ developed.
+ As an example, if the cluster consists of an heterogeneous group of computing
+ nodes (i.e., different types of CPU, amount of RAM memory, disk storage capacity,
+ etc.), the user may decide to distribute the merging of subresults according
+ to each node's capabilities to achieve lower recommendation times or reducing
+ resource usage (e.g., reducing network usage may be useful in Cloud Computing
+ environments where inter-node communication is charged).
+ Moreover, a CPU-bound algorithm may need to distribute tasks according
+ to CPU capabilities, whereas a memory-intensive algorithm may distribute
+ tasks depending on the amount of RAM memory on each node.
+ 
+\end_layout
+
+\begin_layout Standard
+In any case, the algorithm original code remains unchanged.
+ Thus, the strategies effectively work as a transparent connection between
+ the graph algorithm and the underlying platform and storage support.
+ A Mapping Strategy API is provided so that the user defines his/her own
+ strategies.
+ Nevertheless, we provide a set of predefined strategies to be used out-of-the-b
+ox:
+\end_layout
+
+\begin_layout Itemize
+Available Memory: This strategy uses JLiME's monitoring statistics to obtain
+ the memory currently available on each node and then divides the given
+ list of vertices accordingly.
+ Clearly, this strategy is dynamic, i.e., it adapts to the current status
+ of the cluster.
+\end_layout
+
+\begin_layout Itemize
+Total Memory: Similarly to the Available Memory strategy, to divide the
+ list, the Total Memory strategy uses the maximum amount of memory that
+ a peer can use.
+ It is a fixed strategy that assigns more requests to nodes that have more
+ memory available.
+\end_layout
+
+\begin_layout Itemize
+Location Aware: This strategy takes advantage of the locality of the vertices.
+ It divides the input into different lists of vertices grouped by their
+ storage location.
+ Such location is obtained applying a hashing function to each key.
+ For example, let node 
+\begin_inset Formula $N1$
+\end_inset
+
+ be responsible for vertices 
+\begin_inset Formula ${a1,a3,a5}$
+\end_inset
+
+ and node 
+\begin_inset Formula $N2$
+\end_inset
+
+ for vertices 
+\begin_inset Formula ${a2,a4}$
+\end_inset
+
+.
+ If we use a Location Aware strategy to map vertices 
+\begin_inset Formula ${a1,a2,a5}$
+\end_inset
+
+ , it will divide the original list into: 
+\begin_inset Formula ${a1,a5}\rightarrow N1$
+\end_inset
+
+ and 
+\begin_inset Formula ${a2}\rightarrow N2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Round Robin: This strategy simply divides the given list of vertices by
+ the amount of nodes and assigns a sublist to each node.
+ This equal division of requests among nodes makes this strategy the most
+ fair strategy in terms of computing load.
+ However, it does not consider either the locality of the data nor the nodes
+ characteristics such as available memory, CPU or physical network speed.
+\end_layout
+
+\begin_layout Standard
+In our experiments we use these four strategies to show how the selection
+ of an strategy affects an algorithm's performance and cluster resources
+ usage.
+ As mentioned before, other strategies can be defined by the user.
+ To support this feature, Graphly provides a 
+\emph on
+Mapper
+\emph default
+ interface that users can extend to define their own 
+\emph on
+mapping strategies
+\emph default
+.
+ The sole function of this interface is mapping an array of vertex IDs to
+ the available cluster nodes.
+ Additionally, a JobContext object is provided to access the cluster information
+ and obtain shared objects from the platform.
+ The RoundRobin Mapper implementation is shown in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Round-Robin-Mapping"
+
+\end_inset
+
+ as an example.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/roundrobin.jpg
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Round-Robin-Mapping"
+
+\end_inset
+
+Round Robin Mapping Strategy implementation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Regarding the strategies that perform a division based on node information,
+ the user may use the CriteriaMapper object.
+ A CriteriaMapper divides the list of vertex IDs proportionally to a provided
+ (quantitative) node metric such as available RAM memory, CPU speed, current
+ amount of jobs being executed, among other metrics.
+ For example, the Available Memory strategy uses a CriteriaMapper instantiated
+ with a metric named 
+\begin_inset Quotes eld
+\end_inset
+
+memory.available
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Thus, using this strategy, the nodes that report bigger amounts for the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+memory.available
+\begin_inset Quotes erd
+\end_inset
+
+ metric will receive more vertex IDs than the other nodes.
+ In our tests, we created our custom strategies using Spring Configuration
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Spring Framework Web Page, 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://spring.io/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "johnson2005j2ee"
+
+\end_inset
+
+.
+ The Available Memory mapping strategy configuration is shown in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Available-Memory-configuration"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/availablememoryconfig.jpg
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Available-Memory-configuration"
+
+\end_inset
+
+Available Memory configuration using Spring Configuration.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Conclusions-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this paper, we presented a novel architecture and a corresponding implementat
+ion for designing distributed recommending algorithms.
+ The algorithms are expressed in terms of graph traverse operations defined
+ by the API of our graph support, Graphly.
+ The underlying framework, jLiME, deals with networking concerns like remote
+ code execution.
+ The core motivation of this work is the creation of a customizable and
+ transparent mechanism to distribute the processing of prototype recommending
+ algorithms.
+ This mechanism, called 
+\emph on
+mapping strategies
+\emph default
+, works as a bridge between Graphly API and jLiME, by exposing information
+ about the computational capabilities of every node, including the graph
+ data distribution.
+\end_layout
+
+\begin_layout Standard
+This work shows the importance of such mechanism by comparing several 
+\emph on
+strategies
+\emph default
+ and their impact in recommendation time and resource usage, especially
+ on heterogeneous clusters.
+ As a case study, we used an existing structural recommendation algorithm
+ for Twitter and real Twitter data, and made recommendations to two different
+ groups of 100
+\begin_inset space ~
+\end_inset
+
+users to show the differences in recommendation times and resource usage.
+ For this type of recommending algorithm, the memory-based 
+\emph on
+strategies
+\emph default
+ showed a very good recommendation time, followed by a 
+\emph on
+strategy
+\emph default
+ that uses data locality
+\emph on
+.
+ 
+\emph default
+This can however vary from algorithm to algorithm, and thus the architecture
+ stressed the need for a flexible tuning support so that users can use or
+ even define the strategies which best suit their algorithms.
+\end_layout
+
+\begin_layout Standard
+As future work, we will examine the impact of 
+\emph on
+mapping strategies 
+\emph default
+in algorithms implemented using a different processing model, like Pregel.
+ Some iterative graph algorithms, such as PageRank, can be better expressed
+ in a vertex-centric processing model rather than a Divide-and-Conquer model
+ like MapReduce or ForkJoin, i.e., the ones which jLiME is currently based
+ upon.
+ Selecting a better model for a particular algorithm also results in performance
+ benefits by reducing code and algorithmic overhead imposed by a less-fitted
+ model.
+\end_layout
+
+\begin_layout Standard
+Furthermore, we will explore new 
+\emph on
+mapping strategies
+\emph default
+ and job-stealing 
+\emph on
+strategies
+\emph default
+ to rebalance processing if nodes are overloaded.
+ While mapping strategies decide how task distribution is performed, job
+ stealing strategies perform a runtime adjustment on that distribution by
+ 
+\emph on
+stealing
+\emph default
+ tasks that have not completed on busy nodes and allocating them on idle
+ nodes.
+ In other words, the current mapping strategies follow a push-based approach
+ to distributing jobs to machines, whereas job stealing follows a pull-based
+ approach.
+ Indeed, these approaches have been studied in the context of other types
+ of resource-\SpecialChar \-
+demanding applications
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VanNieuwpoort2010"
+
+\end_inset
+
+ and thus we believe they are worth to be explored.
+\end_layout
+
+\begin_layout Standard
+Another extension of this work includes the definition of reusable, higher-level
+ graph primitive operations especially suited to recommending algorithms
+ beyond simple graph primitives, like obtaining common neighbours, pagerank
+ calculation or obtaining the 
+\begin_inset Quotes eld
+\end_inset
+
+circle of trust
+\begin_inset Quotes erd
+\end_inset
+
+ --as described by the WhoToFollow algorithm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gupta2013"
+
+\end_inset
+
+-- of a given vertex.
+ The introduction of this new primitives might also require defining higher-leve
+l mapping strategies.
+ An strategy that divides tasks according to the amount of neighbours of
+ a given vertex might provide better load balancing when the primitive (or
+ the user's algorithm) is based on processing vertices neighbourhoods.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

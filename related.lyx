@@ -1,0 +1,1182 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\newcommand{\thesistitle}{A graph-processing platform for low-end clusters}
+\newcommand{\thesisauthor}{Alejandro Corbellini}
+\newcommand{\thesisyear}{2015}
+
+\usepackage{lastpage}
+%\usepackage{tocbibind}
+\usepackage[numbers,sort]{natbib}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{lettrine}
+\usepackage{titlesec,  color}
+\usepackage[
+   hidelinks,
+   pdftitle={\thesistitle},
+   pdfauthor={\thesisauthor},
+   pdfpagemode={UseOutlines},
+   bookmarks,
+   bookmarksopen=true,
+   pdfstartview={FitH},
+   bookmarksnumbered=true]{hyperref}
+
+\paperwidth=8.5in
+\paperheight=11in
+\setlength{\hoffset}{0.0in}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\textwidth}{6in}
+\setlength{\evensidemargin}{0mm}
+\setlength{\voffset}{0.0in}
+\setlength{\topmargin}{.0in}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{22pt}
+\setlength{\textheight}{8.5in}
+\setlength{\footskip}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand\contentsname{Table of Contents} 
+
+\fancypagestyle{IHA-fancy-style}{%
+  \fancyhf{}% Clear header and footer
+  \fancyhead[LE,RO]{\slshape \leftmark}
+  \fancyhead[LO,RE]{}
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \fancyfoot[LO,RE]{\slshape \rightmark}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{chapter}{%
+  \fancyhf{}% Clear header and footer
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \renewcommand{\headrulewidth}{0pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{firstpages}{%
+  \fancyhf{}
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\fancypagestyle{cover}{%
+  \fancyhf{}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\newcommand{\markedsection}[2]{\section[#2]{#2%
+\sectionmark{#1}}
+\sectionmark{#1}}
+
+\newcommand{\markedsubsection}[2]{\subsection[#2]{#2%
+\subsectionmark{#1}}
+\subsectionmark{#1}}
+
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\raisebox{-4ex}{\includegraphics{images/vbar.pdf}}\hsp}{0pt}{\Huge\bfseries}
+\end_preamble
+\options 11pt,twoside,letterpaper,onecolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch section-bib
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{IHA-fancy-style} 
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+textheight}{8in} 
+\backslash
+setlength{
+\backslash
+footskip}{0.3in}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Related-Work"
+
+\end_inset
+
+Related Work
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{chapter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Processing Models
+\end_layout
+
+\begin_layout Section
+Processing Frameworks
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Me parece que van los 2 juntos, modelos y frameworks.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color black
+The architecture proposed stems from two existing types of systems: graph
+ processing frameworks and graph databases.
+
+\color inherit
+ Several frameworks that support graph processing algorithms in clusters
+ of computers can be found in the literature.
+ Many of those efforts are based on the well-known Bulk Synchronous Parallel
+ (BSP) model by Valiant et.
+ al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "valiant1990bsp"
+
+\end_inset
+
+, which divides the execution of an algorithm in multiple 
+\emph on
+supersteps
+\emph default
+ synchronized by logical barriers in which message passing takes place.
+ As an example, Pregel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Malewicz2010"
+
+\end_inset
+
+ is one of the most popular BSP-based computational models for graph processing.
+ It introduces an in-memory, vertex-centric approach for modelling graph
+ algorithms.
+ Moreover, there are several open-source, publicly available implementations
+ based on Pregel, such as Giraph
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Giraph Web Page, http://giraph.apache.org/
+\end_layout
+
+\end_inset
+
+, jPregel
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+jPregel Web Page, http://kowshik.github.com/JPregel/
+\end_layout
+
+\end_inset
+
+, GoldenOrb
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+GoldenOrb Web Page, http://www.goldenorbos.org/
+\end_layout
+
+\end_inset
+
+ and Phoebus
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Phoebus Web Page, https://github.com/xslogic/phoebus
+\end_layout
+
+\end_inset
+
+.
+ Trinity
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trinity2012"
+
+\end_inset
+
+ is another graph processing framework, created by Microsoft providing vertex-ce
+ntric computation using BSP, and also graph querying capabilities and message
+ passing between computing nodes.
+ HipG
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Krepska2011"
+
+\end_inset
+
+ uses the notion of 
+\emph on
+synchronizers 
+\emph default
+to model algorithms and 
+\emph on
+nodes 
+\emph default
+to perform vertex-centric computations.
+ Each 
+\emph on
+synchronizer 
+\emph default
+might asynchronously call many 
+\emph on
+nodes
+\emph default
+ and then use a barrier to wait for 
+\emph on
+node
+\emph default
+ execution finalization.
+ Synchronizers might spawn multiple child 
+\emph on
+synchronizers
+\emph default
+, effectively building a hierarchy of parallel 
+\emph on
+synchronizers
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+GraphX
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xin2013graphx"
+
+\end_inset
+
+ is a BSP-based framework that covers the whole graph processing pipeline,
+ i.e., data acquisition, graph partitioning and subsequent processing.
+ It also provides a table view of graphs that allows the user to perform
+ filter, map and join operations.
+ Piccolo
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "power2010piccolo"
+
+\end_inset
+
+ uses a distributed key-value store to keep the data (e.g., user profiles)
+ associated to each vertex.
+ The map is partitioned and processed in parallel by a 
+\emph on
+kernel
+\emph default
+ function that generates mutations to the map.
+ After each iteration the mutations are applied to the distributed map through
+ the use of synchronous barriers, similarly to BSP.
+ Moreover, Distributed GraphLab
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Low2012"
+
+\end_inset
+
+ bases upon an asynchronous vertex-centric computation model, where the
+ data and graph modifications are scheduled using a distributed locking
+ mechanism.
+ Thus, GraphLab avoids the penalty imposed by synchronization barriers from
+ the BSP model.
+\end_layout
+
+\begin_layout Standard
+Graph processing frameworks usually load data from a persistent store and
+ then construct a distributed in-memory representation of the graph.
+ In many clusters, RAM memory is scarce and imposes a hard limit on the
+ size of the graph to be processed.
+ Additionally, many graph algorithms
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2011,Gupta2013,Lempel2001,Kleinberg1999,Page1999"
+
+\end_inset
+
+ require in-memory auxiliary data structures to handle intermediate results,
+ which further limits the amount of memory that can be assigned to graph
+ data.
+ Driven by this situation, we created a graph database that support graph
+ traversal operations and provides a model for designing distributed graph
+ algorithms over its data.
+ Graph data is kept in a persistent graph database and algorithm execution
+ can be non-invasively adjusted according to different criteria, such as
+ main memory usage, CPU speed, CPU usage, secondary disk usage, vertex storage
+ location, among others.
+\end_layout
+
+\begin_layout Section
+Distributed Graph Stores
+\end_layout
+
+\begin_layout Standard
+
+\color black
+The architecture proposed stems from two existing types of systems: graph
+ processing frameworks and graph databases.
+
+\color inherit
+ Several frameworks that support graph processing algorithms in clusters
+ of computers can be found in the literature.
+ Many of those efforts are based on the well-known Bulk Synchronous Parallel
+ (BSP) model by Valiant et.
+ al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "valiant1990bsp"
+
+\end_inset
+
+, which divides the execution of an algorithm in multiple 
+\emph on
+supersteps
+\emph default
+ synchronized by logical barriers in which message passing takes place.
+ As an example, Pregel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Malewicz2010"
+
+\end_inset
+
+ is one of the most popular BSP-based computational models for graph processing.
+ It introduces an in-memory, vertex-centric approach for modelling graph
+ algorithms.
+ Moreover, there are several open-source, publicly available implementations
+ based on Pregel, such as Giraph
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Giraph Web Page, http://giraph.apache.org/
+\end_layout
+
+\end_inset
+
+, jPregel
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+jPregel Web Page, http://kowshik.github.com/JPregel/
+\end_layout
+
+\end_inset
+
+, GoldenOrb
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+GoldenOrb Web Page, http://www.goldenorbos.org/
+\end_layout
+
+\end_inset
+
+ and Phoebus
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Phoebus Web Page, https://github.com/xslogic/phoebus
+\end_layout
+
+\end_inset
+
+.
+ Trinity
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trinity2012"
+
+\end_inset
+
+ is another graph processing framework, created by Microsoft providing vertex-ce
+ntric computation using BSP, and also graph querying capabilities and message
+ passing between computing nodes.
+ HipG
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Krepska2011"
+
+\end_inset
+
+ uses the notion of 
+\emph on
+synchronizers 
+\emph default
+to model algorithms and 
+\emph on
+nodes 
+\emph default
+to perform vertex-centric computations.
+ Each 
+\emph on
+synchronizer 
+\emph default
+might asynchronously call many 
+\emph on
+nodes
+\emph default
+ and then use a barrier to wait for 
+\emph on
+node
+\emph default
+ execution finalization.
+ Synchronizers might spawn multiple child 
+\emph on
+synchronizers
+\emph default
+, effectively building a hierarchy of parallel 
+\emph on
+synchronizers
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+GraphX
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xin2013graphx"
+
+\end_inset
+
+ is a BSP-based framework that covers the whole graph processing pipeline,
+ i.e., data acquisition, graph partitioning and subsequent processing.
+ It also provides a table view of graphs that allows the user to perform
+ filter, map and join operations.
+ Piccolo
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "power2010piccolo"
+
+\end_inset
+
+ uses a distributed key-value store to keep the data (e.g., user profiles)
+ associated to each vertex.
+ The map is partitioned and processed in parallel by a 
+\emph on
+kernel
+\emph default
+ function that generates mutations to the map.
+ After each iteration the mutations are applied to the distributed map through
+ the use of synchronous barriers, similarly to BSP.
+ Moreover, Distributed GraphLab
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Low2012"
+
+\end_inset
+
+ bases upon an asynchronous vertex-centric computation model, where the
+ data and graph modifications are scheduled using a distributed locking
+ mechanism.
+ Thus, GraphLab avoids the penalty imposed by synchronization barriers from
+ the BSP model.
+\end_layout
+
+\begin_layout Standard
+Graph processing frameworks usually load data from a persistent store and
+ then construct a distributed in-memory representation of the graph.
+ In many clusters, RAM memory is scarce and imposes a hard limit on the
+ size of the graph to be processed.
+ Additionally, many graph algorithms
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2011,Gupta2013,Lempel2001,Kleinberg1999,Page1999"
+
+\end_inset
+
+ require in-memory auxiliary data structures to handle intermediate results,
+ which further limits the amount of memory that can be assigned to graph
+ data.
+ Driven by this situation, we created a graph database that support graph
+ traversal operations and provides a model for designing distributed graph
+ algorithms over its data.
+ Graph data is kept in a persistent graph database and algorithm execution
+ can be non-invasively adjusted according to different criteria, such as
+ main memory usage, CPU speed, CPU usage, secondary disk usage, vertex storage
+ location, among others.
+\end_layout
+
+\begin_layout Standard
+In the literature regarding distributed graph databases, there are at least
+ two types of stores: RDF (Resource Description Framework) stores and Property
+ Graphs.
+ RDF Stores, originated with the 
+\emph on
+Semantic Web
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "morales2010semanticweb,erling2010virtuoso,systap2013bigdata,berners2001semantic"
+
+\end_inset
+
+
+\emph default
+ and most of them have been developed for years.
+ The RDF specification provides the <Subject, Predicate, Object> representation
+ of relationships in a graph of entities.
+ The 
+\emph on
+Subject
+\emph default
+ is the origin vertex, the 
+\emph on
+Predicate
+\emph default
+ is the edge label, and the 
+\emph on
+Object 
+\emph default
+is the target vertex.
+ Usually, a 
+\emph on
+Context
+\emph default
+ is added to express where a triple comes from.
+ In the context of graphs, the 
+\emph on
+Context 
+\emph default
+is the graph where a triple belongs to.
+ The 
+\emph on
+Subject, Predicate, Object, Context 
+\emph default
+(SPOC) representation is usually called a 
+\emph on
+Quad
+\emph default
+.
+ RDF Stores usually persist the SPOC tuples into a key-value store, and
+ create several indexes to support different types of query access.
+ For example, YARS2 is a distributed RDF Store that creates a SPOC index,
+ and four additional indexes to support alternate access patterns.
+ Bigdata
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "systap2013bigdata"
+
+\end_inset
+
+ is based on concepts introduced by YARS2
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harth2007"
+
+\end_inset
+
+, but adds an inference engine and an implementation of the Gather-Apply-Scatter
+ (GAS) graph processing model.
+ Virtuoso
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "erling2010virtuoso"
+
+\end_inset
+
+ is another example of a mature database that supports the RDF format and
+ provides an inference mechanism over its tuples.
+ 
+\end_layout
+
+\begin_layout Standard
+Property Graphs are a type of graph store where edges and vertices are modeled
+ with an arbitrary number of properties, usually, in a key-value format.
+ A common technique to store a property graph is to separate the different
+ elements of a graph: vertex adjacency lists (vertices or edges), vertex
+ data, edge input vertices, edge output vertices and edge data.
+ Implementations of this type of databases are fairly new and are mostly
+ related to the NoSQL movement.
+ As an example, the Titan
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Titan2014"
+
+\end_inset
+
+ graph database lets the user select the actual database storage support
+ from a number of lower-level data stores, including HBase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "apache2014hbase"
+
+\end_inset
+
+, Cassandra
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "apache2014cassandra"
+
+\end_inset
+
+, BerkeleyDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "oracle2014berkeleydb"
+
+\end_inset
+
+ and Hazelcast
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hazelcast2014"
+
+\end_inset
+
+.
+ Similarly to many new databases, Titan implements the Blueprints
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tinkerpop2014blueprints"
+
+\end_inset
+
+ interface, which connects it to a number of already implemented tools for
+ graph querying and processing.
+ Other databases provide a graph interface over a Document-oriented store
+ (i.e., a key-value store where values have a known but flexible format, such
+ as XML or JSON), which is the case of OrientDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "orientdb2014"
+
+\end_inset
+
+ and ArangoDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "arangodb2014"
+
+\end_inset
+
+.
+ As a final example, FlockDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FlockDB2013"
+
+\end_inset
+
+ is an adjacency graph store that, as its name indicates, only stores the
+ structure of the graph.
+ It was developed at Twitter to store the followee/follower relationships
+ of its users.
+ All in all, our structural graph database is based on a simple distributed
+ key-value store, where each key represents a vertex ID, and each value
+ contains the associated vertex data.
+ The vertex ID is used to distribute the values across the computing nodes
+ in a cluster.
+ Then, a Graph API is built over the key-value store to provide graph operations
+, e.g., obtaining the outcoming and incoming edges of a node.
+\end_layout
+
+\begin_layout Standard
+In this work, we propose an architecture for graph storage and processing
+ that, among other features, provides an API to implement traversal algorithms,
+ i.e., algorithms that walk through the graph and might aggregate results,
+ generating sums or counts of elements.
+ Unlike the APIs proposed by other frameworks and databases, we focus on
+ the problem of customizing the distribution of the graph algorithm on heterogen
+eous clusters.
+ This involves providing access to computing nodes and cluster information
+ such as memory usage, CPU usage and job queues size, and access to information
+ about the storage support such as data location (e.g., in which node an adjacency
+ list resides) and cached data location.
+ Thus, using this information, we provide predefined job mapping strategies
+ to increase algorithm performance.
+ Moreover, an extension mechanism is provided for further customization
+ through ad-hoc strategies.
+\end_layout
+
+\begin_layout Standard
+Indeed, 
+\emph on
+job scheduling 
+\emph default
+or 
+\emph on
+job mapping
+\emph default
+ is a well-studied problem in distributed computing
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "topcuoglu2002performance"
+
+\end_inset
+
+.
+ On heterogeneous clusters, i.e., clusters of computers with different capabilitie
+s (main memory, CPU speed, number of CPU cores, storage capacity), the allocatio
+n of jobs to computing nodes allows distributed and parallel applications
+ to maximize a given performance criterion
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kim2003scheduling"
+
+\end_inset
+
+.
+ In our case, when the recommendation algorithm queries a set of vertices,
+ a user-defined 
+\emph on
+mapping strategy 
+\emph default
+groups those vertices into tasks and maps each task to a set of computing
+ nodes.
+ As an example, a 
+\emph on
+locality-aware mapping strategy
+\emph default
+ might group vertices by their location in the storage support.
+\end_layout
+
+\begin_layout Standard
+The proposed architecture is intended to ease the development of recommendation
+ algorithms over social networks, particularly those requiring complex navigatio
+n patterns of the social graph.
+ This category includes link prediction problems, which compute which links
+ are more likely to appear in the future on the graph
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lu2011"
+
+\end_inset
+
+.
+ Depending on the type of graph, such prediction might include friends,
+ followees, products, co-workers, researchers, Web pages, and so on.
+ There are several algorithms that use the structural information of the
+ graph to make a prediction.
+ Typically, these algorithms compute the similarity between nodes based
+ on their neighbourhoods or ensembles of paths using local or global indices
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Li2014link,Li2014s2r,Lu2009complex"
+
+\end_inset
+
+.
+ More advanced algorithms involve complex graph traversal operations.
+ For example, PageRank
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Page1999"
+
+\end_inset
+
+ is a well-known algorithm that ranks Web pages on the entire Web hypergraph
+ using the 
+\begin_inset Quotes eld
+\end_inset
+
+random surfer
+\begin_inset Quotes erd
+\end_inset
+
+ notion, i.e., a Web user that clicks randomly on HTML links of arbitrary
+ Web pages.
+ Hence, PageRank ranks Web pages by the probability that a user will be
+ at a given Web page at any time.
+ Personalized PageRank is a variation of the original algorithm that computes
+ rankings based on a user's preferences.
+ Similarly, HITS
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kleinberg1999"
+
+\end_inset
+
+ assigns an 
+\begin_inset Quotes eld
+\end_inset
+
+authority
+\begin_inset Quotes erd
+\end_inset
+
+ value and a 
+\begin_inset Quotes eld
+\end_inset
+
+hub
+\begin_inset Quotes erd
+\end_inset
+
+ value to each vertex of the graph using the number of outgoing edges and
+ the number of incoming edges, respectively.
+ HITS was originally used to rank Web pages resulting from a Web search,
+ but later adapted to perform recommendations.
+ SALSA
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lempel2001"
+
+\end_inset
+
+ is an algorithm that uses the 
+\begin_inset Quotes eld
+\end_inset
+
+hub
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+authority
+\begin_inset Quotes erd
+\end_inset
+
+ notion of HITS, and the 
+\begin_inset Quotes eld
+\end_inset
+
+random surfer
+\begin_inset Quotes erd
+\end_inset
+
+ model from PageRank.
+ Both SALSA and HITS receive an initial group of results from a topic search
+ to build a ranking.
+ More recently, the Who To Follow
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gupta2013"
+
+\end_inset
+
+ user recommendation algorithm developed by Twitter uses Personalized PageRank
+ to build the initial group of results, and then uses that group as an input
+ to a SALSA-based recommendation algorithm.
+ Other examples of followee and social recommendation algorithms in the
+ same line are 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wu2012,Hannon2011,Ying2012,Chen2012,Schall2013,Li2012OnlineForums,Zhang2013SocConnect"
+
+\end_inset
+
+.
+ This type of algorithms rely on an efficient exploration of the underlying
+ graph for generating recommendations and, consequently, solutions optimized
+ for this domain become critical.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

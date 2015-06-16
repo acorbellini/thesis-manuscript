@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1036.3414"
+   height="527.78363"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Algorithm.svg"
+   inkscape:export-filename="C:\Users\acorbellini\Dropbox\Doctorado\Papers\ijis2014-jLiME\trunk\images\Algorithm.png"
+   inkscape:export-xdpi="600.00494"
+   inkscape:export-ydpi="600.00494">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.67894876"
+     inkscape:cx="199.2231"
+     inkscape:cy="307.89648"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-7.5481439,-356.42759)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:26.48722649px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="7.5481439"
+       y="375.68515"
+       id="text2985"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="7.5481439"
+         y="375.68515"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas">ListQuery followees = graph.get(user).ougoing();</tspan><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="408.79419"
+         id="tspan2989"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="441.90323"
+         id="tspan2993"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="475.01224"
+         id="tspan3007"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="508.12128"
+         id="tspan3056"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas">TopQuery query = followees.incoming().remove(followees)</tspan><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="541.23029"
+         id="tspan3062"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="574.33936"
+         id="tspan2999"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="607.44836"
+         id="tspan3064"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="640.55743"
+         id="tspan3178"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas">                 .countOutgoing().remove(followees).top(10);</tspan><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="673.66644"
+         id="tspan3003"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="706.77545"
+         id="tspan3005"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="739.88452"
+         id="tspan3009"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="772.99353"
+         id="tspan3147"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas" /><tspan
+         sodipodi:role="line"
+         x="7.5481439"
+         y="806.1026"
+         id="tspan3186"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas">Map&lt;Integer,Integer&gt; recommendation = query.query(cluster);</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:129.2449646px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#1f47c3;fill-opacity:1;stroke:none"
+       x="-776.28339"
+       y="266.90021"
+       id="text3023"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.51993317,1.9233241,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3025"
+         x="-776.28339"
+         y="266.90021">(</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="384.90591"
+       y="427.21411"
+       id="text3027"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3029"
+         x="384.90591"
+         y="427.21411"
+         style="font-style:italic;font-size:22px">VertexQuery</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:98.20271301px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#1f47c3;fill-opacity:1;stroke:none"
+       x="-591.39221"
+       y="460.97354"
+       id="text3023-1"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.68428603,1.4613772,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3025-7"
+         x="-591.39221"
+         y="460.97354">(</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="581.05988"
+       y="424.36136"
+       id="text3058"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3060"
+         x="581.05988"
+         y="424.36136"
+         style="font-style:italic;font-size:22px">GetQuery</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:173.98786926px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#1f47c3;fill-opacity:1;stroke:none"
+       x="-1386.9539"
+       y="280.61969"
+       id="text3023-1-4"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.38622663,2.5891534,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3025-7-0"
+         x="-1386.9539"
+         y="280.61969">(</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="654.68372"
+       y="558.15521"
+       id="text3058-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="654.68372"
+         y="558.15521"
+         id="tspan3176"
+         style="font-style:italic;font-size:22px;text-align:center;text-anchor:middle">GetQuery (removing original users from the result)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:216.02975464px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#1f47c3;fill-opacity:1;stroke:none"
+       x="-1710.0721"
+       y="259.80746"
+       id="text3023-1-4-5"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.39500736,2.5315984,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3025-7-0-5"
+         x="-1710.0721"
+         y="259.80746">(</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="519.07782"
+       y="694.01251"
+       id="text3058-9-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="522.94501"
+         y="694.01251"
+         id="tspan3182"
+         style="font-style:italic;font-size:22px;text-align:center;text-anchor:middle">CountQuery(counts users </tspan><tspan
+         sodipodi:role="line"
+         x="519.07782"
+         y="721.51251"
+         style="font-style:italic;font-size:22px;text-align:center;text-anchor:middle"
+         id="tspan3211">apperances and removes original users)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:143.21469116px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#1f47c3;fill-opacity:1;stroke:none"
+       x="-1780.2424"
+       y="369.09378"
+       id="text3023-11"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.46921682,2.1312109,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3025-5"
+         x="-1780.2424"
+         y="369.09378">(</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:80.30580139px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#1f47c3;fill-opacity:1;stroke:none"
+       x="-876.11511"
+       y="651.16473"
+       id="text3023-1-4-5-6"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-0.76151267,1.3131758,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan3025-7-0-5-1"
+         x="-876.11511"
+         y="651.16473">(</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="786.67859"
+       y="692.68451"
+       id="text3213"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3215"
+         x="786.67859"
+         y="692.68451"
+         style="font-style:italic;font-size:22px">Filters the top 10 users </tspan><tspan
+         sodipodi:role="line"
+         x="786.67859"
+         y="720.18451"
+         id="tspan3217"><tspan
+   style="font-style:italic;font-size:22px"
+   id="tspan3989">from the count query</tspan>.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="711.08972"
+       y="852.28546"
+       id="text3991"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3993"
+         x="714.95691"
+         y="852.28546"
+         style="font-style:italic;font-size:22px;text-align:center;text-anchor:middle">Executes the whole </tspan><tspan
+         sodipodi:role="line"
+         x="711.08972"
+         y="879.78546"
+         id="tspan3995"
+         style="font-style:italic;font-size:22px;text-align:center;text-anchor:middle">query at a Server</tspan></text>
+  </g>
+</svg>

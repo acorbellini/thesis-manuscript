@@ -1,0 +1,6095 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\newcommand{\thesistitle}{A graph-processing platform for low-end clusters}
+\newcommand{\thesisauthor}{Alejandro Corbellini}
+\newcommand{\thesisyear}{2015}
+
+\usepackage{lastpage}
+%\usepackage{tocbibind}
+\usepackage[numbers,sort]{natbib}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{lettrine}
+\usepackage{titlesec,  color}
+\usepackage[
+   hidelinks,
+   pdftitle={\thesistitle},
+   pdfauthor={\thesisauthor},
+   pdfpagemode={UseOutlines},
+   bookmarks,
+   bookmarksopen=true,
+   pdfstartview={FitH},
+   bookmarksnumbered=true]{hyperref}
+
+\paperwidth=8.5in
+\paperheight=11in
+\setlength{\hoffset}{0.0in}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\textwidth}{6in}
+\setlength{\evensidemargin}{0mm}
+\setlength{\voffset}{0.0in}
+\setlength{\topmargin}{.0in}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{22pt}
+\setlength{\textheight}{8.5in}
+\setlength{\footskip}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand\contentsname{Table of Contents} 
+
+\fancypagestyle{IHA-fancy-style}{%
+  \fancyhf{}% Clear header and footer
+  \fancyhead[LE,RO]{\slshape \leftmark}
+  \fancyhead[LO,RE]{}
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \fancyfoot[LO,RE]{\slshape \rightmark}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{chapter}{%
+  \fancyhf{}% Clear header and footer
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \renewcommand{\headrulewidth}{0pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{firstpages}{%
+  \fancyhf{}
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\fancypagestyle{cover}{%
+  \fancyhf{}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\newcommand{\markedsection}[2]{\section[#2]{#2%
+\sectionmark{#1}}
+\sectionmark{#1}}
+
+\newcommand{\markedsubsection}[2]{\subsection[#2]{#2%
+\subsectionmark{#1}}
+\subsectionmark{#1}}
+
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\raisebox{-4ex}{\includegraphics{images/vbar.pdf}}\hsp}{0pt}{\Huge\bfseries}
+\end_preamble
+\options 11pt,openright,twoside,letterpaper,onecolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch section-bib
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{IHA-fancy-style} 
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+textheight}{8in} 
+\backslash
+setlength{
+\backslash
+footskip}{0.3in}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+NoSQL Databases
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{chapter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Key-Value"
+
+\end_inset
+
+Key-Value Databases
+\end_layout
+
+\begin_layout Standard
+Databases belonging to this group are, essentially, distributed hash tables
+ that provide at least two operations: get(key) and put(key, value).
+ A Key-Value database maps data items to a key space that is used both for
+ allocating key/value pairs to computers and to efficiently locate a value,
+ given its key.
+ These databases are designed to scale to terabytes or even petabytes as
+ well as millions of simultaneous operations by horizontally adding computers.
+\end_layout
+
+\begin_layout Standard
+The following sections enumerate some techniques used in key-value databases.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Consistent-Hashing"
+
+\end_inset
+
+ we describe Consistent Hashing, a mechanism frequently used to distribute
+ keys among nodes.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Virtual-Buckets"
+
+\end_inset
+
+ we describe Virtual Buckets, an alternative mechanism used to distribute
+ keys among nodes.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Dynamo-based-Mechanisms"
+
+\end_inset
+
+, we describe a set of techniques used by Dynamo
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DeCandia2007"
+
+\end_inset
+
+, a Key-Value store created by Amazon that influenced several other databases.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Discussion-of-Key-Value"
+
+\end_inset
+
+ we describe some of the most notorious Key-Value databases available.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Consistent-Hashing"
+
+\end_inset
+
+Consistent Hashing
+\end_layout
+
+\begin_layout Standard
+Key-Value stores usually allocate key/value pairs by applying some hash
+ function to the key and using the result to obtain a specific computer
+ of the physical network where the value will be finally stored.
+\end_layout
+
+\begin_layout Standard
+Distribution of keys using a standard hashing allocation mechanism (i.e.,
+ based on the amount of computers in the network) is sensible to node failures,
+ i.e., if one of the nodes is not available, all the key/value pairs need
+ to be reallocated because of the change in the size of the network.
+ Several databases take advantage of the concept of 
+\emph on
+Consistent Hashing
+\begin_inset space ~
+\end_inset
+
+
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Karger1997"
+
+\end_inset
+
+ to deal with this situation.
+\end_layout
+
+\begin_layout Standard
+Consistent Hashing models a key space of size 
+\emph on
+K
+\emph default
+ as a ring of keys where each of the 
+\emph on
+N
+\emph default
+ nodes handles a range of contiguous keys.
+ In its simplest form, Consistent Hashing assigns ranges of 
+\emph on
+
+\begin_inset Formula $\nicefrac{K}{N}$
+\end_inset
+
+
+\emph default
+ keys to nodes, although ranges can vary according to each node's characteristic
+s.
+ If one of the nodes in the ring fails, only the keys belonging to such
+ node should be rebalanced, putting them in the next physical node.
+ Using this scheme, key replication can be performed in the N-1 nodes following
+ each node.
+\end_layout
+
+\begin_layout Standard
+The problem of using physical nodes for partitioning the key space is that
+ successive changes in the network, such as the failure or addition of new
+ nodes can unbalance the distribution of keys among nodes.
+ This problem is further accentuated when the network has heterogeneous
+ hardware, for example if a node is serving as failover of a node with greater
+ capacity.
+\end_layout
+
+\begin_layout Standard
+An improvement over this partitioning scheme is to create 
+\emph on
+virtual nodes
+\emph default
+.
+ Virtual nodes are arranged to balance the key load.
+ Each physical node may be responsible for one or more virtual nodes, also
+ called tokens in the keyring.
+ Hence, when one node fails, the load managed for such node is evenly distribute
+d among the different physical nodes the former represents.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/ejemploVirtualNodes.eps
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Consistent-Hashing-con-1"
+
+\end_inset
+
+Example of Consistent Hashing with virtual nodes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Consistent-Hashing-con-1"
+
+\end_inset
+
+ shows an example of using virtual nodes distribution.
+ In the figure it can be seen that the virtual nodes
+\begin_inset space ~
+\end_inset
+
+A, C and
+\begin_inset space ~
+\end_inset
+
+F are stored in the physical node
+\begin_inset space ~
+\end_inset
+
+1, the virtual nodes
+\begin_inset space ~
+\end_inset
+
+B, D and
+\begin_inset space ~
+\end_inset
+
+G in the physical node
+\begin_inset space ~
+\end_inset
+
+2 and the virtual node
+\begin_inset space ~
+\end_inset
+
+E on the physical node
+\begin_inset space ~
+\end_inset
+
+3.
+ In this example, the virtual node
+\begin_inset space ~
+\end_inset
+
+A is responsible for storing the keys in the range (G, A].
+ Also, the virtual node
+\begin_inset space ~
+\end_inset
+
+A is responsible for replicating data about the keys on the precedent
+\begin_inset space ~
+\end_inset
+
+N-1 ranges.
+ If N equals to 2, A would be responsible for replicating the keys in the
+ range (F, G].
+ The rest of the virtual nodes behave similarly.
+\end_layout
+
+\begin_layout Standard
+If the physical node
+\begin_inset space ~
+\end_inset
+
+2 fails, the range of keys (F, G] becomes part of the virtual node
+\begin_inset space ~
+\end_inset
+
+A, the range (A, B] moves to the virtual node
+\begin_inset space ~
+\end_inset
+
+C and the range (C , D] to the virtual node
+\begin_inset space ~
+\end_inset
+
+E.
+ Then, the keyset is distributed among the physical nodes
+\begin_inset space ~
+\end_inset
+
+1 and
+\begin_inset space ~
+\end_inset
+
+3.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Virtual-Buckets"
+
+\end_inset
+
+Virtual Buckets
+\end_layout
+
+\begin_layout Standard
+Like Consistent Hashing, Virtual Buckets or vBuckets is a technique introduced
+ by Membase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Membase2013"
+
+\end_inset
+
+ to overcome the problem of redistributing keys when a node fails.
+ Similarly to Consistent Hashing, vBuckets provide a level of indirection
+ between keys and server addresses.
+ The aim of vBuckets is dividing the key space in a fixed amount of vBuckets
+ (e.g., 4096) and map every vBucket to a server.
+ 
+\end_layout
+
+\begin_layout Standard
+From a server perspective, a vBucket can be in one of three states: 
+\end_layout
+
+\begin_layout Itemize
+Available: the current server contains the data about the vBucket.
+\end_layout
+
+\begin_layout Itemize
+Replica: the current server can only receive replica requests for the current
+ vBucket.
+\end_layout
+
+\begin_layout Itemize
+Dead: the server cannot receive requests for the vBucket.
+\end_layout
+
+\begin_layout Standard
+From a client perspective, only one server can serve requests for a given
+ vBucket.
+ 
+\end_layout
+
+\begin_layout Standard
+As a result, Available vBuckets can be replicated to other servers by using
+ the corresponding vBuckets marked as 
+\emph on
+Dead
+\emph default
+.
+ In this way, replication can be set in a 
+\begin_inset Formula $1:N$
+\end_inset
+
+ or a chained configuration.
+ In the first case, every vBucket replicates to 
+\begin_inset Formula $N$
+\end_inset
+
+ servers.
+ On the other hand, in a chained configuration, a vBucket replicates to
+ another server, and in turn, the replicated vBucket has a replica on a
+ third server.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Virtual-Buckets-example"
+
+\end_inset
+
+ shows a possible vBuckets scenario where the amount of vBuckets is 5 and
+ the replication scheme is 
+\begin_inset Formula $1:N$
+\end_inset
+
+ .
+ The vBuckets marked as 
+\begin_inset Quotes eld
+\end_inset
+
+A
+\begin_inset Quotes erd
+\end_inset
+
+ are available vBuckets, whereas vBuckets marked as 
+\begin_inset Quotes eld
+\end_inset
+
+R
+\begin_inset Quotes erd
+\end_inset
+
+ are replicas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/vBuckets.eps
+	width 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Virtual-Buckets-example"
+
+\end_inset
+
+Virtual Buckets example using 3 servers, a vBucket size of 5 and a 
+\begin_inset Formula $1:N$
+\end_inset
+
+ replication scheme.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Dynamo-based-Mechanisms"
+
+\end_inset
+
+Dynamo-based Mechanisms
+\end_layout
+
+\begin_layout Standard
+One of the most influential databases in the development of highly scalable
+ Key-Value databases is Amazon's Dynamo
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DeCandia2007"
+
+\end_inset
+
+.
+ Dynamo was used for the shopping cart and session management service of
+ Amazon, each supporting tens of millions of requests.
+ This database proved to be a highly available system in addition to meet
+ strong latency requirements
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DeCandia2007"
+
+\end_inset
+
+.
+ Then, Dynamo offers data storage and access mechanisms that represent the
+ inspiration of many existing Key-Value databases.
+ 
+\end_layout
+
+\begin_layout Standard
+The most important techniques involved in the implementation of Dynamo are
+ introduced below:
+\end_layout
+
+\begin_layout Paragraph
+Vector Clocks
+\end_layout
+
+\begin_layout Standard
+Dynamo provides eventual consistency, which allows to achieve high availability.
+ Inconsistencies are solved during reading (read-repair), which implies
+ that a writing can return to the client before the actual writing has spread
+ to all replicas.
+ The different values are unified using a versioning scheme known as vector
+ clocks
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Baldoni2002"
+
+\end_inset
+
+.
+ A vector clock is a structure containing a list of pairs (physical node,
+ counter).
+ One vector clock is associated with every version of every key/value pair.
+ This versioning scheme allows nodes to discard old versions of the same
+ object (if all counters are less or equal than the current counters), or
+ to reconcile conflicted versions.
+ This reconciliation mechanism can be automatic, e.g.
+ different versions of a shopping cart can be merged adding all items in
+ a unique cart, including items deleted by the user.
+\end_layout
+
+\begin_layout Paragraph
+Sloppy Quorum and Hinted Handoff
+\end_layout
+
+\begin_layout Standard
+Sloppy quorum persists (or reads) an element on the first 
+\begin_inset Formula $N$
+\end_inset
+
+ available nodes of a preference list when the node's replicas are not available.
+ Then, some copies of the data to be written can be found in nodes that
+ are not replicas of such data.
+ When this situation occurs, the node receives, along with the data, a hint
+ about the copy owner.
+ This mechanism, known as Hinted Handoff, along with Sloppy Quorum, allows
+ the client to return as soon as possible without waiting to persist data
+ in all replicas.
+\end_layout
+
+\begin_layout Paragraph
+Merkle Trees
+\end_layout
+
+\begin_layout Standard
+For persistent failures in which hinted copies cannot return to the original
+ replica, elements of the remaining replicas must be re-synchronized by
+ detecting which keys are outdated.
+ Comparing the keys one by one according to their hash value can take too
+ long and consume a lot of bandwidth.
+ Dynamo uses a tree structure known as Merkle Tree
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Merkle2006"
+
+\end_inset
+
+ where each node represents a hash value, calculated starting from their
+ children, which in turn are also hashes.
+ The leaves of the tree are the hash values calculated using the stored
+ keys.
+ This allows a fast comparison of sets of keys, but updating a key range
+ when a node fails can be expensive.
+\end_layout
+
+\begin_layout Standard
+Dynamo implements all the concepts described above to create a highly scalable
+ and available system.
+ However, it is a proprietary system used within Amazon and only accessible
+ through the services provided by the company.
+ There are, nevertheless, several open-source implementations of Dynamo
+ and other Key-Value databases that can be installed in a network.
+ The next Section summarizes some of the relevant databases in this line.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Discussion-of-Key-Value"
+
+\end_inset
+
+Discussion of Key-Value databases
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="1.7cm">
+<column alignment="left" valignment="top" width="4cm">
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="1.5cm">
+<column alignment="left" valignment="top" width="1.5cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Persistence
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Replication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Sharding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Implementation Language
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+API
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Query Method
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Riak
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Bitcask (log-structured store), LevelDB, In-Memory and Multi-backend (different
+ stores for different keys) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+http://docs.basho.com/riak/latest/tutorials/choosing-a-backend/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Ring (next 
+\begin_inset Formula $N-1$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistent Hashing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Erlang
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+PBC (Protocol Buffer Client), HTTP, Java, Erlang, C++, PHP, Ruby, Python
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Get
+\emph on
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\emph on
+Aclarar que Get es get value by key
+\end_layout
+
+\end_inset
+
+, 
+\emph default
+MapReduce, Link Walking
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Infinispan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Simple File Storage, BerkeleyDB, JDBM, JDBC 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+https://docs.jboss.org/author/display/ISPN/Cache+Loaders+and+Stores
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Ring (next 
+\begin_inset Formula $N-1$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistent Hashing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Strong Consistency or Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HTTP, Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Get
+\emph on
+, 
+\emph default
+MapReduce,
+\emph on
+ 
+\emph default
+others
+\emph on
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Hazelcast
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+User-defined MapStore, which can be persistent
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Ring (next 
+\begin_inset Formula $N-1$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistent Hashing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Strong Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HTTP, Java, C# and any Memcache client
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Get
+\emph on
+, 
+\emph default
+MapReduce
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Redis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+ Snapshots at specified intervals by default or an
+\emph on
+ Append-only
+\emph default
+ file.
+ Both can be combined.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Master-Slave (Slave chains can be formed)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+No (in charge of the application)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java, C, C#, Ruby, Perl, Scala
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Get (also depends on the value structure) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Membase/
+\begin_inset Newline newline
+\end_inset
+
+CouchBase
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+ SQLLite or CouchDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+vBuckets 
+\begin_inset Formula $1:N$
+\end_inset
+
+ Replication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+vBuckets
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Strong Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+C/C++, Erlang
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java, C, C#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Get
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Voldemort
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+BerkeleyDB, In-Memory, MySQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Ring (next 
+\begin_inset Formula $N-1$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistent Hashing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java, Python
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Get
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparación-entre-diferentes"
+
+\end_inset
+
+Comparison of reviewed Key-Value databases.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparación-entre-diferentes"
+
+\end_inset
+
+ summarizes several relevant key-value databases that support persistent
+ storage and distribution.
+ Other databases such as Kyoto Cabinet
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kyoto2013"
+
+\end_inset
+
+, LevelDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LevelDB2013"
+
+\end_inset
+
+, Memcached
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Memcached2013"
+
+\end_inset
+
+, BerkeleyDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Olson1999"
+
+\end_inset
+
+ and Scalaris
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schutt2008"
+
+\end_inset
+
+ were excluded from this review since they do not meet these requirements.
+ 
+\end_layout
+
+\begin_layout Standard
+The listed databases are Riak
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Riak2013"
+
+\end_inset
+
+, Infinispan
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Marchioni2012"
+
+\end_inset
+
+, Hazelcast
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hazelcast2013"
+
+\end_inset
+
+, Redis
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Redis2013"
+
+\end_inset
+
+, Membase/CouchBase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Membase2013"
+
+\end_inset
+
+ and Voldemort
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Voldemort2013"
+
+\end_inset
+
+.
+ At the time of writing this review, all of these databases were under active
+ development and heavily employed by some user community.
+ This means that each database is supported by a group of developers releasing
+ periodical updates, fixing bugs and incorporating new functionality.
+ Since adopting a currently active database for a new project assures the
+ existence of documentation and assistance from those responsible for the
+ database software, persistent and distributed databases whose development
+ has been abandoned were not included in the comparison.
+ The Key-Value databases analyzed are described below:
+\end_layout
+
+\begin_layout Paragraph*
+Riak and Voldemort
+\end_layout
+
+\begin_layout Standard
+Among the listed databases, the ones which are more related to Dynamo are
+ Riak and Voldemort since they are direct implementations of the associated
+ Amazon specification.
+ Hence, they use consistent hashing for partitioning and replicating, and
+ provide eventual consistency based on read-repair.
+\end_layout
+
+\begin_layout Paragraph*
+Redis
+\end_layout
+
+\begin_layout Standard
+Redis is distinguished for providing more complex structures such as lists,
+ hash tables, sets and ordered sets for representing values.
+ This functionality makes Redis very similar to Document-oriented databases,
+ which are described in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basadas-en-documentos"
+
+\end_inset
+
+.
+ However, in Redis, different keys may have different type of values, i.e.,
+ one key can refer to a list and the other key can refer to a set.
+ In Document-oriented databases, all values are documents of the same schema.
+ One limitation of Redis is that sharding has to be performed by the client
+ application, which implies that the client must know the network topology
+ to distribute keys among nodes.
+\end_layout
+
+\begin_layout Paragraph*
+Infinispan
+\end_layout
+
+\begin_layout Standard
+Infinispan, formerly known as JBoss Cache, was born as a support tool to
+ scale up Web applications and achieve fault tolerance in the well known
+ JBoss Application Server.
+ In particular, JBoss Cache was used to replicate and synchronize session
+ state among servers in a cluster of JBoss servers.
+ The main difference with the other databases is that Infinispan has traditional
+ly been biased towards consistency and availability, sacrificing partition
+ tolerance.
+\end_layout
+
+\begin_layout Paragraph*
+Hazelcast
+\end_layout
+
+\begin_layout Standard
+Hazelcast differs from the rest of the reviewed Key-Value databases in its
+ ability to easily and seamlessly integrate with existing non-distributed
+ Java programs.
+ To achieve this, Hazelcast provides distributed implementations of the
+ typical built-in Java data structures such as List, Vector, Set, and Hashtable.
+ Then, using Hazelcast in a program is just a matter of replacing imports,
+ and then tuning several parameters such as nodes belonging to the cluster,
+ replication mode, distributed data structures used, etc.
+ Hazelcast does not provide persistence support by default, but allows developer
+s to define their own storage support, which can be persistent instead.
+\end_layout
+
+\begin_layout Paragraph*
+Membase
+\end_layout
+
+\begin_layout Standard
+Membase is a Key-Value database that has been recently merged with the Document-
+oriented database CouchBase.
+ It uses the vBuckets mechanism to distribute and replicate data across
+ servers.
+ Writing consistency is immediate because writing and reading is always
+ performed on the key's master node (which has the only Available vBucket).
+ Thus, a client always gets the latest value written.
+ One of the most attractive features of CouchBase is its configuration simplicit
+y.
+ Once installed on the nodes, the network can be configured through a friendly
+ Web interface.
+ On the downside, Membase requires manual rebalancing of keys when a server
+ is down and needs to be removed from the cluster.
+ Key rebalancing is a costly operation that depends on the amount of keys
+ handled by the removed server.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some Key-Value databases maintain a subset of key/value pairs stored in
+ RAM, dramatically improving performance.
+ From the databases analyzed in this review, Hazelcast, Membase, Redis and
+ Riak use this strategy.
+ However, this decision comes with a cost: as the number of keys increases,
+ the use of RAM increases.
+ Riak and Membase always keep keys in memory, whereas values are removed
+ from memory if space is needed for new keys.
+ Hazelcast and Redis keep all key/value pairs in memory and eventually persist
+ them on disk.
+ In all cases, new requests to add keys are rejected when RAM runs out of
+ space.
+ For this reason, it is necessary to take into account whether the number
+ of keys to be stored exceeds the amount of RAM in the network and, if this
+ is the case, chose another alternative or augment the network size.
+\end_layout
+
+\begin_layout Standard
+A further feature to consider in the election of a database is the expected
+ data durability.
+ The level of durability must be decided according to the importance of
+ the data stored in the network, which sometimes can be configured.
+ Redis is a case of configurable durability.
+ By default, Redis offers the possibility of making data snapshots in memory
+ at time intervals.
+ If a failure occurs during such interval, the current data of the node
+ are lost.
+ For this reason, the database offers to do more frequent writings to disk
+ in a file that only supports appends, similar, in concept, to a log in
+ a log-structured file system.
+ This type of files is often used when high writing throughput needs to
+ be achieved.
+\end_layout
+
+\begin_layout Standard
+The query method varies from database to database, but the Get operation
+ (i.e., get a value by key) is always present.
+ Some alternative query methods are worth mentioning.
+ For example, Riak provides a graph-like querying method called Link Walking.
+ This method consists in creating relationships between keys and tagging
+ each relationship.
+ For example, if there is a relationship tagged 
+\begin_inset Quotes eld
+\end_inset
+
+friend
+\begin_inset Quotes erd
+\end_inset
+
+ between a key named 
+\begin_inset Quotes eld
+\end_inset
+
+Mark
+\begin_inset Quotes erd
+\end_inset
+
+ and all its friends' keys, Riak can be queried using the 
+\begin_inset Quotes eld
+\end_inset
+
+friend
+\begin_inset Quotes erd
+\end_inset
+
+ tag to obtain all Mark's friends.
+ Other databases provide alternative query methods like Cursors
+\begin_inset space ~
+\end_inset
+
+(a well-known structure in SQL), XQuery
+\begin_inset space ~
+\end_inset
+
+(an XML Query language) and even MapReduce
+\begin_inset space ~
+\end_inset
+
+(Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:MapReduce"
+
+\end_inset
+
+).
+ Some databases also allow the user to perform 
+\begin_inset Quotes eld
+\end_inset
+
+bulk gets
+\begin_inset Quotes erd
+\end_inset
+
+, i.e., getting the values of several keys in a single operation, resulting
+ in a considerable performance improvement and network communication savings.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Wide-Column"
+
+\end_inset
+
+Wide Column Databases
+\end_layout
+
+\begin_layout Standard
+Wide Column or Column Families databases store data by columns and do not
+ impose a rigid scheme to user data.
+ This means that some rows may or may not have columns of a certain type.
+ Moreover, since data stored by column have the same data type, compression
+ algorithms can be used to decrease the required space.
+ It is also possible to do functional partitioning per column so that columns
+ that are frequently accessed are placed in the same physical location.
+\end_layout
+
+\begin_layout Standard
+Most databases in this category are inspired by BigTable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chang2008"
+
+\end_inset
+
+, an ordered, multidimensional, sparse, distributed and persistent database,
+ that was created by Google to store data in the order of petabytes.
+ Therefore, a brief description of the most important features of BigTable
+ and how it achieves its objectives is given in the following section.
+\end_layout
+
+\begin_layout Standard
+Unlike Key-Value Databases, all Wide-Column Databases listed in this Section
+ are based on BigTable's data scheme or mechanisms.
+ This lack of diversity can be explained by the fact that this type of databases
+ has a very specific objective: to store terabytes of tuples with arbitrary
+ columns in a distributed environment.
+\end_layout
+
+\begin_layout Subsection
+BigTable
+\end_layout
+
+\begin_layout Standard
+BigTable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chang2008"
+
+\end_inset
+
+ was developed in order to accommodate the information from several Google
+ services: Google Earth, Google Maps and Blogger, among others.
+ These applications use BigTable for different purposes, from high throughput
+ batch job processing, to data provisioning to the end user considering
+ data latency constraints.
+ BigTable does not provide a relational model, which allows the client applicati
+on to have complete control over data format and arrangement.
+\end_layout
+
+\begin_layout Standard
+In BigTable, all data are arrays of bytes indexed by columns and rows, whose
+ names can be arbitrary strings.
+ In addition, a timestamp dimension is added to each table to store different
+ versions of the data, for example the text of a Web page.
+ Moreover, columns are grouped into sets called column families.
+ For example, the column family 
+\emph on
+course
+\emph default
+ can have 
+\emph on
+Biology
+\emph default
+ and 
+\emph on
+Math
+\emph default
+ columns, which are represented as 
+\emph on
+course:Biology
+\emph default
+ and 
+\emph on
+course:Math
+\emph default
+.
+ Column families usually have the same type of data, with the goal of being
+ compressed.
+ Moreover, disk and memory access is optimized and controlled according
+ to column families.
+\end_layout
+
+\begin_layout Subsubsection
+SSTable, Tablets and Tables
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/sstable.eps
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Estructura-de-SSTable,"
+
+\end_inset
+
+SSTable, Tablet and Table structures.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+BigTable works on the GFS (Google File System)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ghemawat2003a,Ghemawat2003b"
+
+\end_inset
+
+ distributed file system and has three types for storage structures: SSTables,
+ Tablets and Tables, which are shown in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Estructura-de-SSTable,"
+
+\end_inset
+
+.
+ SSTable is the most basic structure, which provides an ordered key/value
+ map of byte strings.
+ This basic block consists of a sequence of blocks (usually of 64
+\begin_inset space ~
+\end_inset
+
+KB) and a search index to determine which block is a certain datum, avoiding
+ the unnecessary load of other blocks in memory and decreasing disk operations.
+ Each SSTable is immutable, so no concurrency control is needed for reading.
+ A garbage collector is required to free deleted SSTables.
+\end_layout
+
+\begin_layout Standard
+A set of SSTables is called a Tablet.
+ A Tablet is a structure that groups a range of keys and represents a distributi
+on unit for load balancing.
+ Each table is composed of multiple tablets and, as the table grows, it
+ is divided into more Tablets.
+ The sub-Tables often have a fixed size of 100-200 MB.
+\end_layout
+
+\begin_layout Standard
+The location of each Tablet is stored in the network nodes using a tree
+ structure of three levels, like a B+ tree.
+ First, the file that contains the physical location of the root can be
+ found.
+ The root of the tree is a special Tablet named Root Tablet.
+ The leaves of the tree are called Metadata Tablets and are responsible
+ for storing the location of the user Tablets.
+\end_layout
+
+\begin_layout Standard
+Chubby
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Burrows2006"
+
+\end_inset
+
+, a distributed lock service, is used to find and access each Tablet.
+ Chubby keeps the location of the Root Tablet, information about the database
+ scheme (the column families and tables) and access checklists.
+ In addition, it synchronizes and detects Tablets nodes (a.k.a.
+ servers) that store Tablets.
+\end_layout
+
+\begin_layout Standard
+A Master Server is in charge of assigning Tablets to Tablet servers.
+ The Master Server monitors the addition and expiration of Tablet servers,
+ balances the load of such servers and performs garbage collection of files
+ stored in the GFS.
+ It also monitors changes in the scheme, i.e., addition of new column families
+ and Tables.
+\end_layout
+
+\begin_layout Subsubsection
+Tablets servers
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/tabletServer.eps
+	width 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Esquema-de-funcionamiento"
+
+\end_inset
+
+Operating diagram of a Tablet server.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Esquema-de-funcionamiento"
+
+\end_inset
+
+ depicts how a Tablet is stored on a Tablet server.
+ The updates performed on Tablets belonging to a Tablet Server are stored
+ in a Commit log that saves records to redo committed operations in case
+ that the Tablet Server dies.
+ The most recent records are kept in memory in a buffer known as Memtable.
+\end_layout
+
+\begin_layout Standard
+To obtain a Tablet the server reads from a table called METADATA that contains
+ the list of SSTables that form a Tablet and a set of pointers to the Commit
+ log called redo points.
+ The server then applies the updates carried out starting from the redo
+ points to rebuild the memtable.
+ Finally, to read from a Tablet, the Tablet Server forms a merged view from
+ the set of SSTables and the memtable.
+\end_layout
+
+\begin_layout Standard
+For writing operations, after verifying that the operation is well formed
+ and that the user is authorized (through Chubby), a valid mutation (write,
+ update or delete) is registered in the Commit log.
+ Groups of commits are used to improve the throughput of small mutations.
+ After making the commit, its content is inserted into the memtable.
+ If a certain limit of the memtable is exceeded, a new memtable is created,
+ the previous memtable is transformed into a SSTable.
+\end_layout
+
+\begin_layout Standard
+For reading operations, well-formedness and authorization are also checked,
+ after which the user is presented with a joint view of the SSTables sequence
+ and the memtable.
+ Thus, the latest updates are shown to the user without keeping the last
+ SSTables on disk.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:MapReduce"
+
+\end_inset
+
+MapReduce
+\end_layout
+
+\begin_layout Standard
+MapReduce is a framework based on the division of labor for parallelizing
+ data-intensive computations on large datasets
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dean2008,Ralf2008"
+
+\end_inset
+
+.
+ Basically, this framework consists of two programming abstractions that
+ must be instantiated by programmers: map and reduce.
+ The map function is responsible for processing key-value pairs and generating
+ as output a set of key-value pairs with intermediate results.
+ In turn, the reduce function is responsible for generating a list of results
+ from such intermediate results.
+ As MapReduce consists of programming abstractions, a support materializing
+ them at the middleware level including storage support is needed
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citet
+key "McCreadie2012"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+BigTable (and many other databases) supports passing data to map jobs and
+ storing data from reduce jobs by defining input and output wrappers for
+ MapReduce.
+ This way, MapReduce jobs allow to query and transform data stored in BigTable
+ in parallel, provided that queries can be expressed in this paradigm.
+ 
+\end_layout
+
+\begin_layout Standard
+MapReduce queries can be written in an imperative language like Java or
+ C, although even relatively simple queries can often span multiple lines
+ of code.
+ For example, in Java, implementing a distributed summatory using a list
+ of values requires creating a 
+\begin_inset Quotes eld
+\end_inset
+
+map
+\begin_inset Quotes erd
+\end_inset
+
+ method to divide the list to create jobs, and implementing a 
+\begin_inset Quotes eld
+\end_inset
+
+reduce
+\begin_inset Quotes erd
+\end_inset
+
+ method that sums the results of the tasks.
+ The task of dividing a list of elements into jobs and summing the results
+ can be easily generalized and offered as a generic operation.
+ For this reason, Google developed Sawzall
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pike2005"
+
+\end_inset
+
+, an interpreted procedural language to act as an interface to MapReduce.
+ Sawzall focuses on providing 
+\begin_inset Quotes eld
+\end_inset
+
+syntactic sugar
+\begin_inset Quotes erd
+\end_inset
+
+ that allows programmers to implement the 
+\emph on
+map
+\emph default
+ function of MapReduce, i.e., query operations, at a higher level of abstraction.
+ 
+\emph on
+Reduce
+\emph default
+ functions, i.e., aggregation of intermediate results, are much less varied
+ and thus are usually provided as generic operations.
+ Sum and average are examples of generic 
+\emph on
+reduce
+\emph default
+ functions frequently used in MapReduce applications.
+ A simple program in Sawzall to process a file that stores floating point
+ numbers is shown below:
+\end_layout
+
+\begin_layout Quotation
+count: table sum of int; 
+\end_layout
+
+\begin_layout Quotation
+total: table sum of float; 
+\end_layout
+
+\begin_layout Quotation
+sum_of_squares: table sum of float; 
+\end_layout
+
+\begin_layout Quotation
+x: float = input; 
+\end_layout
+
+\begin_layout Quotation
+emit count <- 1; 
+\end_layout
+
+\begin_layout Quotation
+emit total <- x; 
+\end_layout
+
+\begin_layout Quotation
+emit sum_of_squares <- x * x;
+\end_layout
+
+\begin_layout Standard
+First, the code is interpreted and distributed among the different nodes
+ where the files to be processed are located.
+ The first three lines define how to aggregate results.
+ The table 
+\emph on
+count
+\emph default
+ stores the amount of records found, 
+\emph on
+total
+\emph default
+ stores the sum of floating point numbers, and 
+\emph on
+sum_of_squares
+\emph default
+ stores the sum of squares.
+ The predefined variable 
+\emph on
+input
+\emph default
+ holds the input record that, in this case, it is interpreted like a floating
+ point number and stored in the 
+\emph on
+x
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+variable.
+ Hence, the last three lines aggregate the intermediate values in the result
+ tables.
+ Usually, aggregations are performed in other 
+\begin_inset Quotes eld
+\end_inset
+
+aggregator
+\begin_inset Quotes erd
+\end_inset
+
+ nodes that receive intermediate data and combine them.
+ Finally, when all records have been read the values are displayed or stored
+ in a file.
+\end_layout
+
+\begin_layout Subsection
+List of Wide-Column databases
+\end_layout
+
+\begin_layout Standard
+BigTable is a system used internally by Google, i.e., the community has no
+ access to its source code or executables.
+ However, several open source alternatives offering similar services were
+ developed based on the academic publications made by the company.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="2cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Persistence
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Replication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Sharding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Implementation Language
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+API
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Query Method
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HBase
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HDFS (Hadoop File System)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HDFS replication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+By key ranges
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Strong Consistency 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java, HTTP + JSON, Avro, Thrift
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Slee2007"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Hadoop MapReduce, Pig, Hive 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Hypertable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HDFS by default (other supports are available)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HDFS replication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+By key ranges
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Strong Consistency 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+C++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Thrift
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HQL (Hypertable Query Language), Hadoop MapReduce, Hive, Pig
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Cassandra
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Proprietary format
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Ring (next N-1)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistent Hashing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Thrift
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+CQL (Cassandra Query Language), Hadoop MapReduce, Pig, Hive
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Características-de-diferentes"
+
+\end_inset
+
+Characteristics of Wide Column databases.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Características-de-diferentes"
+
+\end_inset
+
+ summarizes these alternatives.
+ The table compares the HBase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "George2011"
+
+\end_inset
+
+, Hypertable
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hypertable2013"
+
+\end_inset
+
+ and Cassandra
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lakshman2010"
+
+\end_inset
+
+ databases.
+ Following, we further describe them:
+\end_layout
+
+\begin_layout Paragraph*
+HBase and Hypertable
+\end_layout
+
+\begin_layout Standard
+HBase belongs to the Apache Software Foundation and it is based directly
+ on BigTable.
+ The storage support is HDFS (Hadoop Distributed File System)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shvachko2010"
+
+\end_inset
+
+, which in turn is based on GFS.
+ Hypertable is also modeled based on BigTable, but implemented in C++.
+ Like HBase, Hypertable relies on HDFS for storage and replication.
+ Both databases allow consulting the database using Hadoop MapReduce
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shvachko2010"
+
+\end_inset
+
+, an open source implementation of Google MapReduce.
+ Furthermore, querying is done through languages similar to Sawzall, such
+ as Pig
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gates2009"
+
+\end_inset
+
+ and Hive
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Thusoo2009"
+
+\end_inset
+
+.
+ Querying can also be combined with a workflow scheduler system like Apache
+ Oozie
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "islam2012"
+
+\end_inset
+
+, which allows the creation of DAGs (Directed Acyclic Graphs) of jobs that
+ obtain data from HDFS.
+\end_layout
+
+\begin_layout Paragraph*
+Cassandra
+\end_layout
+
+\begin_layout Standard
+Cassandra, which recently moved to the Apache Software Foundation, uses
+ columns and columns families to model data, but uses Dynamo mechanisms
+ to manage storage and replication, namely Consistent Hashing, Read-Repair,
+ Vector Clocks, Gossip Protocol, among others.
+ Cassandra does not have a single point of failure because of its peer-to-peer
+ architecture, which can be considered an advantage.
+ Hypertable or HBase, both based on HDFS, have a single point of failure,
+ the so-called NameNode.
+ This component is a Master Server that manages the file system namespace
+ and controls its access from the clients.
+ The drawback is that this component is unique for the entire file system.
+ NameNode replication can be done by any software that can copy all disk
+ writings to a mirror node.
+ An example of this type of software is DRBD (Distributed Replicated Block
+ Device), a distributed mirroring system analogous to a RAID-1 array
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ellenberg2007"
+
+\end_inset
+
+.
+ Another feature of Cassandra is the possibility to choose between two partition
+ing schemes: Order Preserving Partitioning and Random Partitioning.
+ Order Preserving Partitioning distributes keys in a ring preserving their
+ order.
+ This allows to efficiently perform range queries, i.e., obtain consecutive
+ keys.
+ However, this partitioning scheme tends to unbalance load across nodes,
+ e.g., frequent write operations on a key range may fall on the same node.
+ This problem translates into an administrative overhead to try to distribute
+ key ranges according to their access patterns.
+ Regarding querying, Cassandra offers a SQL-Like query language called CQL
+ (Cassandra Query Language) and Hadoop MapReduce for distributed job processing.
+ The Hadoop support also extends to Pig and Hive query languages, and Apache
+ Oozie.
+\end_layout
+
+\begin_layout Standard
+Some of the surveyed databases in this paper provide native clients in many
+ languages with the help of an interface definition language, which specifies
+ the service interface and data types, and a code-generation software, which
+ generates clients and servers in a specified language.
+ Thrift
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Slee2007"
+
+\end_inset
+
+ is an example of such a tool.
+ It allows to specify service interfaces and data types in the Thrift IDL
+ (Interface Definition Language) and, using a set of code-generation tools,
+ create native RPC clients and servers in languages such as Java, Ruby or
+ Python, among others.
+ Avro
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Avro2013"
+
+\end_inset
+
+ is a similar tool to Thrift.
+ In this case, Avro provides its own IDL, but supports JSON to specify interface
+s and data types.
+\end_layout
+
+\begin_layout Standard
+It is notable the reduced number of Wide Column databases available with
+ respect to other types of NoSQL databases.
+ In principle, this can be attributed to two reasons.
+ First, the complexity in the development of such databases is considerably
+ high.
+ Considering Bigtable, for example, a storage medium such as GFS, a distributed
+ lock server as Chubby and a Table server similar to the Master Server are
+ required.
+ Second, the application domain of Wide Column databases is limited to particula
+r problems: data to be stored need to be structured and potentially reaching
+ the order of petabytes, but search can only be done through the primary
+ key, i.e., the ID of the row.
+ Queries on certain columns are not possible as this would imply to have
+ an index on the entire dataset or traverse it.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Basadas-en-documentos"
+
+\end_inset
+
+Document-oriented databases
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="2.5cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<column alignment="center" valignment="top" width="2.6cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Persistence
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Replication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Sharding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Implementation Language
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+API
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Query Method
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+CouchDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+CouchDB Storage Engine (B-Tree)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+ Master-Master.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+No, but there are extensions to CouchDB that allow sharding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Erlang
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HTTP + JSON, and clients for different languages (including Java)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Views using JavaScript + MapReduce
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+MongoDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+BSON Objects or GridFS for big files
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Replica Sets (sets of Master-Slaves) or simply Master-Slave
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+By field, which can be any field in a document collection 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Strict Consistency by default, but can be relaxed to Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+C++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Mongo Wire Protocol + BSON, HTTP + JSON, and clients for most languages
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Queries per field, Cursors and MapReduce
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Terrastore
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Terrastore storing support
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Master-Slave with N replicas in hot-standby.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistent Hashing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HTTP + JSON, and clients for some languages (Java, Clojure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hickey2008"
+
+\end_inset
+
+, Scala
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Odersky2004"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Conditional queries, queries by range Predicates, MapReduce
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+RavenDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Microsoft's ESE (Extensible Storage Engine)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Master-Slave on N-replicas.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Allows the user to define a sharding function based on the documents' fields
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+C#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HTTP + JSON, .Net
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+LINQ
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparación-de-diferentes"
+
+\end_inset
+
+Comparison of different document-oriented databases.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Document-oriented or Document-based databases can be seen as Key-Value databases
+ where the value to store has a known structure determined at database design
+ time.
+ As a consequence, the architecture of these systems is based on several
+ concepts, some of them defined earlier in this work, to achieve scalability,
+ consistency and availability.
+ 
+\end_layout
+
+\begin_layout Standard
+In contrast to Wide-Column and Key-Value databases, there is no reference
+ Document-oriented database design (like BigTable or Dynamo), which reflects
+ in the diversity of techniques and technologies applied by database vendors.
+ 
+\end_layout
+
+\begin_layout Standard
+In this context, documents are understood as semi-structured data types,
+ i.e., they are not fully structured as tables in a relational database, but
+ new fields can be added to the structure of each document according to
+ certain rules.
+ These rules are specified in the standard format or encoding of the stored
+ documents.
+ Some popular document formats are XML, JSON and BSON.
+ Like Wide Column databases, Document-oriented ones are schemaless, i.e.,
+ they have no predefined schema data to conform with.
+ Then, the number and type of fields in the documents in the same database
+ may be different.
+\end_layout
+
+\begin_layout Standard
+Since the database knows the type of data stored, operations that are not
+ available in traditional Key-Value databases become possible in document-orient
+ed databases.
+ Among these operations we can mention add and remove value fields, modify
+ certain fields and query the database by fields.
+ If a Key-Value database is used to store documents, a 
+\begin_inset Quotes eld
+\end_inset
+
+document
+\begin_inset Quotes erd
+\end_inset
+
+ represents values, and the addition, deletion and modification of fields
+ imply to replace the entire document for a new document.
+ Instead, a Document-oriented database can directly access the fields to
+ carry out the operations.
+\end_layout
+
+\begin_layout Standard
+In a Key-Value database, queries are performed by providing one or more
+ keys as input.
+ In Document-oriented databases queries can be done on any field using patterns.
+ Then, ranges, logical operators, wildcards, and more, can be used in queries.
+ The drawback is that for each type of query a new index needs to be created,
+ because document databases index elements by the document identifier.
+ In general, the document identifier is a number that uniquely identifies
+ a document in the database.
+\end_layout
+
+\begin_layout Standard
+A Document-oriented database is useful when the number of fields cannot
+ be fully determined at application design time.
+ For example, in an image management system, a document could be written
+ in JSON format as follows:
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+{
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+route: /usr/images/img.png,
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+owner:
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+{
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+name: Alejandro
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+surname: Corbellini
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+},
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+tags: [
+\begin_inset Quotes eld
+\end_inset
+
+sea
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+beach
+\begin_inset Quotes erd
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+}
+\end_layout
+
+\begin_layout Standard
+New features can be added as the system evolves.
+ For example, when updating the previous document with the ability to access
+ the page owner, a checksum of the image and user ratings, the above document
+ would become:
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+{
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+route: /usr/images/img.png,
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+owner:
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+{
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+name: Alejandro
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+surname: Corbellini
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+web: www.alejandrocorbellini.com.ar
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+},
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+tags: [
+\begin_inset Quotes eld
+\end_inset
+
+sea
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+beach
+\begin_inset Quotes erd
+\end_inset
+
+],
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+md5: 123456789abcdef123456789abcdef12,
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ratings:
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+{
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+{
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+user: John Doe
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+comment: 
+\begin_inset Quotes eld
+\end_inset
+
+Very good!
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+starts: 4
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+},
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+{
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+user: Jane Doe
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+comment: 
+\begin_inset Quotes eld
+\end_inset
+
+Bad lightning
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+starts: 1
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+}
+\end_layout
+
+\begin_layout Quotation
+\paragraph_spacing other 0.80000000000000004
+
+\family typewriter
+\size small
+}
+\end_layout
+
+\begin_layout Standard
+New tables must be created to achieve the same goal in a relational database,
+ which can lead to perform joins between tables containing numerous rows
+ or modify the existing table schema, upgrading all rows in the database.
+\end_layout
+
+\begin_layout Standard
+Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparación-de-diferentes"
+
+\end_inset
+
+ summarizes the most representative NoSQL Document-oriented databases: CouchDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lennon2009"
+
+\end_inset
+
+, MongoDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chodorow2010"
+
+\end_inset
+
+, Terrastore 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Terrastore2013"
+
+\end_inset
+
+ and RavenDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RavenDB2013"
+
+\end_inset
+
+.
+ Following, we describe them:
+\end_layout
+
+\begin_layout Paragraph*
+CouchDB
+\end_layout
+
+\begin_layout Standard
+CouchDB is a database maintained by the Apache Foundation and supported
+ mostly by two companies: Cloudant and CouchBase.
+ This database uses Multiple Version Concurrency Control
+\emph on
+ 
+\emph default
+(MVCC)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bernstein1981"
+
+\end_inset
+
+ to provide concurrent access to stored documents.
+ This mechanism allows multiple versions of a document to co-exist in the
+ database, similar to the 
+\emph on
+branch
+\emph default
+ concept in a Version Control System (VCS).
+ Each user editing a document receives a snapshot of the current document
+ and after working on it, a version is saved with the most recent timestamp.
+ Earlier versions are not deleted so that readers can continue accessing
+ them.
+ When a reader wants to access the document, the database resolves which
+ is the newest version using the timestamps.
+ This flexibility comes at an extra cost of storage space and has the disadvanta
+ge that conflicts between versions of documents might arise.
+ The last issue is usually solved by alerting the client that is trying
+ to write a conflicting version, just like a VCS would.
+ Unlike a VCS, the database must ensure obsolete documents are periodically
+ cleaned, i.e., those that are not in use and correspond to older versions.
+ CouchDB provides ACID transactions only per document, i.e., each operation
+ on a document is atomic, consistent, complete and durable.
+ This is achieved by serializing operations made by clients and never overwritin
+g documents on disk.
+ Replication follows the Master-Master model, i.e., the replicas also serve
+ requests from the clients, both for writing and reading.
+ The goal is that server nodes can be distributed among different networks
+ and clients can write or read from the closest servers.
+ Updates between replicas are bidirectional and, if there are network failures,
+ synchronization waits for the connectivity to be reestablished.
+ This replication approach may result in clients reading old documents from
+ replicas that have not received updates yet.
+ For querying documents, CouchDB uses the concept of views, which is borrowed
+ from RDBMSs.
+ These structures are defined in JavaScript and enable to display structured
+ contents starting from documents.
+ The code of a view is equivalent to the map function of MapReduce, but
+ it is not done in a distributed manner.
+ To overcome this limitation, there are extensions to use CouchDB in a cluster,
+ facilitating the addition and remotion of nodes.
+ As a result, the end user has the illusion that there is only one node.
+ Freely available extensions for distributing CouchDB are BigCouch
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BigCouch2013"
+
+\end_inset
+
+, Lounge
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lounge2013"
+
+\end_inset
+
+ and Pillow
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Holt2011"
+
+\end_inset
+
+.
+ Additionally, some of these extensions provide an automatic sharding technique
+ such as Consistent Hashing (Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Consistent-Hashing"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Paragraph*
+MongoDB
+\end_layout
+
+\begin_layout Standard
+MongoDB is a free Document-oriented database that runs on a wide range of
+ platforms.
+ It is developed and maintained by the 10gen company
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+10gen Web Page, http://www.10gen.com/
+\end_layout
+
+\end_inset
+
+.
+ This database implements different techniques for storing documents.
+ Firstly, documents are encoded in BSON, a binary version JSON.
+ BSON provides faster reading and less space usage than JSON.
+ To achieve the former goal, BSON uses prefixes that indicate the size of
+ each element and its position.
+ BSON documents have the disadvantage of having a space limit up to 16
+\begin_inset space ~
+\end_inset
+
+MB.
+ BSON files larger than 16
+\begin_inset space ~
+\end_inset
+
+MB are stored in GridFS
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bhardwaj2006"
+
+\end_inset
+
+, a distributed file system that allows large files to be split into smaller
+ parts to access them separately, to deal with big files in parallel.
+ Regarding data sharding, MongoDB integrates the functionality for distributing
+ data and queries through different nodes.
+ For this purpose, the database uses a router for queries, called Mongo,
+ which evenly distributes queries to nodes to balance the cluster load.
+ For simpler queries, MongoDB provides an API 
+\emph on
+find
+\emph default
+() that uses BSON documents to highlight where the fields and query values
+ match.
+ These documents are traversed using a cursor allowing to visit each document
+ matching the query as in a RDBMS.
+ For more advanced queries, that require to group data belonging to multiple
+ documents, MongoDB can run MapReduce jobs.
+ Replication in MongoDB can be achieved through the classic Master-Slave
+ scheme but it also introduces an alternative known as Replica Sets.
+ Like in a Master-Slave schema, Replica Sets allow replicated nodes to be
+ grouped while being one of them the primary node and the remaining are
+ secondary ones, but also offer failover and automatic fail recovery.
+ Optionally, reading can be done from the secondary nodes balancing the
+ load over the Replica set, but reducing the consistency level with respect
+ to the primary node.
+ The goal of the Replica Sets is improving the plain Master-Slave scheme,
+ easing cluster maintenance.
+ For supporting concurrency, MongoDB provides atomic operations per document
+ which means that, when a document is updated using atomic operations, the
+ database ensures that the operation will succeed or fail without leaving
+ inconsistencies.
+ Unlike CouchDB, MongoDB does not provides MVCC, whereby readings can be
+ blocked until the atomic operations are completed.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Terrastore
+\end_layout
+
+\begin_layout Standard
+Another alternative for storing documents in a distributed manner is Terrastore.
+ This database is based on Terracotta
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Terracotta2008"
+
+\end_inset
+
+, a distributed application framework based on Java.
+ Documents must follow the JSON notation and can be directly accessed both
+ via HTTP or specific clients in Java, Clojure and Scala, among others.
+ Like MongoDB, Terrastore has integrated sharding support to transparently
+ add and remove nodes.
+ Replication is done using Master-Slave, where slaves are kept in hot-standby,
+ i.e., they can replace the master at any time if it fails.
+ Terracotta operations are consistent at document level and concurrency
+ is handled with the read-committed strategy.
+ Write-locks are used throughout a write transaction, but readings are only
+ blocked for each query or SELECT within the transaction allowing to alternate
+ writing and reading operations.
+ As a result of this strategy, it may be possible that during a transaction
+ a reading returns a value, the document is modified and then the same reading
+ within the transaction returns a different value.
+\end_layout
+
+\begin_layout Paragraph*
+RavenDB
+\end_layout
+
+\begin_layout Standard
+Finally, RavenDB is an alternative developed on the .Net platform.
+ Although implemented in
+\begin_inset space ~
+\end_inset
+
+C#, it provides an HTTP interface to access the database from other languages.
+ ACID transactions are supported, but RavenDB is based on an optimistic
+ transaction scheme to avoid the use of locks.
+ To access stored documents RavenDB allows defining indexes through LINQ
+ queries, a query language developed by Microsoft with a syntax similar
+ to SQL.
+ LINQ queries can define free fields that can be passed as parameters by
+ the user, filtering the indexed documents.
+ A feature that differentiates RavenDB from other document-oriented databases
+ is the mechanism to configure the sharding of documents.
+ Albeit sharding support is integrated, it is not automatic.
+ The database client must define the shards and strategies to distribute
+ the documents across the different network nodes.
+ One of the major drawbacks of RavenDB is the requirement of a paid license
+ for use in commercial products or services.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Basadas-en-grafos"
+
+\end_inset
+
+Graph-oriented Databases
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways true
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="2cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Persistence
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Replication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Sharding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Implementation Language
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+API
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Query Method
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Neo4J
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Indexes on disk (Apache Lucene by default)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Master-Slave
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Manual 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java, HTTP + JSON, bindings in Ruby, Clojure, Python, among others
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+SPARQL (RDF and OWL), Java API, Gremlin
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+InfiniteGraph
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Objectivity/DB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Synchronous replication of Objectivity/DB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+ Rule based sharding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Strong Consistency or Eventual Consistency 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+C++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+C++, Java, Python and C#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+API for graph traversing and Predicate
+\emph on
+ 
+\emph default
+Queries
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+InfoGrid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+MySQL, HadoopFS, among others
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Peer-to-Peer (XPRISO protocol)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Manual
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java, HTTP + JSON
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Viewlets, Templates HTML, Java
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HypergraphDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+2 tiers: Primitive (Raw Data) and Model (relations + 
+\emph on
+caching
+\emph default
+ + indexes)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Peer-to-Peer (Agent-based)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Manual
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java API, Prolog, OWL, RDF via Sesame
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+BigData
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Indexes (B+ trees)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Master-Slave
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Quotes erd
+\end_inset
+
+Dynamic
+\begin_inset Quotes erd
+\end_inset
+
+ sharding (by key-range shards, also called index partitions)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Java and service discovery through JNI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+SPARQL, RDFS++
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+AllegroGraph
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Indexes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Master-Slave (Warm Standby)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Manual
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Eventual Consistency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Lisp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+HTTP + JSON and clients in several languages (included Java)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+SPARQL, Prolog, RDFS++, and graph traversal through API
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparación-de-bases"
+
+\end_inset
+
+Comparison of graph databases.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nowadays, graphs are used for representing many large real-world entities
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Krepska2011"
+
+\end_inset
+
+ such as maps and social networks.
+ For example, OpenStreetMap, an open geographic data repository maintained
+ by a huge user community, reached more than 1800
+\begin_inset space ~
+\end_inset
+
+million nodes in
+\begin_inset space ~
+\end_inset
+
+2013.
+ On the other hand, Twitter has experienced a tremendous growth
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2011"
+
+\end_inset
+
+, and nowadays has more than 200
+\begin_inset space ~
+\end_inset
+
+million active users tweeting 400
+\begin_inset space ~
+\end_inset
+
+million tweets per day and supporting billions of follower/followed relationship
+s.
+ The interest for storing large graphs and, more importantly, querying them
+ efficiently has resulted in a wide spectrum of NoSQL databases known as
+ Graph-oriented or Graph-based databases.
+ These databases address the problem of storing data and their relationships
+ as a graph, allowing to query and navigate it efficiently.
+ Similarly to Document-oriented databases, there is no Graph-oriented database
+ that can be used as a 
+\begin_inset Quotes eld
+\end_inset
+
+reference design
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Browsing graphs stored in a large RDBMS is expensive because each movement
+ through the edges implies a join operation.
+ Usually, Graph-oriented databases represent data and their relationships
+ in a natural way, i.e., using a structure that contains the vertex information
+ and a list of pointers to other vertexes.
+ Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ejemplo-de-representación"
+
+\end_inset
+
+ shows a graph example in which each vertex is stored next to its adjacency
+ list, i.e., the vertexes it relates with.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/repGrafo.eps
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ejemplo-de-representación"
+
+\end_inset
+
+Example of vertex representation in a Graph-oriented database.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In addition to the interest for storing graphs, recent studies have addressed
+ the problem of efficiently processing large graphs stored in a distributed
+ environment.
+ In this context, distributed graph processing presents a challenge in terms
+ of job parallelization.
+ For example, in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "corbellini2013efficient"
+
+\end_inset
+
+, we propose a framework for storing Twitter adjacency lists and query them
+ to efficiently provide recommendations of users to follow.
+ In our experiments, storing 1.4 billion of relationships among 40 million
+ users proved to be challenging in terms of storage and distributed graph
+ algorithm design.
+ 
+\end_layout
+
+\begin_layout Standard
+Generally, graph algorithms are dictated by the arc-vertex pairs of the
+ graph being processed, i.e., the execution of the algorithm depends on the
+ structure of the graph.
+ Additionally, a partitioning strategy is difficult to express in source
+ code because the structure of the graph (unlike lists or hashes) is not
+ known 
+\emph on
+a priori
+\emph default
+.
+ This also affects directly the computing locality, especially in distributed
+ environments.
+ Furthermore, although parallelism can be achieved, the algorithms do not
+ perform too much processing on the vertexes, but focus on traversing the
+ graph through their arcs.
+ This generates a significant communication overhead when the vertexes are
+ located in different computing nodes
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lumsdaine2007"
+
+\end_inset
+
+.
+ The former is one of the greatest pitfalls in the application of MapReduce-base
+d frameworks in graph processing
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kajdanowicz2013"
+
+\end_inset
+
+.
+ The problems of MapReduce on graphs have led to the creation of new processing
+ models and frameworks such as Pregel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Malewicz2010"
+
+\end_inset
+
+, Apache Giraph (based on Pregel)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Giraph2013"
+
+\end_inset
+
+, Trinity
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shao2012"
+
+\end_inset
+
+, HipG
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Krepska2011"
+
+\end_inset
+
+ or Mizan (also based on Pregel)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Khayyat2013"
+
+\end_inset
+
+.
+ However, graph processing frameworks store all data in memory, i.e., they
+ obtain data from files on disk and load the structure of the graph on each
+ node in RAM to perform processing afterwards.
+ Once processing is completed, the modifications made on the graph residing
+ in main memory are not persisted.
+ In this survey, special attention is paid to those databases that allow
+ persisting data and, therefore, frameworks for intensive graph computing
+ are not included in the comparison.
+ 
+\end_layout
+
+\begin_layout Standard
+Then, Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparación-de-bases"
+
+\end_inset
+
+ presents a comparison between the following Graph-oriented databases: Neo4J
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Neo4J2013"
+
+\end_inset
+
+, InfiniteGraph
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InfiniteGraph2013"
+
+\end_inset
+
+, InfoGrid
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InfoGrid2013"
+
+\end_inset
+
+, HyperGraph
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Iordanov2010"
+
+\end_inset
+
+, AllegroGraph
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Aasman2006"
+
+\end_inset
+
+ and BigData
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BigData2013"
+
+\end_inset
+
+.
+ As mentioned before, open source or free distributed Graph-oriented databases
+ are presented, limited to those providing some type of persistence and
+ bringing a certain durability.
+ Furthermore, we provide a description of the Graph-oriented databases analyzed:
+\end_layout
+
+\begin_layout Paragraph*
+Neo4J
+\end_layout
+
+\begin_layout Standard
+Neo4J is an open source project that uses Lucene indexes to store data so
+ that access to vertexes and relationships is more efficient.
+ Neo4J also uses an MVCC mechanism with a read-committed strategy to increase
+ reading and writing concurrency.
+ These decisions enable the storage of millions of vertexes in a single
+ computational node.
+ In Neo4J, sharding of the vertexes across nodes is done manually (by the
+ developer) using domain-specific knowledge and access patterns.
+ Additionally, a periodical defragmentation (vertex relocation) using rules
+ has been proposed but not implemented yet
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+On Sharding Graph Databases, http://jim.webber.name/2011/02/on-sharding-graph-data
+bases/
+\end_layout
+
+\end_inset
+
+.
+ A Neo4J graph is accessed via a Java API or graph query languages such
+ as SparQL
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Prud2008"
+
+\end_inset
+
+ or Gremlin
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gremlin2013"
+
+\end_inset
+
+.
+ SparQL is a language used for querying data stored in RDF (Resource Description
+ Framework) format, a metadata data model originally created by the World
+ Wide Web Consortium (W3C) to describe resources (i.e., adding semantic informatio
+n) on the Web.
+ In general, RDF data are stored as 3-tuples indicating a subject, a predicate
+ and an object.
+ Intrinsically, it represents a labeled directed graph: the source vertex,
+ the relationship type and the destination vertex.
+ Gremlin is a language for doing graph traversal over graphs stored in various
+ formats.
+ In addition to a free version, Neo4J has enterprise versions that add monitorin
+g, online backup and high availability clustering.
+ The Neo4J module that enables to define a Master-Slaves node structure
+ is only available in the paid version.
+\end_layout
+
+\begin_layout Paragraph*
+InfiniteGraph
+\end_layout
+
+\begin_layout Standard
+InfiniteGraph has its own storage media called Objectivity/DB.
+ Unlike Neo4J, it features automatic sharding using 
+\begin_inset Quotes eld
+\end_inset
+
+managed placement
+\begin_inset Quotes erd
+\end_inset
+
+ to distribute a graph over a cluster.
+ Managed placement allows the user to define rules for custom sharding and,
+ for example, keep related vertexes close to each other.
+ Unfortunately, the free license allows storing just 1
+\begin_inset space ~
+\end_inset
+
+million edges and vertexes.
+\end_layout
+
+\begin_layout Paragraph*
+InfoGrid
+\end_layout
+
+\begin_layout Standard
+InfoGrid is an open-source storage based on structures known as NetMeshBase,
+ which contains the vertexes of the graph, called MeshObjects, and its relations
+hips.
+ It can be persisted using a RDBMS like MySQL or PostgresSQL, or using a
+ distributed file system like HDFS or Amazon S3.
+ If a distributed file system like HDFS is used, the benefits of availability
+ and performance of the system can be attained.
+ Furthermore, NetMeshBase structures can communicate with each other so
+ that graphs can be distributed among different clusters.
+\end_layout
+
+\begin_layout Paragraph*
+HyperGraphDB
+\end_layout
+
+\begin_layout Standard
+HyperGraphDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Iordanov2010"
+
+\end_inset
+
+ introduces a different approach for representing stored data through the
+ use of hypergraphs.
+ A hypergraph defines an n-ary relation between different vertexes of a
+ graph.
+ This reduces the number of connections needed to connect the vertexes and
+ provides a more natural way of relating the nodes in a graph.
+ An example of a hypergraph is the relationship 
+\emph on
+borderlines
+\emph default
+, where nodes such as 
+\emph on
+Poland
+\emph default
+, 
+\emph on
+Germany
+\emph default
+ and 
+\emph on
+Czech Republic
+\emph default
+ can be added.
+ The database only requires a hypergraph containing these vertexes to store
+ the relationship, whereas a graph representation uses three arcs among
+ the nodes.
+ For storage, HyperGraphDB relies on BerkeleyDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Olson1999"
+
+\end_inset
+
+, providing two layers of abstraction over it: a primitive layer, which
+ includes a graph of relations between vertexes, and a model layer, which
+ includes the relations among the primitive layers adding also indexes and
+ caches.
+ These abstractions allow defining different graph interpretations, including
+ RDF, OWL (an extension to RDF that allows to create ontologies upon RDF
+ data), a Java API and a Prolog API, among others.
+\end_layout
+
+\begin_layout Paragraph*
+BigData
+\end_layout
+
+\begin_layout Standard
+Finally, BigData is an RDF database scalable to large numbers of vertexes
+ and edges.
+ It relies on a log-structured storage and the addition of B+
+\begin_inset space ~
+\end_inset
+
+indexes, which are partitioned as the amount of data increases.
+ For single node configurations, BigData can hold up to 50
+\begin_inset space ~
+\end_inset
+
+billion vertexes or arcs without sacrificing performance.
+ If vertexes need to be distributed, the database provides a simple dynamic
+ sharding mechanism that consists in partitioning RDF indexes and distributing
+ them across different nodes.
+ Moreover, it provides the possibility of replicating nodes with the Master-Slav
+e mechanism.
+ BigData offers an API for SparQL and RDFS++ queries.
+ The latter is an extension of RDFS (Resource Description Framework Schema),
+ a set of classes or descriptions for defining ontologies in RDF databases
+ and to make inferences about the data stored.
+\end_layout
+
+\begin_layout Paragraph*
+AllegroGraph
+\end_layout
+
+\begin_layout Standard
+AllegroGraph is a RDF Store that supports ACID transactions marketed by
+ a company named Franz Inc., which offers a free version limited to 3 million
+ RDF triplets in the database.
+ Like HyperGraphDB, this database has a very wide range of query methods
+ including: SPARQL, RDFS++, OWL, Prolog and native APIs for Java, Python,
+ C# among others.
+\end_layout
+
+\begin_layout Standard
+In addition to the listed databases, there are other similar 
+\emph on
+application-specific
+\emph default
+ databases that deserve mention.
+ One is FlockDB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FlockDB2013"
+
+\end_inset
+
+, a Graph-oriented database developed by Twitter.
+ This is a database with a very simple design since it just stores the followers
+ of the users, i.e., their adjacency list.
+ Among its most important features are its horizontal scaling capabilities
+ and the ability to perform automatic sharding.
+ 
+\end_layout
+
+\begin_layout Standard
+A second database worth mentioning is Graphd
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Meyer2010"
+
+\end_inset
+
+, the storage support of FreeBase
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bollacker2008"
+
+\end_inset
+
+, a collaborative database that stores information about movies, arts and
+ sports, among others.
+ Graphd storage medium is an append-only file in which tuples are written.
+ Each tuple can define either a node or arelationship between nodes.
+ Tuples are never overwritten, when a new tuple is created the modified
+ tuple is marked as deleted.
+ Inverted indexes are used to accelerate access, going directly to the positions
+ of tuples in the file.
+ MQL (Metaweb Query Language), a language of Freebase analogous to SparQL,
+ is used for querying the database.
+ Graphd is a proprietary system, therefore, it was not included in the compariso
+n.
+ However, access to the database query API is available on the Web
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.freebase.com/queryeditor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Sakr2014"
+
+\end_inset
+
+ the authors propose an extension to SPARQL, named G-SPARQL, and, more important
+ to this work, an hybrid storage approach in which the graph structure and
+ its attributes are stored in a relational database.
+ Queries on the graph attributes are executed on the relational database
+ whereas topological queries are executed on an in-memory graph representation.
+ This strategy avoids the performance penalty of making recursive join operation
+s on the database tables while still benefiting from the querying and storage
+ efficiency of a relational database.
+ However, the authors do not mention a distributed variant of the mentioned
+ approach.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

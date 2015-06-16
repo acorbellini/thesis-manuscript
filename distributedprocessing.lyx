@@ -1,0 +1,329 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage[numbers,sort]{natbib}
+\end_preamble
+\options 11pt,openright,twoside,letterpaper,onecolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch section-bib
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Graph Processing
+\end_layout
+
+\begin_layout Standard
+
+\color black
+The architecture proposed stems from two existing types of systems: graph
+ processing frameworks and graph databases.
+
+\color inherit
+ Several frameworks that support graph processing algorithms in clusters
+ of computers can be found in the literature.
+ Many of those efforts are based on the well-known Bulk Synchronous Parallel
+ (BSP) model by Valiant et.
+ al.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "valiant1990bsp"
+
+\end_inset
+
+, which divides the execution of an algorithm in multiple 
+\emph on
+supersteps
+\emph default
+ synchronized by logical barriers in which message passing takes place.
+ As an example, Pregel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Malewicz2010"
+
+\end_inset
+
+ is one of the most popular BSP-based computational models for graph processing.
+ It introduces an in-memory, vertex-centric approach for modelling graph
+ algorithms.
+ Moreover, there are several open-source, publicly available implementations
+ based on Pregel, such as Giraph
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Giraph Web Page, http://giraph.apache.org/
+\end_layout
+
+\end_inset
+
+, jPregel
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+jPregel Web Page, http://kowshik.github.com/JPregel/
+\end_layout
+
+\end_inset
+
+, GoldenOrb
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+GoldenOrb Web Page, http://www.goldenorbos.org/
+\end_layout
+
+\end_inset
+
+ and Phoebus
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Phoebus Web Page, https://github.com/xslogic/phoebus
+\end_layout
+
+\end_inset
+
+.
+ Trinity
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Trinity2012"
+
+\end_inset
+
+ is another graph processing framework, created by Microsoft providing vertex-ce
+ntric computation using BSP, and also graph querying capabilities and message
+ passing between computing nodes.
+ HipG
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Krepska2011"
+
+\end_inset
+
+ uses the notion of 
+\emph on
+synchronizers 
+\emph default
+to model algorithms and 
+\emph on
+nodes 
+\emph default
+to perform vertex-centric computations.
+ Each 
+\emph on
+synchronizer 
+\emph default
+might asynchronously call many 
+\emph on
+nodes
+\emph default
+ and then use a barrier to wait for 
+\emph on
+node
+\emph default
+ execution finalization.
+ Synchronizers might spawn multiple child 
+\emph on
+synchronizers
+\emph default
+, effectively building a hierarchy of parallel 
+\emph on
+synchronizers
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+GraphX
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xin2013graphx"
+
+\end_inset
+
+ is a BSP-based framework that covers the whole graph processing pipeline,
+ i.e., data acquisition, graph partitioning and subsequent processing.
+ It also provides a table view of graphs that allows the user to perform
+ filter, map and join operations.
+ Piccolo
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "power2010piccolo"
+
+\end_inset
+
+ uses a distributed key-value store to keep the data (e.g., user profiles)
+ associated to each vertex.
+ The map is partitioned and processed in parallel by a 
+\emph on
+kernel
+\emph default
+ function that generates mutations to the map.
+ After each iteration the mutations are applied to the distributed map through
+ the use of synchronous barriers, similarly to BSP.
+ Moreover, Distributed GraphLab
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Low2012"
+
+\end_inset
+
+ bases upon an asynchronous vertex-centric computation model, where the
+ data and graph modifications are scheduled using a distributed locking
+ mechanism.
+ Thus, GraphLab avoids the penalty imposed by synchronization barriers from
+ the BSP model.
+\end_layout
+
+\begin_layout Standard
+Graph processing frameworks usually load data from a persistent store and
+ then construct a distributed in-memory representation of the graph.
+ In many clusters, RAM memory is scarce and imposes a hard limit on the
+ size of the graph to be processed.
+ Additionally, many graph algorithms
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2011,Gupta2013,Lempel2001,Kleinberg1999,Page1999"
+
+\end_inset
+
+ require in-memory auxiliary data structures to handle intermediate results,
+ which further limits the amount of memory that can be assigned to graph
+ data.
+ Driven by this situation, we created a graph database that support graph
+ traversal operations and provides a model for designing distributed graph
+ algorithms over its data.
+ Graph data is kept in a persistent graph database and algorithm execution
+ can be non-invasively adjusted according to different criteria, such as
+ main memory usage, CPU speed, CPU usage, secondary disk usage, vertex storage
+ location, among others.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

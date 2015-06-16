@@ -1,0 +1,2069 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\newcommand{\thesistitle}{A graph-processing platform for low-end clusters}
+\newcommand{\thesisauthor}{Alejandro Corbellini}
+\newcommand{\thesisyear}{2015}
+
+\usepackage{lastpage}
+%\usepackage{tocbibind}
+\usepackage[numbers,sort]{natbib}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{lettrine}
+\usepackage{titlesec,  color}
+\usepackage[
+   hidelinks,
+   pdftitle={\thesistitle},
+   pdfauthor={\thesisauthor},
+   pdfpagemode={UseOutlines},
+   bookmarks,
+   bookmarksopen=true,
+   pdfstartview={FitH},
+   bookmarksnumbered=true]{hyperref}
+
+\paperwidth=8.5in
+\paperheight=11in
+\setlength{\hoffset}{0.0in}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\textwidth}{6in}
+\setlength{\evensidemargin}{0mm}
+\setlength{\voffset}{0.0in}
+\setlength{\topmargin}{.0in}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{22pt}
+\setlength{\textheight}{8.5in}
+\setlength{\footskip}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand\contentsname{Table of Contents} 
+
+\fancypagestyle{IHA-fancy-style}{%
+  \fancyhf{}% Clear header and footer
+  \fancyhead[LE,RO]{\slshape \leftmark}
+  \fancyhead[LO,RE]{}
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \fancyfoot[LO,RE]{\slshape \rightmark}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{chapter}{%
+  \fancyhf{}% Clear header and footer
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \renewcommand{\headrulewidth}{0pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{firstpages}{%
+  \fancyhf{}
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\fancypagestyle{cover}{%
+  \fancyhf{}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\newcommand{\markedsection}[2]{\section[#2]{#2%
+\sectionmark{#1}}
+\sectionmark{#1}}
+
+\newcommand{\markedsubsection}[2]{\subsection[#2]{#2%
+\subsectionmark{#1}}
+\subsectionmark{#1}}
+
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\raisebox{-4ex}{\includegraphics{images/vbar.pdf}}\hsp}{0pt}{\Huge\bfseries}
+\end_preamble
+\options 11pt,openright,twoside,letterpaper,onecolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch section-bib
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{IHA-fancy-style} 
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+textheight}{8in} 
+\backslash
+setlength{
+\backslash
+footskip}{0.3in}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Experiments"
+
+\end_inset
+
+Experiments
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{chapter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Case Study
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Experiments"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to validate the proposed architecture, we implemented a recommendation
+ algorithm and performed experiments with different job distribution strategies
+ in the current materialization of LMGPA.
+ The algorithm used in this paper for illustrating the importance of mapping
+ strategies is a 
+\emph on
+followee
+\emph default
+ recommender algorithm for Twitter users
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2012"
+
+\end_inset
+
+.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Followee-Recommendation-Algorithm"
+
+\end_inset
+
+ presents the algorithm definition and its adaptation to the Graphly API.
+ Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Experimental-Setting"
+
+\end_inset
+
+ describes the experimental settings, including the dataset used, the hardware
+ features of the computer cluster and the initial configuration.
+ In turn, Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Results"
+
+\end_inset
+
+ shows how the choice of a mapping strategy affects the algorithm execution
+ times and cluster resource usage.
+\end_layout
+
+\begin_layout Subsection
+Followee Recommendation Algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Followee-Recommendation-Algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the context of the Twitter social network, a user has a group of 
+\emph on
+followees
+\emph default
+ (outgoing edges) and 
+\emph on
+followers 
+\emph default
+(incoming edges).
+ The algorithm used as case study, proposed in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2012"
+
+\end_inset
+
+, can be divided in two stages.
+ It first explores the followee/follower network near the target user (i.e.,
+ the user receiving the suggestions) to select a set of potential users
+ to recommend.
+ Then, the candidates are filtered and ranked according to different criteria
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2011"
+
+\end_inset
+
+, such as the number of common friends with the target user or the matching
+ of their content-based profiles.
+ In this work we focus on supporting the first stage of the algorithm on
+ a large graph, letting aside the quality of the actual recommendation.
+ 
+\end_layout
+
+\begin_layout Standard
+The exploration of the followee/follower network in this algorithm is based
+ on the characterization of Twitter users made in several studies
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Java2007,Krishnamurthy2008"
+
+\end_inset
+
+ and the fact that online social networks had become real-time information
+ sources and news spreading mediums besides fostering the formation of social
+ ties
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kwak2010"
+
+\end_inset
+
+.
+ From an information-centric point of view, users are mainly divided in
+ two categories: information sources and information seekers.
+ Users behaving as information sources tend to collect a large amount of
+ followers as they post useful information or news, whereas information
+ seekers follow several users to get information but rarely post a tweet
+ themselves.
+\end_layout
+
+\begin_layout Standard
+The rationale behind the graph traversal stage of this algorithm relies
+ in the categorization of users as information seekers or information sources.
+ Thus, it is assumed that the target user is an information seeker that
+ has already identified some interesting Twitter users acting as information
+ sources (i.e., his/her followees).
+ Other people who also follow these people (i.e.
+ followers of the user followees) is likely to share some interests with
+ the target user and might have discovered other relevant information sources
+ on the same topics (i.e., their followees).
+ This last group is then composed of potential candidates for suggesting
+ to the user as future followees.
+\end_layout
+
+\begin_layout Standard
+More formally, the search of candidate users is performed according to the
+ following steps:
+\end_layout
+
+\begin_layout Description
+Step
+\begin_inset space ~
+\end_inset
+
+1.
+ Starting with the target user 
+\begin_inset Formula $u_{T}$
+\end_inset
+
+ (an information seeker), obtain the list of users he/she follows into a
+ list 
+\begin_inset Formula $S=\left\{ s_{1},s_{2},\text{…},s_{n}\right\} $
+\end_inset
+
+.
+ Members of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $S$
+\end_inset
+
+ are likely to be information sources.
+ 
+\end_layout
+
+\begin_layout Description
+Step
+\begin_inset space ~
+\end_inset
+
+2.
+ For each element in 
+\begin_inset Formula $S$
+\end_inset
+
+, obtain its followers.
+ Let us call the union of all these lists 
+\begin_inset Formula $L$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $L={\displaystyle \bigcup_{\forall s\in followees\left(u_{T}\right)}followers\left(s\right)}$
+\end_inset
+
+.
+ Members of 
+\begin_inset Formula $L$
+\end_inset
+
+ are likely to be information seekers.
+ 
+\end_layout
+
+\begin_layout Description
+Step
+\begin_inset space ~
+\end_inset
+
+3.
+ For each element in 
+\begin_inset Formula $L$
+\end_inset
+
+ obtain its followees.
+ Let us call the union of all these lists 
+\begin_inset Formula $T$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $T={\displaystyle \bigcup_{\forall l\in L}followees\left(l\right)}$
+\end_inset
+
+.
+ Members of 
+\begin_inset Formula $T$
+\end_inset
+
+ are likely to be information sources.
+ 
+\end_layout
+
+\begin_layout Description
+Step
+\begin_inset space ~
+\end_inset
+
+4.
+ Exclude from 
+\begin_inset Formula $T$
+\end_inset
+
+ those users who the user being recommended is already following.
+ Let us call the resulting list of candidates
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $R$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Using the Graphly API, this algorithm can be expressed as depicted in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Recommendation-algorithm-using"
+
+\end_inset
+
+.
+ The adapted version of the algorithm broadly contains the next steps:
+\end_layout
+
+\begin_layout Enumerate
+Get the followees (
+\emph on
+outgoing
+\emph default
+) of the target user.
+\end_layout
+
+\begin_layout Enumerate
+Get the followers (
+\emph on
+incoming
+\emph default
+) of the followees and remove the original followees from the list.
+\end_layout
+
+\begin_layout Enumerate
+Count the followees (
+\emph on
+countOutgoing
+\emph default
+) of the followers and remove the original followees from the map.
+\end_layout
+
+\begin_layout Enumerate
+Obtain the top 
+\begin_inset Formula $n$
+\end_inset
+
+ elements with most appearances (
+\begin_inset Formula $n=10$
+\end_inset
+
+ in this example).
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+followees
+\emph default
+ object appears twice in the query because the original followees must not
+ be part of the recommendation as they are already being followed by the
+ user.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Algorithm.eps
+	lyxscale 50
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Recommendation-algorithm-using"
+
+\end_inset
+
+The studied recommendation algorithm expressed using the Graphly API
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Experimental Setting
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Experimental-Setting"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Experiments were carried out using a Twitter dataset
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://an.kaist.ac.kr/traces/WWW2010.html
+\end_layout
+
+\end_inset
+
+ as of July 2009 consisting of approximately 1,400 million relationships
+ between more than 41
+\begin_inset space ~
+\end_inset
+
+million users
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kwak2010"
+
+\end_inset
+
+.
+ This dataset contains topological information about the social network,
+ i.e., it has binary relationships between user IDs, but does not include
+ tweets.
+ This is not a limitation since the test algorithm builds recommendations
+ based on user relationships only, searching for candidate followees in
+ the Twitter graph.
+\end_layout
+
+\begin_layout Standard
+For testing the algorithm, we selected two test groups of users out of the
+ complete dataset with the goal of illustrating the performance of the different
+ strategies for varying algorithm needs.
+ For selecting a representative test user list, we first filtered the users
+ using the information source ratio
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Armentano2011"
+
+\end_inset
+
+, denoting to what extent a user can be considered as an information source.
+ This ratio is defined as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+IS(u)=\frac{followers(u)}{followers(u)+followees(u)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We set this ratio to be less or equals than
+\begin_inset space ~
+\end_inset
+
+0.5, which means that the number of followees had to be equal or larger than
+ the number of followers.
+ This restriction arises as a natural way of selecting which users would
+ have any interest in receiving recommendations, since the algorithm under
+ study is designed for recommending followees to information consumers more
+ than to information producers.
+\end_layout
+
+\begin_layout Standard
+The first test group, called the 
+\begin_inset Quotes eld
+\end_inset
+
+IS
+\begin_inset Quotes erd
+\end_inset
+
+ group, comprises the top-100 users with the smallest IS values.
+ From the algorithm point of view, these users are the most interesting
+ information consumers to recommend other users to follow.
+ To obtain the second test group, called the 
+\begin_inset Quotes eld
+\end_inset
+
+Followees
+\begin_inset Quotes erd
+\end_inset
+
+ group, we ordered the filtered users by number of followees and kept the
+ top-100.
+ These users represent the most influential users of the test set and were
+ used to stress the computational nodes employed assuming they will produce
+ long lists of followers and followees.
+ 
+\end_layout
+
+\begin_layout Standard
+Regarding the cluster characteristics, we used an heterogeneous cluster
+ of 8
+\begin_inset space ~
+\end_inset
+
+nodes divided in two sets, each having identical hardware characteristics.
+ Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Cluster-hardware-characteristics"
+
+\end_inset
+
+ summarizes the most relevant characteristics of each set of nodes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\size footnotesize
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="2.2cm">
+<column alignment="center" valignment="top" width="4.4cm">
+<column alignment="center" valignment="top" width="4.2cm">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size scriptsize
+First set (5 nodes)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size scriptsize
+Second set (3 nodes)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+CPU
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+AMD Phenom II X6 1055T 2.8 Ghz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+AMD FX 6100 3.3 Ghz
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+# of cores
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+RAM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+8 GB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+16 GB
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Physical Network
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+1 Gbit Ethernet
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+1 Gbit Ethernet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Hard Disk
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+500 GB - 7200 RPM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+500 GB - 7200 RPM
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Cluster-hardware-characteristics"
+
+\end_inset
+
+Cluster hardware characteristics.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Results
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Results"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/time-boxplot.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/network-boxplot.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/memory-boxplot.eps
+	width 52col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Average-results-by"
+
+\end_inset
+
+Average results for each testing group of users.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The experiments were carried out as follows.
+ For each user in the testing set, we ran the algorithm 5
+\begin_inset space ~
+\end_inset
+
+times for each one of the strategies presented in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Graphly-Job-Scheduling"
+
+\end_inset
+
+.
+ In every execution, we measured the total recommendation time, the bytes
+ sent over the network and the maximum memory consumed (the biggest memory
+ spike).
+ Using this information we obtained the average number of bytes sent over
+ the network, the average maximum memory consumption and the average recommendat
+ion time.
+ It is worth noting that the number of times we ran the algorithms yielded
+ as a result very low statistical deviations, and thus these averages are
+ statistically significant.
+ The distribution of average values for a given group of users and a given
+ strategy are summarized in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Average-results-by"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As it was expected, users in the 
+\begin_inset Quotes eld
+\end_inset
+
+IS
+\begin_inset Quotes erd
+\end_inset
+
+ group demand, on average, less time to process as well as less resources.
+ Instead, the 
+\begin_inset Quotes eld
+\end_inset
+
+followees
+\begin_inset Quotes erd
+\end_inset
+
+ group was intentionally selected to stress the cluster.
+ Users in this group need more resources to be processed and, consequently,
+ their processing takes longer than users in the 
+\begin_inset Quotes eld
+\end_inset
+
+IS
+\begin_inset Quotes erd
+\end_inset
+
+ group.
+\end_layout
+
+\begin_layout Standard
+Regarding the performance of the mapping strategies for both groups of users,
+ the Round Robin strategy provided the worst recommendation times as well
+ as higher network and memory usage.
+ This can be explained by the fair but random division of tasks processing.
+\end_layout
+
+\begin_layout Standard
+The memory-based strategies provided similar performance in network and
+ memory consumption and recommendation time.
+ These strategies performed better than the Location Aware strategy and
+ the Round Robin strategy.
+ This might be explained by the memory-intensive nature of the algorithm
+ used as case study: on each step, the algorithm generates exponentially
+ larger sub-results that are merged and allocated as input for the next
+ step.
+ Thus, an allocation of tasks according to memory capabilities of the nodes
+ provides better performance by using less virtual memory from the Operating
+ System (also letting the OS to use more memory for disk cache) and, in
+ the case of our implementation language, producing less garbage collection
+ from the Java Virtual Machine.
+\end_layout
+
+\begin_layout Standard
+Finally, the Location Aware strategy provided intermediate performance in
+ terms of recommendation time.
+ However, memory consumption was considerably lower than other strategies
+ and, as expected, the network consumption was minimal.
+ In scenarios where memory is scarce or network speed is an impediment,
+ the Location Aware strategy may be a better fit than other strategies.
+ Moreover, in some scenarios using Cloud processing platforms (e.g., Amazon
+ AWS or Google Compute Engine), using less network bandwidth may have economic
+ benefits.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/user13348memory.eps
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/user13348net.eps
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Network-and-Memory"
+
+\end_inset
+
+Cluster network and memory usage for an example user.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To further compare strategies, a typical execution trace for the implemented
+ recommendation algorithm is shown in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Network-and-Memory"
+
+\end_inset
+
+.
+ In this case, the Location Aware strategy presents a memory usage pattern
+ that is almost linear, whereas the other strategies show an exponential
+ pattern on early steps of the recommendation algorithm.
+ This is due to the nature of the algorithm which generates an exponential
+ amount of remote requests on each traversal step.
+ As expected, the network usage is similar for non-locality strategies.
+ Moreover, for those strategies, the growth in network usage matches a growth
+ in memory usage.
+\end_layout
+
+\begin_layout Standard
+Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Strategy-suitability-acording"
+
+\end_inset
+
+ provides assistance in the decision of which strategy shall be used depending
+ on the environment characteristics, graph topology and algorithm characteristic
+s.
+ As 
+\emph on
+environment characteristics 
+\emph default
+we considered two scenarios: a Limited Memory scenario and a Slow/Costly
+ Network scenario.
+ The former corresponds to environments where the nodes have relatively
+ low RAM memory, which is the case of, for instance, commodity clusters,
+ or environments including embedded devices like cellphones or tablets
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rodriguez2014energy"
+
+\end_inset
+
+ (a.k.a.
+ mobile Grids).
+ The latter scenario considers slow computer networks, where transference
+ between nodes incurs in a big performance penalty, or cases where network
+ transfers are charged like in, for example, paid Cloud Computing environments.
+ Under 
+\emph on
+graph
+\emph default
+ 
+\emph on
+topology
+\emph default
+ we only consider graphs that are highly interconnected (e.g.
+ natural graphs) and graphs that have a low amount of edges w.r.t.
+ their vertices.
+ Finally, in 
+\emph on
+algorithm
+\emph default
+ 
+\emph on
+characteristics
+\emph default
+ we identify two scenarios: implementing a memory-intensive recommendation
+ algorithm or a CPU-intensive algorithm.
+\end_layout
+
+\begin_layout Standard
+The scenarios depicted are far from exhaustive, mainly because we only focused
+ on those scenarios that are related to the case study analyzed.
+ Then, even when the criteria used to fill in part of the Table is somewhat
+ subjective, our main goal is to guide potential jLiME users into quickly
+ obtaining an initial, working configuration for efficiently running their
+ recommendation algorithms.
+ Possible values for strategy performance in a given scenario range from
+ 
+\emph on
+Very Poor
+\emph default
+ to
+\emph on
+ Very Good
+\emph default
+.
+ A
+\emph on
+ Very Poor
+\emph default
+ value does not necessarily mean that the current strategy is unusable for
+ that scenario, but it might not perform as well as other strategies.
+ Additionally, these values depend on the scenario being evaluated, e.g.,
+ if we consider the Limited Memory scenario, a 
+\emph on
+Very Poor 
+\emph default
+value means that the strategy introduces high memory consumption, while
+ a 
+\emph on
+Very Good 
+\emph default
+value means that the strategy favors low memory consumption.
+\end_layout
+
+\begin_layout Standard
+The selection of an strategy for a given environment, graph and algorithm
+ combination is straightforward.
+ For example, in a Slow Network scenario the best choice is the Location
+ Aware strategy.
+ On the other hand, in a Limited Memory scenario, a Low-Connected Graph
+ and a CPU-intensive algorithm, the best choice might be a simple Round
+ Robin strategy.
+ Nevertheless, because the scenarios are not mutually exclusive, conflicts
+ between requirements may arise resulting in a trade-off situation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="7">
+<features rotate="0" tabularvalignment="bottom">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<row>
+<cell multirow="3" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Strategies
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none" width="2cm">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Environment 
+\begin_inset Newline newline
+\end_inset
+
+Characteristics
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none" width="2cm">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Graph 
+\begin_inset Newline newline
+\end_inset
+
+Topology
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="3cm">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Algorithm 
+\begin_inset Newline newline
+\end_inset
+
+Characteristics
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Limited Memory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Slow/Costly Network
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Natural Graphs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Low-Connected Graphs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Memory-intensive
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+CPU-intensive
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Available Memory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Poor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very Poor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Total Memory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Poor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very Poor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Location Aware
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Round Robin
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very Poor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very Poor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Poor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Good
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Poor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Very Good
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Strategy-suitability-acording"
+
+\end_inset
+
+Strategy suitability according to the environment, the graph and the algorithm
+ characteristics.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

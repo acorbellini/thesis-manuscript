@@ -1,0 +1,398 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\newcommand{\thesistitle}{A graph-processing platform for low-end clusters}
+\newcommand{\thesisauthor}{Alejandro Corbellini}
+\newcommand{\thesisyear}{2015}
+
+\usepackage{lastpage}
+%\usepackage{tocbibind}
+\usepackage[numbers,sort]{natbib}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{lettrine}
+\usepackage{titlesec,  color}
+\usepackage[
+   hidelinks,
+   pdftitle={\thesistitle},
+   pdfauthor={\thesisauthor},
+   pdfpagemode={UseOutlines},
+   bookmarks,
+   bookmarksopen=true,
+   pdfstartview={FitH},
+   bookmarksnumbered=true]{hyperref}
+
+\paperwidth=8.5in
+\paperheight=11in
+\setlength{\hoffset}{0.0in}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\textwidth}{6in}
+\setlength{\evensidemargin}{0mm}
+\setlength{\voffset}{0.0in}
+\setlength{\topmargin}{.0in}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{22pt}
+\setlength{\textheight}{8.5in}
+\setlength{\footskip}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand\contentsname{Table of Contents} 
+
+\fancypagestyle{IHA-fancy-style}{%
+  \fancyhf{}% Clear header and footer
+  \fancyhead[LE,RO]{\slshape \leftmark}
+  \fancyhead[LO,RE]{}
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \fancyfoot[LO,RE]{\slshape \rightmark}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{chapter}{%
+  \fancyhf{}% Clear header and footer
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \renewcommand{\headrulewidth}{0pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{firstpages}{%
+  \fancyhf{}
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\fancypagestyle{cover}{%
+  \fancyhf{}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\newcommand{\markedsection}[2]{\section[#2]{#2%
+\sectionmark{#1}}
+\sectionmark{#1}}
+
+\newcommand{\markedsubsection}[2]{\subsection[#2]{#2%
+\subsectionmark{#1}}
+\subsectionmark{#1}}
+
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\raisebox{-4ex}{\includegraphics{images/vbar.pdf}}\hsp}{0pt}{\Huge\bfseries}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch section-bib
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{IHA-fancy-style} 
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+textheight}{8in} 
+\backslash
+setlength{
+\backslash
+footskip}{0.3in}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:JLiME-Network-Layer"
+
+\end_inset
+
+JLiME Network Layer
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{chapter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The jLiME Stack packet-sending implementation is based on our Message Processor
+ (MP) abstraction.
+ Each MP receives a message, processes it and sends it to the next MP.
+ On each MP, the messages are added to a queue and scheduled for local processin
+g.
+ To reduce the performance impact of the queue, messages are read and processed
+ in a batch fashion.
+ This approach is similar to the one implemented by the Disruptor Ring Queue
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "disruptor2011high"
+
+\end_inset
+
+, a high-throughput synchronized queue used in producer-consumer scenarios.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/TCPandUDPStacks.eps
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UDP-and-TCP-1"
+
+\end_inset
+
+UDP and TCP stacks in jLiME
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Two default stack implementations, depicted in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UDP-and-TCP-1"
+
+\end_inset
+
+, are provided by jLiME: an UDP-based stack and a TCP-based stack.
+ Each stack might be used in different scenarios.
+ TCP is a stream-oriented protocol, used when a reliable channel must be
+ established between two networked processes.
+ 
+\end_layout
+
+\begin_layout Standard
+On the other hand, UDP is packet or 
+\begin_inset Quotes eld
+\end_inset
+
+datagram
+\begin_inset Quotes erd
+\end_inset
+
+-oriented and does not provide any guarantee that after sending an array
+ of bytes it will arrive to destination.
+ UDP has the advantage of consuming much less network resources than TCP
+ as no connection must be established nor maintained between nodes.
+ In jLiME, however, we built a series of MPs to overcome UDP unreliableness.
+ Firstly, to adjust to the UDP maximum datagram limit, we created a MessageFragm
+enter that divides the original packet into smaller pieces and assembles
+ them on the receiving side.
+ Secondly, an Acknowledge processor confirms received messages, and throttle
+ sending if a given amount of confirmations are missing.
+ This helps to maintain a steady stream of UDP packets by not overloading
+ the receiver.
+ Thirdly, a Packet Bundler merges small messages in a bigger message or
+ 
+\begin_inset Quotes eld
+\end_inset
+
+bundle
+\begin_inset Quotes erd
+\end_inset
+
+ to reduce datagram overhead.
+ Naturally, TCP already implements these techniques, but unlike the UDP
+ stack, they are not optional.
+\end_layout
+
+\begin_layout Standard
+Additionally, for both types of stack a custom discovery protocol was designed
+ and implemented in two forms: Multicast Discovery and Ping Discovery.
+ The Multicast variation sends UDP multicast messages to a given multicast
+ address and expects responses from nodes.
+ The Ping-based discovery simply sends UDP messages to a range of addresses
+ and waits for responses.
+ Similarly, a ping-based protocol was created to track the status (alive
+ or defunct) of nodes in the cluster.
+\end_layout
+
+\begin_layout Standard
+Lastly, streaming capabilities might be added to the jLiME stack by implementing
+ the 
+\emph on
+Streamer
+\emph default
+ interface.
+ The TCP-based implementation of this interface is straightforward as it
+ is a stream-oriented protocol.
+ The UDP Message Processor provides streaming capabilities by reassembling
+ packets in the order they were sent.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status collapsed
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,826 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\newcommand{\thesistitle}{A graph-processing platform for low-end clusters}
+\newcommand{\thesisauthor}{Alejandro Corbellini}
+\newcommand{\thesisyear}{2015}
+
+\usepackage{lastpage}
+%\usepackage{tocbibind}
+\usepackage[numbers,sort]{natbib}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{lettrine}
+\usepackage{titlesec,  color}
+\usepackage[
+   hidelinks,
+   pdftitle={\thesistitle},
+   pdfauthor={\thesisauthor},
+   pdfpagemode={UseOutlines},
+   bookmarks,
+   bookmarksopen=true,
+   pdfstartview={FitH},
+   bookmarksnumbered=true]{hyperref}
+
+\paperwidth=8.5in
+\paperheight=11in
+\setlength{\hoffset}{0.0in}
+\setlength{\oddsidemargin}{.5in}
+\setlength{\textwidth}{6in}
+\setlength{\evensidemargin}{0mm}
+\setlength{\voffset}{0.0in}
+\setlength{\topmargin}{.0in}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{22pt}
+\setlength{\textheight}{8.5in}
+\setlength{\footskip}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\renewcommand\contentsname{Table of Contents} 
+
+\fancypagestyle{IHA-fancy-style}{%
+  \fancyhf{}% Clear header and footer
+  \fancyhead[LE,RO]{\slshape \leftmark}
+  \fancyhead[LO,RE]{}
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \fancyfoot[LO,RE]{\slshape \rightmark}
+  \renewcommand{\headrulewidth}{0.4pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{chapter}{%
+  \fancyhf{}% Clear header and footer
+  \fancyfoot[RO,LE]{\thepage\ of \pageref{LastPage}}% Custom footer
+  \renewcommand{\headrulewidth}{0pt}% Line at the header visible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+\fancypagestyle{firstpages}{%
+  \fancyhf{}
+  \fancyfoot[RO,LE]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\fancypagestyle{cover}{%
+  \fancyhf{}
+  \fancyfoot{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+\newcommand{\markedsection}[2]{\section[#2]{#2%
+\sectionmark{#1}}
+\sectionmark{#1}}
+
+\newcommand{\markedsubsection}[2]{\subsection[#2]{#2%
+\subsectionmark{#1}}
+\subsectionmark{#1}}
+
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\raisebox{-4ex}{\includegraphics{images/vbar.pdf}}\hsp}{0pt}{\Huge\bfseries}
+\end_preamble
+\options 11pt,twoside,letterpaper,onecolumn
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch section-bib
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status open
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{IHA-fancy-style} 
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+textheight}{8in} 
+\backslash
+setlength{
+\backslash
+footskip}{0.3in}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{chapter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lettrine{I}{n recent years}
+\end_layout
+
+\end_inset
+
+, there has been considerable interest in the design and development of
+ recommendation algorithms for assisting users to cope with the exponential
+ growth of online social networks.
+ In the literature, the 
+\emph on
+Big Data
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zikopoulos2011bigdata"
+
+\end_inset
+
+ term was coined to refer to large-scale data management, including its
+ analysis and the corresponding support platforms.
+ 
+\end_layout
+
+\begin_layout Standard
+Most experimental recommendation algorithms, particularly those developed
+ in academia, are implemented as single-machine, single-threaded applications
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jing2014recommendation,rausch2014exploring,durand2013graph,wang2014flickr,guo2007egov"
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Even the well-known Twitter's Who To Follow algorithm is implemented in
+ a single-machine for reducing architectural complexity
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gupta2013"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+These implementations face scalability issues when the size of the underlying
+ social graph increases, as it usually happens in today's social networks,
+ populated with millions of users.
+ As a consequence, these algorithms are often tested on small datasets and,
+ thus, conclusions drawn from test results might be considered insufficient.
+ Moreover, as it usually happens, if these experimental algorithms are tested
+ on relatively large datasets, the amount of time needed to run tests might
+ become impractical in a develop, test and modify loop.
+\end_layout
+
+\begin_layout Standard
+Likewise, in situations where computing resources are scarce, generating
+ recommendations becomes challenging.
+ One alternative that tackles this problem, known as vertical scaling, consists
+ in adding more resources to an existing computer (such as RAM memory or
+ changing/adding CPUs) or even changing the whole computer to a more powerful
+ one.
+ Naturally, hardware extensibility imposes a hard limit on vertical scaling
+ and, in terms of cost-effectiveness, acquiryng high-performance and high-qualit
+y hardware is usually expensive.
+ Moreover, in the scenario of hardware failures, the more expensive the
+ hardware is, the more costly the repairment is, not to mention those complicati
+ons generated by the system downtime.
+\end_layout
+
+\begin_layout Standard
+On the other hand, horizontal scaling consists in adding more computers
+ to a system by networking them together, forming a cluster of computers.
+ Horizontal scaling introduces simpler and cost-effective scalability, but
+ requires complex software to handle distributed programming concerns.
+ Some of these concerns, known as the 8 fallacies of distributed computing
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Article by Arnon Rotem-Gal-Oz, 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.rgoarchitects.com/Files/fallacies.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, are often ignored by distributed systems newcomers.
+ Those fallacies that apply to local clusters are listed below:
+\end_layout
+
+\begin_layout Itemize
+The network is reliable: Packet lost is common between networked computers
+ and the design must address that fact.
+\end_layout
+
+\begin_layout Itemize
+Latency is zero: One of the most important factors in networked environments.
+ Sending a packet through a network is far slower than transfering data
+ through local memory.
+ The algorithm must be designed to avoid making multiple small-sized distributed
+ calls unless neccesary.
+ A recurring scenenario in which latency is dismissed appears when using
+ Remote Procedure Calls (RPC) frameworks, where the distributed invocation
+ is masked behind a simple local function call.
+ The developer must be careful not to expect rpc calls to behave like local
+ memory calls.
+\end_layout
+
+\begin_layout Itemize
+Bandwidth is infinite: Another important aspect of networking is that, although
+ bandwith is everyday higher, it is not infinite, and applications must
+ be carefully designed in order to avoid overloading the network.
+\end_layout
+
+\begin_layout Itemize
+Transport cost is zero: Marshalling and unmarshalling to and from byte represent
+ations is not a simple and cheap task, and thus, it must be taken into account
+ when designing a distributed application.
+\end_layout
+
+\begin_layout Itemize
+The network is homogeneous: Not all the computers in the cluster have the
+ same hardware characteristics and the application must be designed with
+ that concept in mind.
+\end_layout
+
+\begin_layout Standard
+A distributed processing framework often imposes a processing model that
+ fosters an efficient use of the underlying network.
+ A processing model dictates the way the developer must write his algorithm
+ requiring, in some cases, to adapt it.
+ For example, in distributed systems, a common processing model is MapReduce
+ in which the algorithm must be divided in two parts: a map function and
+ a reduce function.
+ Some algorithms, specially divide-and-conquer algorithms, fit very well
+ under this model.
+ However, iterative algorithms that perform modifications over the same
+ data over multiple steps are harder to adapt to MapReduce, and might result
+ in a less efficient execution.
+\end_layout
+
+\begin_layout Standard
+In the context of social networks, the natural choice to handle large amounts
+ of social data are distributed graph databases and frameworks for processing
+ graph-based algorithms
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "corbellini2014criwg"
+
+\end_inset
+
+.
+ Distributed graph storage and processing systems have acquired a great
+ interest from companies and academic institutions that handle big amounts
+ of interconnected data such as social or geo-spatial data.
+ For example, Facebook's social network has 801
+\begin_inset space ~
+\end_inset
+
+million daily active users that upload more than 500
+\begin_inset space ~
+\end_inset
+
+TB to Facebook's data stores, which are analyzed in real time to harvest
+ usage statistics.
+ As of 2013, Twitter's 100
+\begin_inset space ~
+\end_inset
+
+million users daily generated 500
+\begin_inset space ~
+\end_inset
+
+million tweets per day, which are processed to show trending topics and
+ produce targeted advertising.
+ Moreover, the amount of data stored and queried by this kind of applications
+ makes traditional databases and even common NoSQL solutions unfeasible
+ to cope with the needed performance levels.
+ Even acquiring statistically significant samples from real-world graphs,
+ like those formed by Twitter and Facebook social networks, has proven to
+ be challenging
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lu2014GraphSampling"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Some graph processing frameworks provide a processing model suited for distribut
+ed graph algorithms.
+ One example is Pregel, a processing model for iterative graph algorithms
+ based on BSP.
+ Pregel requires the developer to express his algorithm in a vertex-centric
+ way, i.e.
+ each vertex is processed separately and communication of sub-results is
+ done through its edges.
+\end_layout
+
+\begin_layout Standard
+In this thesis, we provide a graph processing and storage platform that
+ provides an API to express graph algorithms under two different processing
+ models.
+ This platform, is aimed to address cluster heterogeneity by providing runtime
+ adaptability through what we call 
+\emph on
+job mapping strategies
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout Standard
+The motivation behind this thesis can be divided in different topics, according
+ to the concerns addressed.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Recommendation API
+\end_layout
+
+\begin_layout Standard
+One of the main motivations of this work is the need for a recommendation
+ tool for graphs that could be extended to include new algorithms.
+ Existing APIs for designing distributed graph algorithms do not provide
+ built-in algorithms for recommendation purposes, leaving all work to the
+ developer.
+ A recommendation API for graphs that allows to reuse and extend existing
+ algorithms is very important for creating new algorithms.
+\end_layout
+
+\begin_layout Subsection*
+Graph Algorithm Modelling
+\end_layout
+
+\begin_layout Standard
+Current processing frameworks for graphs are often designed with a single
+ processing model in mind.
+ A system that allows to express algorithms in different models helps to
+ compare how different types of algorithms fit under a given model.
+ This includes comparing the difficulty of writing the algorithm under the
+ model constraints and the final performance of the algorithm.
+\end_layout
+
+\begin_layout Subsection*
+Platform ease of use
+\end_layout
+
+\begin_layout Standard
+Most processing and storage platforms require a substantial setup effort
+ before starting to develop algorithms.
+ While this platforms provide high availability and security guarantees,
+ most experimental research algorithms are not aimed for production use
+ and in consequence, don't need those guarantees.
+ Besides.
+ in practice, adding and removing nodes from an small cluster is not as
+ usual as it happens on big datacenters.
+ However, failing nodes remains as a concern but only at the experiment
+ execution phase.
+\end_layout
+
+\begin_layout Subsection*
+Adapt to cluster characteristics
+\end_layout
+
+\begin_layout Standard
+Large datacenters are often composed of hardware with lots of RAM memory
+ and CPU capabilities.
+ Difference between nodes is not noticiable.
+ On small clusters, however, computers are added to the cluster over the
+ course of the years and thus, characteristics differences are significant.
+ Providing tools to allow developers to adjust their algorithms to the current
+ cluster characteristics is vital to the algorithm performance.
+ For example, if the algorithm is very RAM-consuming, carefully adjusting
+ the distributed work of the algorithm according to the RAM characteristics
+ of the nodes might boost its performance, and in some cases where RAM memory
+ if very limited, complete the execution at all.
+\end_layout
+
+\begin_layout Subsection*
+Persistence
+\end_layout
+
+\begin_layout Standard
+Many processing platforms do not support native persistence and process
+ algorithms in RAM.
+ On small clusters, it can be a limiting factor regarding how much memory
+ can be assigned to the algorithm own processing needs.
+ A persitent graph store is important under this sceneario to leave RAM
+ for the algorithm.
+ In most cases, the performance impact of using a persitent store can be
+ reduced using caching strategies.
+\end_layout
+
+\begin_layout Section
+Proposal
+\end_layout
+
+\begin_layout Standard
+To address the challenges described above, we propose Graphly, a graph storage
+ and processing platform designed for usage on small clusters, and GraphRec,
+ a recommendation toolkit that builts-in recommendation algorithms and provides
+ an API to reuse them.
+\end_layout
+
+\begin_layout Subsection
+Graphly
+\end_layout
+
+\begin_layout Standard
+When seen as a pair of layers, Graphly lays at the bottom providing abstractions
+ for distributed graph storage and processing.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+It provides the necessary tools to execute graph algorithms on an heterogeneous
+ cluster.
+\end_layout
+
+\end_inset
+
+ To achieve this, Graphly's development focused on three main features:
+\end_layout
+
+\begin_layout Itemize
+Graph API: An easy-to use graph traversal API.
+\end_layout
+
+\begin_layout Itemize
+Persistent Storage: A simple distributed property graph store with low impact
+ on memory usage, allowing most RAM memory to be used by graph algorithms.
+ On each node where Graphly is running, the store places a key-value multilevel
+ log-based database, allowing it to provide not only fast put and get performanc
+e, but also range iteration with a small footprint on disk.
+\end_layout
+
+\begin_layout Itemize
+Processing Models: Graphly implements two well-known processing models,
+ Pregel and ForkJoin, to design and execute distributed graph algorithms.
+ Besides allowing access to the platform, these models help to achieve an
+ efficient use of the platform by restricting the way the algorithm can
+ perform remote invocations.
+ As mentioned before, in a networked environment, batch send and execution
+ is much more efficient than performing small sized calls and waiting for
+ the result.
+\end_layout
+
+\begin_layout Itemize
+Job Mapping Strategies: Before executing a given algorithm, Graphly lets
+ the user configure a Job Mapping Strategy to decide how jobs will be assigned
+ to cluster nodes, seamlessly adapting the algorithm to an heterogeneous
+ cluster.
+ Thus, the strategy to be used is configured into the platform and, in consequen
+ce, the algorithm code remains unchanged.
+ Developers may create static strategies and dynamic strategies.
+ As an example, an strategy that uses the location of the data being processed
+ to assign jobs, always map jobs to the same nodes and, thus, is an example
+ of static strategy.
+ On the other hand, an strategy that uses the current state of RAM usage
+ to perform the job assignment is an example of dynamic strategy.
+\end_layout
+
+\begin_layout Subsection
+GraphRec
+\end_layout
+
+\begin_layout Standard
+Built on top of Graphly, GraphRec provides a toolkit for developing recommendati
+on algorithms on graphs, also known as link prediction problems.
+ GraphRec was created to foster the development of recommendation algorithms
+ that can be evaluated on large datasets.
+ 
+\end_layout
+
+\begin_layout Standard
+GraphRec builts-in link-prediction algorithms and provides them as primitives
+ to build more powerful algorithms.
+ These primitives can be simple algorithms such as:
+\end_layout
+
+\begin_layout Itemize
+Common Neighbours 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Van descripciones breves acá.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Random Walk
+\end_layout
+
+\begin_layout Itemize
+Traversal Patterns
+\end_layout
+
+\begin_layout Standard
+or more advanced algorithms such as:
+\end_layout
+
+\begin_layout Itemize
+SALSA 
+\end_layout
+
+\begin_layout Itemize
+HITS
+\end_layout
+
+\begin_layout Itemize
+Who To Follow
+\end_layout
+
+\begin_layout Itemize
+PageRank
+\end_layout
+
+\begin_layout Standard
+Algorithms in the latter group are implemented in both Graphly's processing
+ models allowing simple evaluation of model performance.
+ 
+\end_layout
+
+\begin_layout Standard
+Moreover, GraphRec connects seamlessly with the API provided by Graphly
+ allowing the use of results generated by GraphRec as input to operations
+ in Graphly's API and viceversa.
+ 
+\end_layout
+
+\begin_layout Section
+Organization
+\end_layout
+
+\begin_layout Standard
+The remaining of this thesis is organized as follows:
+\end_layout
+
+\begin_layout Itemize
+Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Background"
+
+\end_inset
+
+ overviews some background topics used as foundation for this thesis,
+\end_layout
+
+\begin_layout Itemize
+Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Related-Work"
+
+\end_inset
+
+ explores related work regarding distributed graph processing models, frameworks
+ and databases, and recommendation APIs for graphs,
+\end_layout
+
+\begin_layout Itemize
+Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Proposal:-jLiME,-Graphly"
+
+\end_inset
+
+ presents the proposal of this thesis: Graphly and GraphRec, their design
+ and implementation,
+\end_layout
+
+\begin_layout Itemize
+Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Experiments"
+
+\end_inset
+
+ explores some use cases, compares models and their performance using different
+ mapping strategies on an heterogeneous clusters,
+\end_layout
+
+\begin_layout Itemize
+Chapter
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Conclusions"
+
+\end_inset
+
+ walks through some conclusions, including the importance of providing an
+ easy-to-use distributed recommendation toolkit for graphs and analysis
+ on the different models applied.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch section-bib
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
